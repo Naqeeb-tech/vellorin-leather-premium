@@ -29,15 +29,21 @@
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
+        .tagline {
+            font-size: 1.2em;
+            margin: 5px 0;
+            font-style: italic;
+        }
         nav {
             margin-top: 20px;
         }
         nav a {
             color: #d4af37;
             text-decoration: none;
-            margin: 0 20px;
+            margin: 0 15px;
             font-weight: bold;
             transition: 0.3s;
+            display: inline-block;
         }
         nav a:hover {
             color: #fff;
@@ -49,7 +55,7 @@
             padding: 40px 20px;
         }
         section {
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
         h2 {
             color: #d4af37;
@@ -60,39 +66,71 @@
             border-bottom: 2px solid #d4af37;
             padding-bottom: 15px;
         }
-        .product-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .product-card {
+        .product-section {
             background: #1a1a1a;
+            padding: 40px;
             border: 2px solid #d4af37;
             border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 30px;
         }
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        .product-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
         }
-        .product-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-        .product-info {
-            padding: 20px;
+        .product-image {
             text-align: center;
         }
-        .product-info h3 {
-            color: #d4af37;
-            margin-bottom: 10px;
+        .product-image img {
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .product-info p {
+        .product-image img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+        }
+        .product-description {
+            padding: 20px;
+        }
+        .product-description h3 {
+            color: #d4af37;
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+        .product-description p {
             color: #bbb;
-            font-size: 0.9em;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .product-features {
+            color: #d4af37;
+            margin-top: 20px;
+        }
+        .product-features li {
+            margin-left: 20px;
+            color: #bbb;
+            margin-bottom: 8px;
+        }
+        .btn {
+            background: #d4af37;
+            color: #000;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background: #fff;
+            transform: scale(1.05);
         }
         .about-section {
             background: #1a1a1a;
@@ -114,23 +152,9 @@
             text-align: center;
         }
         .contact-section p {
-            margin: 10px 0;
+            margin: 15px 0;
             font-size: 1.1em;
-        }
-        .btn {
-            background: #d4af37;
-            color: #000;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.3s;
-            display: inline-block;
-            margin-top: 15px;
-        }
-        .btn:hover {
-            background: #fff;
-            transform: scale(1.05);
+            color: #bbb;
         }
         footer {
             background-color: #000;
@@ -143,12 +167,15 @@
             h2 {
                 font-size: 1.8em;
             }
-            .product-gallery {
+            .product-content {
                 grid-template-columns: 1fr;
             }
             nav a {
                 display: block;
                 margin: 10px 0;
+            }
+            .product-section {
+                padding: 20px;
             }
         }
     </style>
@@ -156,64 +183,132 @@
 <body>
     <header>
         <div class="logo">VELLORIN</div>
-        <p style="color: #d4af37; font-size: 1.2em; margin: 5px 0;">Crafted for Eternity</p>
+        <p class="tagline">Crafted for Eternity</p>
+        <p style="color: #d4af37; font-size: 1.1em;">One-Stop Shop for All Leather Materials</p>
         <nav>
-            <a href="#products">Products</a>
+            <a href="#bags">Leather Bags</a>
+            <a href="#wallets">Designer Wallets</a>
+            <a href="#shoes">Luxury Shoes</a>
+            <a href="#belts">Premium Belts</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
 
     <main>
-        <section id="products">
-            <h2>Our Premium Collection</h2>
-            <div class="product-gallery">
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=300&fit=crop" alt="Premium Leather Bags">
-                    <div class="product-info">
+        <!-- Leather Bags Section -->
+        <section id="bags">
+            <h2>Leather Bags</h2>
+            <div class="product-section">
+                <div class="product-content">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&h=400&fit=crop" alt="Premium Leather Bags" />
+                    </div>
+                    <div class="product-description">
                         <h3>Leather Bags</h3>
-                        <p>Handcrafted leather bags for every occasion</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=300&fit=crop" alt="Designer Wallets">
-                    <div class="product-info">
-                        <h3>Designer Wallets</h3>
-                        <p>Premium leather wallets with luxury finishes</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=300&fit=crop" alt="Luxury Shoes">
-                    <div class="product-info">
-                        <h3>Luxury Shoes</h3>
-                        <p>Elegant handcrafted leather shoes</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1505132716692-dc78606b34ae?w=400&h=300&fit=crop" alt="Premium Belts">
-                    <div class="product-info">
-                        <h3>Premium Belts</h3>
-                        <p>Sophisticated leather belts for professionals</p>
+                        <p>Our premium leather bags are meticulously handcrafted from the finest full-grain leather, designed for the modern professional who appreciates elegance and functionality.</p>
+                        <ul class="product-features">
+                            <li>✓ Full-grain leather construction</li>
+                            <li>✓ Lifetime durability guarantee</li>
+                            <li>✓ Elegant handles and straps</li>
+                            <li>✓ Multiple compartments</li>
+                            <li>✓ Available in multiple colors</li>
+                        </ul>
+                        <a href="#contact" class="btn">Order Now</a>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Designer Wallets Section -->
+        <section id="wallets">
+            <h2>Designer Wallets</h2>
+            <div class="product-section">
+                <div class="product-content">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&h=400&fit=crop" alt="Designer Wallets" />
+                    </div>
+                    <div class="product-description">
+                        <h3>Designer Wallets</h3>
+                        <p>Compact yet spacious, our designer wallets combine style with practicality. Perfect for carrying your essentials in sophistication.</p>
+                        <ul class="product-features">
+                            <li>✓ Premium leather material</li>
+                            <li>✓ RFID protection</li>
+                            <li>✓ Multiple card slots</li>
+                            <li>✓ Coin compartment</li>
+                            <li>✓ Sophisticated design</li>
+                        </ul>
+                        <a href="#contact" class="btn">Order Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Luxury Shoes Section -->
+        <section id="shoes">
+            <h2>Luxury Shoes</h2>
+            <div class="product-section">
+                <div class="product-content">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&h=400&fit=crop" alt="Luxury Shoes" />
+                    </div>
+                    <div class="product-description">
+                        <h3>Luxury Shoes</h3>
+                        <p>Handcrafted luxury shoes that blend comfort with timeless elegance. Perfect for formal occasions or everyday sophisticated style.</p>
+                        <ul class="product-features">
+                            <li>✓ Premium leather sole</li>
+                            <li>✓ Cushioned insoles</li>
+                            <li>✓ Expert craftsmanship</li>
+                            <li>✓ Available in various styles</li>
+                            <li>✓ Unmatched comfort</li>
+                        </ul>
+                        <a href="#contact" class="btn">Order Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Premium Belts Section -->
+        <section id="belts">
+            <h2>Premium Belts</h2>
+            <div class="product-section">
+                <div class="product-content">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1505132716692-dc78606b34ae?w=500&h=400&fit=crop" alt="Premium Belts" />
+                    </div>
+                    <div class="product-description">
+                        <h3>Premium Belts</h3>
+                        <p>Sophisticated leather belts that add the perfect finishing touch to any outfit. Crafted with precision and available in classic and modern styles.</p>
+                        <ul class="product-features">
+                            <li>✓ Full-grain leather</li>
+                            <li>✓ Adjustable sizing</li>
+                            <li>✓ Premium metal buckles</li>
+                            <li>✓ Elegant and timeless design</li>
+                            <li>✓ Perfect for all occasions</li>
+                        </ul>
+                        <a href="#contact" class="btn">Order Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
         <section id="about">
             <h2>About VELLORIN</h2>
             <div class="about-section">
                 <p>VELLORIN is a premium leather brand offering handcrafted products built with precision, passion, and timeless design. Each piece is carefully crafted from the finest materials to ensure durability and elegance.</p>
-                <p style="margin-top: 20px;">With over a decade of experience, we pride ourselves on delivering exceptional quality and customer satisfaction.</p>
+                <p style="margin-top: 20px;">With over a decade of experience, we pride ourselves on delivering exceptional quality and customer satisfaction. Our master craftsmen use traditional techniques combined with modern innovation to create leather goods that last a lifetime.</p>
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact">
             <h2>Contact Us</h2>
             <div class="contact-section">
-                <p><strong>Email:</strong> vellorin@email.com</p>
-                <p><strong>Phone:</strong> +1 (555) 123-4567</p>
-                <p><strong>Instagram:</strong> @vellorin.official</p>
-                <p><strong>Facebook:</strong> Vellorin Leather Premium</p>
+                <p><strong style="color: #d4af37;">Email:</strong> vellorin@email.com</p>
+                <p><strong style="color: #d4af37;">Phone:</strong> +1 (555) 123-4567</p>
+                <p><strong style="color: #d4af37;">Instagram:</strong> @vellorin.official</p>
+                <p><strong style="color: #d4af37;">Facebook:</strong> Vellorin Leather Premium</p>
                 <a href="mailto:vellorin@email.com" class="btn">Get in Touch</a>
             </div>
         </section>
