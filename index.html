@@ -3,47 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vellorin Leather Premium</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>VELLORIN | Premium Leather Goods</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #0d0d0d;
+            color: #d4af37;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(to bottom, #000, #111);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid #d4af37;
+        }
+        .logo {
+            font-size: 3em;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        nav {
+            margin-top: 20px;
+        }
+        nav a {
+            color: #d4af37;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #d4af37;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        section {
+            margin-bottom: 60px;
+        }
+        h2 {
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 15px;
+        }
+        .product-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .product-card {
+            background: #1a1a1a;
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+        .product-info h3 {
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+        .product-info p {
+            color: #bbb;
+            font-size: 0.9em;
+        }
+        .about-section {
+            background: #1a1a1a;
+            padding: 40px;
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .about-section p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #bbb;
+        }
+        .contact-section {
+            background: #1a1a1a;
+            padding: 40px;
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .contact-section p {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        .btn {
+            background: #d4af37;
+            color: #000;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background: #fff;
+            transform: scale(1.05);
+        }
+        footer {
+            background-color: #000;
+            text-align: center;
+            padding: 30px;
+            border-top: 3px solid #d4af37;
+            margin-top: 60px;
+        }
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 1.8em;
+            }
+            .product-gallery {
+                grid-template-columns: 1fr;
+            }
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="logo.svg" alt="Vellorin Leather Logo" />
-        </div>
+        <div class="logo">VELLORIN</div>
+        <p style="color: #d4af37; font-size: 1.2em; margin: 5px 0;">Crafted for Eternity</p>
         <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <a href="#products">Products</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
+
     <main>
-        <section id="home">
-            <h1>Welcome to Vellorin Leather Premium</h1>
-            <p>Discover our exclusive range of professional leather products.</p>
-        </section>
         <section id="products">
-            <h2>Our Products</h2>
+            <h2>Our Premium Collection</h2>
             <div class="product-gallery">
-                <img src="product1.jpg" alt="Leather Bag" />
-                <img src="product2.jpg" alt="Leather Wallet" />
-                <img src="product3.jpg" alt="Leather Belt" />
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=300&fit=crop" alt="Premium Leather Bags">
+                    <div class="product-info">
+                        <h3>Leather Bags</h3>
+                        <p>Handcrafted leather bags for every occasion</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=300&fit=crop" alt="Designer Wallets">
+                    <div class="product-info">
+                        <h3>Designer Wallets</h3>
+                        <p>Premium leather wallets with luxury finishes</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=300&fit=crop" alt="Luxury Shoes">
+                    <div class="product-info">
+                        <h3>Luxury Shoes</h3>
+                        <p>Elegant handcrafted leather shoes</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1505132716692-dc78606b34ae?w=400&h=300&fit=crop" alt="Premium Belts">
+                    <div class="product-info">
+                        <h3>Premium Belts</h3>
+                        <p>Sophisticated leather belts for professionals</p>
+                    </div>
+                </div>
             </div>
         </section>
+
         <section id="about">
-            <h2>About Us</h2>
-            <p>We offer premium leather products crafted from the finest materials.</p>
+            <h2>About VELLORIN</h2>
+            <div class="about-section">
+                <p>VELLORIN is a premium leather brand offering handcrafted products built with precision, passion, and timeless design. Each piece is carefully crafted from the finest materials to ensure durability and elegance.</p>
+                <p style="margin-top: 20px;">With over a decade of experience, we pride ourselves on delivering exceptional quality and customer satisfaction.</p>
+            </div>
         </section>
+
         <section id="contact">
             <h2>Contact Us</h2>
-            <p>Email: contact@vellorinleather.com</p>
+            <div class="contact-section">
+                <p><strong>Email:</strong> vellorin@email.com</p>
+                <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                <p><strong>Instagram:</strong> @vellorin.official</p>
+                <p><strong>Facebook:</strong> Vellorin Leather Premium</p>
+                <a href="mailto:vellorin@email.com" class="btn">Get in Touch</a>
+            </div>
         </section>
     </main>
+
     <footer>
-        <p>&copy; 2026 Vellorin Leather Premium. All rights reserved.</p>
+        <p>&copy; 2026 VELLORIN | Premium Leather Goods. All rights reserved.</p>
     </footer>
 </body>
 </html>
