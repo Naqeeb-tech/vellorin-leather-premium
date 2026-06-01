@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VELLORIN | Premium Leather Goods</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #0d0d0d;
+            color: #d4af37;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(to bottom, #000, #111);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid #d4af37;
+        }
+        .logo {
+            font-size: 3em;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        .tagline {
+            font-size: 1.2em;
+            margin: 5px 0;
+            font-style: italic;
+        }
+        nav {
+            margin-top: 20px;
+        }
+        nav a {
+            color: #d4af37;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        nav a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #d4af37;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        section {
+            margin-bottom: 80px;
+        }
+        .product-banner {
+            position: relative;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+        }
+        .product-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .banner-text {
+            text-align: center;
+            color: #d4af37;
+            font-size: 3em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+        }
+        h2 {
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 15px;
+        }
+        .product-section {
+            background: #1a1a1a;
+            padding: 40px;
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .product-description {
+            padding: 20px;
+        }
+        .product-description h3 {
+            color: #d4af37;
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+        .product-description p {
+            color: #bbb;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .product-features {
+            color: #d4af37;
+            margin-top: 20px;
+            list-style: none;
+        }
+        .product-features li {
+            color: #bbb;
+            margin-bottom: 10px;
+            padding-left: 20px;
+        }
+        .btn {
+            background: #d4af37;
+            color: #000;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+            margin-top: 15px;
+            cursor: pointer;
+            border: none;
+        }
+        .btn:hover {
+            background: #fff;
+            transform: scale(1.05);
+        }
+        .about-section {
+            background: #1a1a1a;
+            padding: 40px;
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .about-section p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #bbb;
+        }
+        .contact-section {
+            background: #1a1a1a;
+            padding: 40px;
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .contact-section p {
+            margin: 15px 0;
+            font-size: 1.1em;
+            color: #bbb;
+        }
+        footer {
+            background-color: #000;
+            text-align: center;
+            padding: 30px;
+            border-top: 3px solid #d4af37;
+            margin-top: 60px;
+        }
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 1.8em;
+            }
+            .banner-text {
+                font-size: 2em;
+            }
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    
+.popup{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#1a1a1a;padding:30px;border:2px solid #d4af37;border-radius:10px;z-index:9999;text-align:center;max-width:500px;width:90%;}
+.color-option{width:120px;height:120px;object-fit:cover;margin:10px;cursor:pointer;border-radius:10px;border:2px solid #d4af37;}
+</style>
+</head>
+<body>
+    <header>
+        <div class="logo">VELLORIN</div>
+        <p class="tagline">Crafted for Eternity</p>
+        <p style="color: #d4af37; font-size: 1.1em;">One-Stop Shop for All Leather Materials</p>
+        <nav>
+            <a href="#bags">Leather Bags</a>
+            <a href="#wallets">Designer Wallets</a>
+            <a href="#shoes">Luxury Shoes</a>
+            <a href="#belts">Premium Belts</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Leather Bags Section -->
+        <section id="bags">
+            <div class="product-banner">
+                <img src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/Bag%20image.png" alt="Leather Bags" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="banner-overlay">
+                    <div class="banner-text">Leather Bags</div>
+                </div>
+            </div>
+            <div class="product-section">
+                <div class="product-description">
+                    <h3>Premium Leather Bags</h3>
+                    <p>Our premium leather bags are meticulously handcrafted from the finest full-grain leather, designed for the modern professional.</p>
+                    <ul class="product-features">
+                        <li>✓ Full-grain leather construction</li>
+                        <li>✓ Lifetime durability guarantee</li>
+                        <li>✓ Elegant handles and straps</li>
+                        <li>✓ Multiple compartments</li>
+                        <li>✓ Available in multiple colors</li>
+                    </ul>
+                    <button onclick="openPopup()" class="btn">Order Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Designer Wallets Section -->
+        <section id="wallets">
+            <div class="product-banner">
+                <img src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/DSC07918.jpg" alt="Designer Wallets" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="banner-overlay">
+                    <div class="banner-text">Designer Wallets</div>
+                </div>
+            </div>
+            <div class="product-section">
+                <div class="product-description">
+                    <h3>Designer Wallets</h3>
+                    <p>Compact yet spacious, our designer wallets combine style with practicality. Perfect for carrying your essentials.</p>
+                    <ul class="product-features">
+                        <li>✓ Premium leather material</li>
+                        <li>✓ RFID protection</li>
+                        <li>✓ Multiple card slots</li>
+                        <li>✓ Coin compartment</li>
+                        <li>✓ Sophisticated design</li>
+                    </ul>
+                    <button onclick="openPopup()" class="btn">Order Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Luxury Shoes Section -->
+        <section id="shoes">
+            <div class="product-banner">
+                <img src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/shoe%20image.png" alt="Luxury Shoes" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="banner-overlay">
+                    <div class="banner-text">Luxury Shoes</div>
+                </div>
+            </div>
+            <div class="product-section">
+                <div class="product-description">
+                    <h3>Luxury Shoes</h3>
+                    <p>Handcrafted luxury shoes that blend comfort with timeless elegance. Perfect for any occasion.</p>
+                    <ul class="product-features">
+                        <li>✓ Premium leather sole</li>
+                        <li>✓ Cushioned insoles</li>
+                        <li>✓ Expert craftsmanship</li>
+                        <li>✓ Available in various styles</li>
+                        <li>✓ Unmatched comfort</li>
+                    </ul>
+                    <button onclick="openPopup()" class="btn">Order Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Premium Belts Section -->
+        <section id="belts">
+            <div class="product-banner">
+                <img src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/belts.jpeg" alt="Premium Belts" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="banner-overlay">
+                    <div class="banner-text">Premium Belts</div>
+                </div>
+            </div>
+            <div class="product-section">
+                <div class="product-description">
+                    <h3>Premium Belts</h3>
+                    <p>Sophisticated leather belts that add the perfect finishing touch to any outfit.</p>
+                    <ul class="product-features">
+                        <li>✓ Full-grain leather</li>
+                        <li>✓ Adjustable sizing</li>
+                        <li>✓ Premium metal buckles</li>
+                        <li>✓ Elegant and timeless design</li>
+                        <li>✓ Perfect for all occasions</li>
+                    </ul>
+                    <button onclick="openPopup()" class="btn">Order Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About VELLORIN</h2>
+            <div class="about-section">
+                <p>VELLORIN is a premium leather brand offering handcrafted products built with precision, passion, and timeless design.</p>
+                <p style="margin-top: 20px;">With over a decade of experience, we pride ourselves on delivering exceptional quality and customer satisfaction.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <div class="contact-section">
+                <p><strong style="color: #d4af37;">Email:</strong> Vellorinpremium@gmail.com</p>
+                <p><strong style="color: #d4af37;">Phone:</strong> +91 7090635884</p>
+                <p><strong style="color: #d4af37;">Instagram:</strong> @vellorinleatherpremium</p>
+                
+                <a href="mailto:Vellorinpremium@gmail.com" class="btn">Get in Touch</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 VELLORIN | Premium Leather Goods. All rights reserved.</p>
+    </footer>
+
+<div id="colorPopup" class="popup">
+<h2>Select Your Preferred Color</h2>
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" class="color-option" onclick="orderColor('Brown')">
+<img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=400" class="color-option" onclick="orderColor('Black')">
+<img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=400" class="color-option" onclick="orderColor('Tan')">
+<br><br><button class="btn" onclick="closePopup()">Close</button>
+</div>
+<script>
+function openPopup(){document.getElementById('colorPopup').style.display='block';}
+function closePopup(){document.getElementById('colorPopup').style.display='none';}
+function orderColor(color){
+window.open('https://wa.me/917090635884?text='+encodeURIComponent('Hi VELLORIN, I am interested in ordering a product in '+color+' color.'),'_blank');
+}
+</script>
+</body>
+</html>
