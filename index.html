@@ -444,6 +444,7 @@
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
+            animation: fadeIn 0.4s ease-in-out;
         }
 
         .product-card:hover {
@@ -492,6 +493,11 @@
                 text-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
                 letter-spacing: 13px;
             }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* --- Responsive Structural Adapters --- */
@@ -689,14 +695,26 @@
     </div>
 
     <script>
-        // GitHub integrated premium image database pathing
-        const walletImage = 'https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/DSC07918.jpg';
-
-        const catalogImages = {
-            'Leather Bags': [walletImage, walletImage, walletImage, walletImage],
-            'Designer Wallet': [walletImage, walletImage, walletImage, walletImage],
-            'Luxury Shoes': [walletImage, walletImage, walletImage, walletImage],
-            'Premium Belt': [walletImage, walletImage, walletImage, walletImage]
+        // High-fidelity structured base mappings matching your exact GitHub naming configurations
+        const baseGitHubUrl = "https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/";
+        
+        const catalogAssets = {
+            'Leather Bags': {
+                fallback: baseGitHubUrl + "Bag%20image.png",
+                models: ['Bag image.png', 'Bag image.png', 'Bag image.png']
+            },
+            'Designer Wallet': {
+                fallback: baseGitHubUrl + "DSC07918.jpg",
+                models: ['DSC07918.jpg', 'DSC07918.jpg', 'DSC07918.jpg']
+            },
+            'Luxury Shoes': {
+                fallback: baseGitHubUrl + "shoe%20image.png",
+                models: ['shoe image.png', 'shoe image.png', 'shoe image.png']
+            },
+            'Premium Belt': {
+                fallback: baseGitHubUrl + "belts.jpeg",
+                models: ['belts.jpeg', 'belts.jpeg', 'belts.jpeg']
+            }
         };
 
         let currentCategory = '';
@@ -713,7 +731,6 @@
             popup.style.display = 'block';
             setTimeout(() => popup.classList.add('active'), 10);
 
-            // Updated color layout sequence requested
             const colors = ['Black', 'Brown', 'Navy Green', 'Dark Brown'];
             document.getElementById('colorArea').innerHTML = colors.map(c => 
                 `<span class="choice" id="color-${c.replace(/\s+/g, '')}" onclick="selectColor('${c}')">${c}</span>`
@@ -729,14 +746,21 @@
             const targetChoice = document.getElementById(`color-${color.replace(/\s+/g, '')}`);
             if(targetChoice) targetChoice.classList.add('selected');
 
-            const items = catalogImages[currentCategory] || [];
-            document.getElementById('productArea').innerHTML = items.map((img, i) => `
-                <div class="product-card" onclick="orderProduct(${i + 1})">
-                    <img src="${img}" alt="Luxury Variant Model ${i + 1}">
-                    <div>Model ${i + 1}</div>
-                    <div style="font-size:0.75em; color:var(--gold); margin-top:6px; letter-spacing:1px; text-transform:uppercase;">Select & Inquire</div>
-                </div>
-            `).join('');
+            const assetGroup = catalogAssets[currentCategory];
+            const models = assetGroup ? assetGroup.models : [];
+            
+            document.getElementById('productArea').innerHTML = models.map((filename, i) => {
+                // If you upload color-specific variants later (e.g., 'wallet_black_1.jpg'), simply append logic here
+                const imageSrc = baseGitHubUrl + encodeURIComponent(filename);
+                
+                return `
+                    <div class="product-card" onclick="orderProduct(${i + 1})">
+                        <img src="${imageSrc}" alt="${currentCategory} Model ${i + 1}" onerror="this.src='${assetGroup.fallback}'">
+                        <div>Model ${i + 1}</div>
+                        <div style="font-size:0.75em; color:var(--gold); margin-top:6px; letter-spacing:1px; text-transform:uppercase;">Select & Inquire</div>
+                    </div>
+                `;
+            }).join('');
         }
 
         function orderProduct(modelNumber) {
@@ -745,10 +769,9 @@
                 return;
             }
             
-            // Clean dynamic text matching template requested precisely
-            const structuredMessage = `Hi%20VELLORIN,%0A%0AI%20am%20interested%20in%20the%20${encodeURIComponent(currentCategory)}.%0A%0AColor:%20${encodeURIComponent(currentColor)}%0AProduct:%20Wallet%20Model%20${modelNumber}%0A%0APlease%20share%20pricing%20and%20availability.`;
+            const structuredMessage = `Hi VELLORIN,\n\nI am interested in the ${currentCategory}.\n\nColor: ${currentColor}\nProduct: Wallet Model ${modelNumber}\n\nPlease share pricing and availability.`;
             
-            window.open('https://wa.me/917090635884?text=' + structuredMessage, '_blank');
+            window.open('https://wa.me/917090635884?text=' + encodeURIComponent(structuredMessage), '_blank');
         }
 
         function closeShop() {
