@@ -347,5 +347,73 @@ function orderColor(color){
 window.open('https://wa.me/917090635884?text='+encodeURIComponent('Hi VELLORIN, I am interested in ordering a product in '+color+' color.'),'_blank');
 }
 </script>
+
+<style>
+.popup{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#111;padding:20px;border:2px solid #d4af37;border-radius:10px;z-index:9999;width:95%;max-width:950px;max-height:85vh;overflow:auto}
+.choice{display:inline-block;background:#d4af37;color:#000;padding:10px 15px;margin:5px;border-radius:6px;cursor:pointer;font-weight:bold}
+.product-grid{display:flex;flex-wrap:wrap;justify-content:center}
+.product-card{margin:10px;text-align:center}
+.product-card img{width:180px;height:180px;object-fit:cover;border:2px solid #d4af37;border-radius:8px;cursor:pointer}
+</style>
+
+<div id="shopPopup" class="popup">
+<h2>Choose Color</h2>
+<div id="colorArea"></div>
+<h2>Choose Product</h2>
+<div id="productArea" class="product-grid"></div>
+<br>
+<button class="btn" onclick="closePopup()">Close</button>
+</div>
+
+<script>
+const catalog={
+bags:[
+'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600',
+'https://images.unsplash.com/photo-1591561954557-26941169b49e?w=600',
+'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600',
+'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600'
+],
+wallets:[
+'https://images.unsplash.com/photo-1627123424574-724758594e93?w=600',
+'https://images.unsplash.com/photo-1606503825008-909a67e63c3d?w=600',
+'https://images.unsplash.com/photo-1627996272954-25e4e9a3b5f4?w=600',
+'https://images.unsplash.com/photo-1517254797898-04edd251b1f5?w=600'
+],
+shoes:[
+'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600',
+'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600',
+'https://images.unsplash.com/photo-1543508282-6319a3e2621f?w=600',
+'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=600'
+],
+belts:[
+'https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=600',
+'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600',
+'https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=600',
+'https://images.unsplash.com/photo-1624222247431-6bb0fdd92c4c?w=600'
+]
+};
+let currentCategory='';
+let currentColor='';
+
+function openCategory(cat){
+ currentCategory=cat;
+ document.getElementById('shopPopup').style.display='block';
+ const colors=['Black','Brown','Navy Green','Dark Brown'];
+ document.getElementById('colorArea').innerHTML=colors.map(c=>`<span class="choice" onclick="selectColor('${c}')">${c}</span>`).join('');
+ document.getElementById('productArea').innerHTML='';
+}
+function selectColor(color){
+ currentColor=color;
+ const items=catalog[currentCategory]||[];
+ document.getElementById('productArea').innerHTML=items.map((img,i)=>
+ `<div class="product-card"><img src="${img}" onclick="orderProduct(${i+1})"><div>Model ${i+1}</div></div>`).join('');
+}
+function orderProduct(model){
+ const msg=`Hi VELLORIN,%0AProduct: ${currentCategory}%0AColor: ${currentColor}%0AModel: ${model}%0APlease share price and availability.`;
+ window.open('https://wa.me/917090635884?text='+msg,'_blank');
+}
+function closePopup(){document.getElementById('shopPopup').style.display='none';}
+</script>
+
 </body>
 </html>
