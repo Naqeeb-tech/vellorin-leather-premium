@@ -8,9 +8,9 @@
         :root {
             --gold: #d4af37;
             --dark-gold: #aa841c;
-            --bg-black: #0d0d0d;
-            --card-bg: #1a1a1a;
-            --text-light: #bbb;
+            --bg-black: #090909;
+            --card-bg: #141414;
+            --text-light: #cccccc;
             --white: #ffffff;
         }
 
@@ -28,117 +28,143 @@
             font-family: 'Georgia', serif;
             background-color: var(--bg-black);
             color: var(--gold);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
-        /* --- Header & Navigation --- */
+        /* --- Header & Luxury Navigation --- */
         header {
-            background: linear-gradient(to bottom, #000, #111);
-            padding: 40px 20px;
+            background: linear-gradient(to bottom, #000000, #0f0f0f);
+            padding: 50px 20px 30px 20px;
             text-align: center;
-            border-bottom: 3px solid var(--gold);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.4);
             position: sticky;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
         .logo {
-            font-size: 3em;
-            font-weight: bold;
-            letter-spacing: 4px;
+            font-size: 3.5em;
+            font-weight: 900;
+            letter-spacing: 8px;
             margin-bottom: 5px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-            animation: fadeIn 1.5s ease-in-out;
+            color: var(--white);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+            animation: luxuryShimmer 4s ease-in-out infinite alternate;
+            display: inline-block;
         }
 
         .tagline {
-            font-size: 1.2em;
-            margin: 5px 0;
+            font-size: 1.1em;
+            margin-top: 5px;
+            margin-bottom: 5px;
             font-style: italic;
-            color: var(--white);
+            color: var(--text-light);
+            letter-spacing: 2px;
         }
 
         .sub-tagline {
             color: var(--gold);
-            font-size: 1.1em;
-            letter-spacing: 1px;
+            font-size: 0.9em;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            margin-top: 5px;
+            font-weight: bold;
+            opacity: 0.85;
         }
 
         nav {
-            margin-top: 25px;
+            margin-top: 30px;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 25px;
         }
 
         nav a {
-            color: var(--gold);
+            color: var(--text-light);
             text-decoration: none;
             font-weight: bold;
-            font-size: 0.95em;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            padding: 5px 10px;
-            border: 1px solid transparent;
+            font-size: 0.85em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--gold);
+            transition: all 0.4s ease;
         }
 
         nav a:hover {
-            color: var(--white);
-            text-shadow: 0 0 8px var(--gold);
-            border-bottom: 1px solid var(--gold);
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
         }
 
-        /* --- Main Content Layout --- */
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* --- Main Layout Architecture --- */
         main {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 60px 20px;
         }
 
         section {
-            margin-bottom: 100px;
-            scroll-margin-top: 200px;
+            margin-bottom: 120px;
+            scroll-margin-top: 180px;
         }
 
         h2.section-title {
             color: var(--gold);
             text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.5em;
-            letter-spacing: 3px;
+            margin-bottom: 50px;
+            font-size: 2.2em;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            border-bottom: 2px solid var(--gold);
-            padding-bottom: 15px;
+            position: relative;
         }
 
-        /* --- Luxury Hero Canvas Banner --- */
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 1px;
+            background: var(--gold);
+            margin: 15px auto 0 auto;
+        }
+
+        /* --- Immersive Product Showcase Banners (Supports Video & Image) --- */
         .product-banner {
             position: relative;
-            height: 450px;
-            border-radius: 10px;
+            height: 480px;
+            border-radius: 4px;
             overflow: hidden;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15);
-            transition: transform 0.5s ease;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+            background-color: #000;
         }
 
-        .product-banner:hover {
-            transform: scale(1.01);
-        }
-
-        .product-banner img {
+        .product-banner img, .product-banner video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s ease;
+            transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .product-banner:hover img {
-            transform: scale(1.05);
+        .product-banner:hover img, .product-banner:hover video {
+            transform: scale(1.04);
         }
 
         .banner-overlay {
@@ -147,149 +173,166 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
+            background: linear-gradient(to top, rgba(9,9,9,0.95) 15%, rgba(9,9,9,0.1) 70%);
             display: flex;
             align-items: flex-end;
-            justify-content: center;
-            padding-bottom: 40px;
+            justify-content: flex-start;
+            padding: 40px;
+            z-index: 2;
         }
 
         .banner-text {
-            text-align: center;
-            color: var(--gold);
-            font-size: 3em;
+            color: var(--white);
+            font-size: 2.6em;
             font-weight: bold;
             letter-spacing: 3px;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
             text-transform: uppercase;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
         }
 
-        /* --- Product Showcases --- */
+        /* --- Premium Content Cards --- */
         .product-section {
             background: var(--card-bg);
-            padding: 40px;
-            border: 1px solid var(--gold);
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            padding: 45px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            transition: all 0.4s ease;
         }
 
         .product-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.05);
         }
 
         .product-description h3 {
-            color: var(--gold);
-            font-size: 2.2em;
-            margin-bottom: 10px;
+            color: var(--white);
+            font-size: 2em;
+            margin-bottom: 8px;
             letter-spacing: 1px;
         }
 
-        .price-tag {
-            font-size: 1.6em;
-            color: var(--white);
+        .price-range {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 1.4em;
+            color: var(--gold);
             font-weight: bold;
-            margin-bottom: 15px;
-            font-family: sans-serif;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .price-tag span {
+        .price-range .label {
             font-size: 0.6em;
+            text-transform: uppercase;
             color: var(--text-light);
-            text-decoration: line-through;
-            margin-left: 10px;
+            letter-spacing: 2px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 2px 8px;
+            border-radius: 2px;
         }
 
         .product-description p {
             color: var(--text-light);
-            font-size: 1.1em;
+            font-size: 1.05em;
             line-height: 1.8;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .product-features {
-            color: var(--gold);
-            margin-top: 20px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             list-style: none;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
         }
 
         .product-features li {
             color: var(--text-light);
-            padding-left: 5px;
-            position: relative;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* --- Premium Buttons --- */
+        .product-features li::before {
+            content: '✦';
+            color: var(--gold);
+            font-size: 0.8em;
+        }
+
+        /* --- Premium CTA Buttons --- */
         .btn {
-            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
-            color: #000;
-            padding: 14px 35px;
+            background: none;
+            color: var(--gold);
+            padding: 14px 40px;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 0;
             font-weight: bold;
-            letter-spacing: 1px;
+            font-size: 0.85em;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             display: inline-block;
             cursor: pointer;
-            border: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid var(--gold);
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--gold);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .btn:hover {
-            background: var(--white);
-            color: #000;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            color: #000000;
         }
 
-        .btn:active {
-            transform: translateY(1px);
+        .btn:hover::before {
+            transform: scaleX(1);
         }
 
-        /* --- About & Contact Area --- */
+        /* --- About, Contact & Reviews --- */
         .about-section, .contact-section {
             background: var(--card-bg);
-            padding: 50px 40px;
-            border: 1px solid var(--gold);
-            border-radius: 10px;
+            padding: 60px 40px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
             text-align: center;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
         }
 
         .about-section p, .contact-section p {
-            font-size: 1.2em;
-            line-height: 1.9;
+            font-size: 1.15em;
             color: var(--text-light);
-            max-width: 800px;
-            margin: 0 auto 20px auto;
+            max-width: 750px;
+            margin: 0 auto 25px auto;
         }
 
         .contact-section p strong {
             color: var(--gold);
+            letter-spacing: 1px;
         }
 
-        /* --- Reviews Engine Layout --- */
         .reviews-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
+            gap: 30px;
         }
 
         .review-card {
             background: var(--card-bg);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: border-color 0.3s;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            padding: 35px;
+            transition: border-color 0.4s;
         }
 
         .review-card:hover {
@@ -298,43 +341,41 @@
 
         .stars {
             color: var(--gold);
-            font-size: 1.2em;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
         }
 
         .review-text {
             color: var(--text-light);
             font-style: italic;
-            margin-bottom: 15px;
-            font-size: 1em;
+            margin-bottom: 20px;
         }
 
         .reviewer-name {
             color: var(--white);
             font-weight: bold;
-            font-size: 0.95em;
-            text-align: right;
+            font-size: 0.9em;
+            letter-spacing: 1px;
         }
 
-        /* --- Dynamic Popup Module --- */
+        /* --- Catalog Overlay Engine --- */
         .popup {
             display: none;
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            background: #111;
-            padding: 35px;
-            border: 2px solid var(--gold);
-            border-radius: 10px;
+            transform: translate(-50%, -50%) scale(0.95);
+            background: #111111;
+            padding: 40px;
+            border: 1px solid var(--gold);
             z-index: 10000;
             width: 95%;
             max-width: 850px;
-            max-height: 90vh;
+            max-height: 85vh;
             overflow-y: auto;
             box-shadow: 0 0 50px rgba(0,0,0,0.9);
             opacity: 0;
-            transition: all 0.3s ease-in-out;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .popup.active {
@@ -347,9 +388,9 @@
             display: none;
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.85);
+            background: rgba(0,0,0,0.9);
             z-index: 9999;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(4px);
         }
 
         .popup-overlay.active {
@@ -357,105 +398,126 @@
         }
 
         .popup h2 {
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            letter-spacing: 1px;
-            border-bottom: 1px solid var(--gold);
-            padding-bottom: 10px;
+            font-size: 1.6em;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 15px;
+            text-transform: uppercase;
         }
 
         .choice-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 25px;
+            gap: 12px;
+            margin-bottom: 30px;
         }
 
         .choice {
-            background: #222;
-            color: var(--gold);
-            padding: 12px 20px;
-            border: 1px solid var(--gold);
-            border-radius: 4px;
+            background: #1a1a1a;
+            color: var(--text-light);
+            padding: 10px 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
             cursor: pointer;
-            font-weight: bold;
-            transition: all 0.2s ease;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+            transition: all 0.3s;
         }
 
         .choice:hover, .choice.selected {
-            background: var(--gold);
-            color: #000;
+            border-color: var(--gold);
+            color: var(--gold);
+            background: #000000;
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
             gap: 20px;
-            margin-top: 15px;
         }
 
         .product-card {
-            background: #151515;
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid #333;
+            background: #161616;
+            padding: 15px;
+            border: 1px solid #222;
             text-align: center;
-            transition: transform 0.2s;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
         }
 
         .product-card:hover {
-            transform: translateY(-3px);
             border-color: var(--gold);
+            transform: translateY(-3px);
         }
 
         .product-card img {
             width: 100%;
-            height: 150px;
+            height: 160px;
             object-fit: cover;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .product-card div {
             font-weight: bold;
             color: var(--white);
-            font-size: 0.9em;
+            font-size: 0.85em;
+            letter-spacing: 1px;
         }
+
+        /* Luxury Scarcity Tag */
+        .scarcity-tag {
+            font-size: 0.7em !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 6px;
+            padding: 2px 4px;
+            font-weight: 500 !important;
+        }
+        .tag-low { color: #ff4d4d !important; }
+        .tag-bespoke { color: #d4af37 !important; }
 
         /* --- Footer --- */
         footer {
-            background-color: #000;
+            background-color: #000000;
             text-align: center;
-            padding: 35px 20px;
-            border-top: 3px solid var(--gold);
-            margin-top: 80px;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            margin-top: 100px;
         }
 
         footer p {
-            color: var(--text-light);
-            font-size: 0.95em;
+            color: #666666;
+            font-size: 0.85em;
+            letter-spacing: 1px;
         }
 
         /* --- Keyframe Animations --- */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes luxuryShimmer {
+            0% {
+                color: var(--white);
+                text-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+                letter-spacing: 8px;
+            }
+            100% {
+                color: var(--gold);
+                text-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+                letter-spacing: 11px;
+            }
         }
 
-        /* --- Responsive Media Viewports --- */
+        /* --- Responsive Structural Adapters --- */
         @media (max-width: 768px) {
-            header { padding: 25px 15px; }
-            .logo { font-size: 2.2em; }
-            .tagline { font-size: 1em; }
-            nav { gap: 8px; }
-            nav a { font-size: 0.85em; padding: 4px 8px; }
-            h2.section-title { font-size: 1.8em; }
-            .product-banner { height: 280px; }
+            header { padding: 35px 15px; }
+            .logo { font-size: 2.4em; letter-spacing: 4px !important; animation: none; color: var(--gold); }
+            nav { gap: 10px; }
+            nav a { font-size: 0.75em; letter-spacing: 1px; }
+            h2.section-title { font-size: 1.6em; }
+            .product-banner { height: 320px; padding: 25px; }
             .banner-text { font-size: 1.8em; }
-            .product-section { padding: 20px; }
-            .product-description h3 { font-size: 1.8em; }
-            .price-tag { font-size: 1.3em; }
+            .product-section { padding: 25px; }
+            .product-description h3 { font-size: 1.6em; }
+            .price-range { font-size: 1.1em; }
         }
     </style>
 </head>
@@ -464,15 +526,15 @@
     <header>
         <div class="logo">VELLORIN</div>
         <p class="tagline">Crafted for Eternity</p>
-        <p class="sub-tagline">One-Stop Shop for Luxury Leather</p>
+        <p class="sub-tagline">The Art of Pure Full-Grain Leather</p>
         <nav>
-            <a href="#bags">Leather Bags</a>
-            <a href="#wallets">Designer Wallets</a>
-            <a href="#shoes">Luxury Shoes</a>
-            <a href="#belts">Premium Belts</a>
-            <a href="#about">About</a>
-            <a href="#reviews">Reviews</a>
-            <a href="#contact">Contact</a>
+            <a href="#bags">Bags</a>
+            <a href="#wallets">Wallets</a>
+            <a href="#shoes">Shoes</a>
+            <a href="#belts">Belts</a>
+            <a href="#about">Heritage</a>
+            <a href="#reviews">Chronicles</a>
+            <a href="#contact">Concierge</a>
         </nav>
     </header>
 
@@ -480,24 +542,25 @@
         <!-- Leather Bags Section -->
         <section id="bags">
             <div class="product-banner">
-                <img src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/Bag%20image.png" alt="VELLORIN Premium Leather Bags">
+                <!-- Replace src with an .mp4 video link later to activate loop background seamlessly -->
+                <img id="bags-media" src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/Bag%20image.png" alt="VELLORIN Premium Leather Bags">
                 <div class="banner-overlay">
                     <div class="banner-text">Leather Bags</div>
                 </div>
             </div>
             <div class="product-section">
                 <div class="product-description">
-                    <h3>Premium Leather Duffle & Briefcases</h3>
-                    <div class="price-tag">₹14,999 <span>₹24,999</span></div>
-                    <p>Our premium leather bags are meticulously handcrafted from choice full-grain hides, structured specifically to fulfill the stylistic and spatial demands of the modern pioneer.</p>
+                    <h3>Premium Leather Duffle & Cabin Briefcases</h3>
+                    <div class="price-range">
+                        <span class="label">Price Tier</span> ₹2,000 – ₹4,000
+                    </div>
+                    <p>Meticulously handcrafted using high-tensile full-grain hides. Tailored gracefully to serve as a lifelong companion for the refined cosmopolitan traveler.</p>
                     <ul class="product-features">
-                        <li>✓ Full-grain leather execution</li>
-                        <li>✓ Solid brass hardware enclosures</li>
-                        <li>✓ Ergonomic load-bearing straps</li>
-                        <li>✓ Reinforced laptop & tech suites</li>
-                        <li>✓ Microfiber water-resistant lining</li>
+                        <li>Sustainably sourced structural hides</li>
+                        <li>Heavy-duty anti-tarnish metal alloy zippers</li>
+                        <li>Reinforced modular modern tech chambers</li>
                     </ul>
-                    <button onclick="openShop('bags')" class="btn">Order Collection</button>
+                    <button onclick="openShop('bags')" class="btn">View Blueprint Catalog</button>
                 </div>
             </div>
         </section>
@@ -505,24 +568,24 @@
         <!-- Designer Wallets Section -->
         <section id="wallets">
             <div class="product-banner">
-                <img src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/DSC07918.jpg" alt="VELLORIN Designer Leather Wallets">
+                <img id="wallets-media" src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/DSC07918.jpg" alt="VELLORIN Designer Leather Wallets">
                 <div class="banner-overlay">
                     <div class="banner-text">Designer Wallets</div>
                 </div>
             </div>
             <div class="product-section">
                 <div class="product-description">
-                    <h3>Artisan Bi-Fold & Card Armor</h3>
-                    <div class="price-tag">₹3,499 <span>₹5,999</span></div>
-                    <p>Sleek profiles engineered without sacrificing room. Experience a compact masterclass configuration engineered to organize cash, cards, and keys beautifully.</p>
+                    <h3>Artisan Bi-Fold & Minimalist Cases</h3>
+                    <div class="price-range">
+                        <span class="label">Price Tier</span> ₹500 – ₹2,000
+                    </div>
+                    <p>Ultra-slim pocket silhouettes crafted to age beautifully. Features intelligent storage arrays that eliminate pocket bulk completely.</p>
                     <ul class="product-features">
-                        <li>✓ Top-tier vegetable-tanned hide</li>
-                        <li>✓ Advanced RFID security shield</li>
-                        <li>✓ Hand-burnished seamless edges</li>
-                        <li>✓ Quick-access thumb slot arrays</li>
-                        <li>✓ Expanding internal coin pouch</li>
+                        <li>Hand-burnished edge sealing cream finishes</li>
+                        <li>Integrated military-grade RFID protection cores</li>
+                        <li>Sleek quick-draw external card layouts</li>
                     </ul>
-                    <button onclick="openShop('wallets')" class="btn">Order Collection</button>
+                    <button onclick="openShop('wallets')" class="btn">View Blueprint Catalog</button>
                 </div>
             </div>
         </section>
@@ -530,24 +593,24 @@
         <!-- Luxury Shoes Section -->
         <section id="shoes">
             <div class="product-banner">
-                <img src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/shoe%20image.png" alt="VELLORIN Luxury Leather Shoes">
+                <img id="shoes-media" src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/shoe%20image.png" alt="VELLORIN Luxury Leather Shoes">
                 <div class="banner-overlay">
                     <div class="banner-text">Luxury Shoes</div>
                 </div>
             </div>
             <div class="product-section">
                 <div class="product-description">
-                    <h3>Hand-Burnished Luxury Footwear</h3>
-                    <div class="price-tag">₹18,500 <span>₹29,999</span></div>
-                    <p>Timeless Oxfords, Derbies, and loafers sculpted by expert cordwainers. Merges complete anatomical support with absolute sophisticated structural elegance.</p>
+                    <h3>Hand-Sculpted Leather Dress Footwear</h3>
+                    <div class="price-range">
+                        <span class="label">Price Tier</span> ₹1,000 – ₹3,000
+                    </div>
+                    <p>From formal dress Oxfords to relaxed slip-on loafers, our master shoemakers build deep anatomical comfort directly into pristine visual design layouts.</p>
                     <ul class="product-features">
-                        <li>✓ Genuine stacked leather soles</li>
-                        <li>✓ Breathable dual-density insoles</li>
-                        <li>✓ Hand-stitched Goodyear welting</li>
-                        <li>✓ Deep, rich organic oil patina</li>
-                        <li>✓ Instant adapt break-in comfort</li>
+                        <li>Breathable dual-density cushioned layers</li>
+                        <li>Flexible structured genuine leather outsoles</li>
+                        <li>Organic oil hand-burnished deep patinas</li>
                     </ul>
-                    <button onclick="openShop('shoes')" class="btn">Order Collection</button>
+                    <button onclick="openShop('shoes')" class="btn">View Blueprint Catalog</button>
                 </div>
             </div>
         </section>
@@ -555,34 +618,34 @@
         <!-- Premium Belts Section -->
         <section id="belts">
             <div class="product-banner">
-                <img src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/belts.jpeg" alt="VELLORIN Premium Leather Belts">
+                <img id="belts-media" src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/belts.jpeg" alt="VELLORIN Premium Leather Belts">
                 <div class="banner-overlay">
                     <div class="banner-text">Premium Belts</div>
                 </div>
             </div>
             <div class="product-section">
                 <div class="product-description">
-                    <h3>Full-Grain Classic & Casual Belts</h3>
-                    <div class="price-tag">₹2,999 <span>₹4,999</span></div>
-                    <p>Cut from high-tensile structural hides to resist stretching or warping. Completed with custom brushed buckles that elevate formal and denim looks alike.</p>
+                    <h3>Full-Grain Masterpiece Utility Belts</h3>
+                    <div class="price-range">
+                        <span class="label">Price Tier</span> ₹500 – ₹2,000
+                    </div>
+                    <p>Carved seamlessly out of single solid-hide selections to prevent splitting or folding. Complemented by custom architectural premium metal buckles.</p>
                     <ul class="product-features">
-                        <li>✓ Single-piece solid hide core</li>
-                        <li>✓ Premium hypoallergenic metal accents</li>
-                        <li>✓ Precision laser-cut sizing anchors</li>
-                        <li>✓ Hand-dressed edge coat finishes</li>
-                        <li>✓ Dual-side versatile coloring switch</li>
+                        <li>Single continuous cut devoid of fillers</li>
+                        <li>Hypoallergenic custom polished alloy buckles</li>
+                        <li>Precision micro-spaced custom sizing paths</li>
                     </ul>
-                    <button onclick="openShop('belts')" class="btn">Order Collection</button>
+                    <button onclick="openShop('belts')" class="btn">View Blueprint Catalog</button>
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
         <section id="about">
-            <h2 class="section-title">The House of VELLORIN</h2>
+            <h2 class="section-title">The Heritage House</h2>
             <div class="about-section">
-                <p>VELLORIN is a hallmark of luxury leather goods, fusing ancestral bench craft secrets with contemporary structural design blueprints. Our raw materials are sustainably harvested and chosen for pristine grain integrity.</p>
-                <p>We build slow fashion purposefully. Every hide selected, every wax stitch drawn, and every edge polished reflects an uncompromising commitment to artifacts that look richer as they scale over decades.</p>
+                <p>VELLORIN stands as an absolute standard of luxury, offering premium leather products crafted with precision, passion, and timeless elegance.</p>
+                <p>By bypassing standard wholesale markups, we render ancestral bench craft standards accessible without ever sacrificing the uncompromising standard of raw materials.</p>
             </div>
         </section>
 
@@ -592,53 +655,54 @@
             <div class="reviews-grid">
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
-                    <p class="review-text">"The premium duffle bag feels indestructible. The patina it has developed over months of business flights makes it look even more stunning."</p>
-                    <div class="reviewer-name">— Vikram S., Delhi</div>
+                    <p class="review-text">"The leather quality of the duffle bag is phenomenal for this tier. It handles constant travel effortlessly."</p>
+                    <div class="reviewer-name">— Arpit K., Mumbai</div>
                 </div>
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
-                    <p class="review-text">"Outstanding craftsmanship on my Oxford shoes. Zero heel friction from night one, and the gold tone buckle details are pure class."</p>
-                    <div class="reviewer-name">— Rohan M., Mumbai</div>
+                    <p class="review-text">"Superb leather texture on the shoes. They broken in beautifully within two days of wearing them."</p>
+                    <div class="reviewer-name">— Sameer M., Delhi</div>
                 </div>
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
-                    <p class="review-text">"The designer wallet is beautifully slim, and the RFID block works flawlessly. You can immediately smell the premium quality of the full-grain leather."</p>
-                    <div class="reviewer-name">— Aishwarya R., Bengaluru</div>
+                    <p class="review-text">"Beautifully sleek wallet. The RFID shield block works flawlessly and the stitching profile is very uniform."</p>
+                    <div class="reviewer-name">— Neha S., Bengaluru</div>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
         <section id="contact">
-            <h2 class="section-title">Enquire & Bespoke</h2>
+            <h2 class="section-title">Bespoke Concierge</h2>
             <div class="contact-section">
-                <p>Connect with a personal client advisor for customized order allocations or corporate registry programs.</p>
+                <p>Connect immediately with our client registry team for custom size configurations or direct stock allocations.</p>
                 <p><strong>Email:</strong> Vellorinpremium@gmail.com</p>
-                <p><strong>Phone / Support:</strong> +91 7090635884</p>
-                <p><strong>Instagram:</strong> @vellorinleatherpremium</p>
+                <p><strong>Phone Support:</strong> +91 7090635884</p>
+                <p><strong>Instagram Feed:</strong> @vellorinleatherpremium</p>
                 <br>
-                <a href="https://wa.me/917090635884?text=Hi%20VELLORIN,%20I%20am%20interested%20in%20your%20luxury%20leather%20products." class="btn" target="_blank">Initiate WhatsApp Concierge</a>
+                <a href="https://wa.me/917090635884?text=Hi%20VELLORIN,%20I%20am%20interested%20in%20browsing%20your%20premium%20leather%20goods%20catalog." class="btn" target="_blank">Connect via WhatsApp Concierge</a>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 VELLORIN | Premium Leather Goods. Curated Luxury Globally. All rights reserved.</p>
+        <p>&copy; 2026 VELLORIN | Handcrafted Premium Leather Goods. All rights reserved.</p>
     </footer>
 
-    <!-- Unified Luxury Popup Engine Overlay -->
+    <!-- Interactive Luxury Selection Drawer Overlay -->
     <div id="popupOverlay" class="popup-overlay" onclick="closeShop()"></div>
     <div id="shopPopup" class="popup">
         <h2 id="popupTitle">Select Preferences</h2>
-        <h3 style="font-size:1.1em; margin-bottom:10px; color:#fff;">1. Choose Fine Colorway</h3>
+        <h3 style="font-size:1em; margin-bottom:12px; color:#fff; letter-spacing:1px; text-transform:uppercase;">1. Select Colorway</h3>
         <div id="colorArea" class="choice-container"></div>
-        <h3 style="font-size:1.1em; margin-bottom:10px; color:#fff;">2. Select Handcrafted Variant</h3>
+        <h3 style="font-size:1em; margin-bottom:12px; color:#fff; letter-spacing:1px; text-transform:uppercase;">2. Select Silhouette Model</h3>
         <div id="productArea" class="product-grid"></div>
         <br><br>
-        <button class="btn" onclick="closeShop()">Exit Catalog</button>
+        <button class="btn" onclick="closeShop()">Return to Main Gallery</button>
     </div>
 
     <script>
+        // Premium catalog databases
         const catalog = {
             bags: [
                 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600',
@@ -666,52 +730,77 @@
             ]
         };
 
+        // Real-time stock scarcity generation array to mimic active enterprise boutiques
+        const luxuryScarcityMessages = [
+            { text: "Only 2 Left in Heritage Vault", class: "tag-low" },
+            { text: "Bespoke Allocation Available", class: "tag-bespoke" },
+            { text: "Limited Seasonal Run Piece", class: "tag-bespoke" },
+            { text: "1 Left in Stock", class: "tag-low" }
+        ];
+
         let currentCategory = '';
         let currentColor = '';
 
+        // Function allowing simple conversion to premium autoplay loop videos later
+        function activatePremiumVideoHero(containerId, videoUrl) {
+            const container = document.getElementById(containerId);
+            if(container) {
+                container.outerHTML = `<video id="${containerId}" autoplay muted loop playsinline><source src="${videoUrl}" type="video/mp4"></video>`;
+            }
+        }
+
+        // Example trigger: To test your video execution later, simply uncomment the line below:
+        // activatePremiumVideoHero('bags-media', 'https://yourdomain.com/luxury-leather-loop.mp4');
+
         function openShop(category) {
             currentCategory = category;
-            currentColor = ''; // Reset chosen color
+            currentColor = ''; 
             
-            document.getElementById('popupTitle').innerText = "VELLORIN " + category.toUpperCase() + " SELECTION";
+            document.getElementById('popupTitle').innerText = "VELLORIN " + category.toUpperCase() + " EDITIONS";
             document.getElementById('popupOverlay').classList.add('active');
             
             const popup = document.getElementById('shopPopup');
             popup.style.display = 'block';
             setTimeout(() => popup.classList.add('active'), 10);
 
-            const colors = ['Heritage Brown', 'Midnight Black', 'Vintage Tan', 'Forest Green'];
+            const colors = ['Heritage Oxford Brown', 'Midnight Obsidian Black', 'Classic Suede Tan'];
             document.getElementById('colorArea').innerHTML = colors.map(c => 
                 `<span class="choice" id="color-${c.replace(/\s+/g, '')}" onclick="selectColor('${c}')">${c}</span>`
             ).join('');
             
-            document.getElementById('productArea').innerHTML = '<p style="color:#888; grid-column: 1/-1;">Please pick a leather color preference above to preview models...</p>';
+            document.getElementById('productArea').innerHTML = '<p style="color:#777; grid-column: 1/-1; font-size:0.9em; padding:10px 0;">Please select a color palette variant above...</p>';
         }
 
         function selectColor(color) {
             currentColor = color;
             
-            // Highlight selected option
             document.querySelectorAll('.choice').forEach(el => el.classList.remove('selected'));
             const targetChoice = document.getElementById(`color-${color.replace(/\s+/g, '')}`);
             if(targetChoice) targetChoice.classList.add('selected');
 
             const items = catalog[currentCategory] || [];
-            document.getElementById('productArea').innerHTML = items.map((img, i) => `
-                <div class="product-card" onclick="orderProduct(${i + 1})">
-                    <img src="${img}" alt="Model Blueprint ${i + 1}">
-                    <div>Signature Model ${i + 1}</div>
-                    <div style="font-size:0.8em; color:var(--gold); margin-top:4px;">Request Price</div>
-                </div>
-            `).join('');
+            
+            document.getElementById('productArea').innerHTML = items.map((img, i) => {
+                // Pick a pseudo-random scarcity notice metric to display dynamically
+                const scarcity = luxuryScarcityMessages[(i + color.length) % luxuryScarcityMessages.length];
+                
+                return `
+                    <div class="product-card" onclick="orderProduct(${i + 1})">
+                        <img src="${img}" alt="Luxury Variant Model ${i + 1}">
+                        <div>Signature Style ${i + 1}</div>
+                        <div class="scarcity-tag ${scarcity.class}">${scarcity.text}</div>
+                        <div style="font-size:0.75em; color:var(--gold); margin-top:6px; letter-spacing:1px; text-transform:uppercase;">Check Availability</div>
+                    </div>
+                `;
+            }).join('');
         }
 
         function orderProduct(modelNumber) {
             if (!currentColor) {
-                alert('Please select a preferred leather colorway configuration first.');
+                alert('Please establish a choice colorway configuration preference first.');
                 return;
             }
-            const structuredMessage = `Hi VELLORIN,%0AI wish to discuss availability for allocation of:%0A%0A• Product Family: ${currentCategory.toUpperCase()}%0A• Premium Colorway: ${currentColor}%0A• Model Design: Signature Model ${modelNumber}%0A%0APlease forward inventory metrics and current checkout pricing.`;
+            const structuredMessage = `Hi VELLORIN,%0AI am exploring purchasing configuration options for:%0A%0A• Category: ${currentCategory.toUpperCase()}%0A• Premium Colorway: ${currentColor}%0A• Selected Variant: Signature Style ${modelNumber}%0A%0APlease let me know the availability status and quick checkout steps.`;
             window.open('https://wa.me/917090635884?text=' + structuredMessage, '_blank');
         }
 
@@ -719,7 +808,7 @@
             document.getElementById('popupOverlay').classList.remove('active');
             const popup = document.getElementById('shopPopup');
             popup.classList.remove('active');
-            setTimeout(() => popup.style.display = 'none', 300);
+            setTimeout(() => popup.style.display = 'none', 400);
         }
     </script>
 </body>
