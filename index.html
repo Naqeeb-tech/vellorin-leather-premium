@@ -34,20 +34,21 @@
 
         /* --- Header & Luxury Navigation --- */
         header {
-            background: linear-gradient(to bottom, #000000, #0f0f0f);
+            background: rgba(0, 0, 0, 0.85);
             padding: 50px 20px 30px 20px;
             text-align: center;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         .logo {
             font-size: 3.5em;
             font-weight: 900;
-            letter-spacing: 8px;
+            letter-spacing: 10px;
             margin-bottom: 5px;
             color: var(--white);
             text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
@@ -145,7 +146,7 @@
             margin: 15px auto 0 auto;
         }
 
-        /* --- Immersive Product Showcase Banners (Supports Video & Image) --- */
+        /* --- Immersive Product Showcase Banners --- */
         .product-banner {
             position: relative;
             height: 480px;
@@ -156,14 +157,14 @@
             background-color: #000;
         }
 
-        .product-banner img, .product-banner video {
+        .product-banner img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .product-banner:hover img, .product-banner:hover video {
+        .product-banner:hover img {
             transform: scale(1.04);
         }
 
@@ -443,7 +444,6 @@
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
-            position: relative;
         }
 
         .product-card:hover {
@@ -465,18 +465,6 @@
             letter-spacing: 1px;
         }
 
-        /* Luxury Scarcity Tag */
-        .scarcity-tag {
-            font-size: 0.7em !important;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 6px;
-            padding: 2px 4px;
-            font-weight: 500 !important;
-        }
-        .tag-low { color: #ff4d4d !important; }
-        .tag-bespoke { color: #d4af37 !important; }
-
         /* --- Footer --- */
         footer {
             background-color: #000000;
@@ -497,12 +485,12 @@
             0% {
                 color: var(--white);
                 text-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
-                letter-spacing: 8px;
+                letter-spacing: 10px;
             }
             100% {
                 color: var(--gold);
                 text-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
-                letter-spacing: 11px;
+                letter-spacing: 13px;
             }
         }
 
@@ -542,8 +530,7 @@
         <!-- Leather Bags Section -->
         <section id="bags">
             <div class="product-banner">
-                <!-- Replace src with an .mp4 video link later to activate loop background seamlessly -->
-                <img id="bags-media" src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/Bag%20image.png" alt="VELLORIN Premium Leather Bags">
+                <img src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/Bag%20image.png" alt="VELLORIN Premium Leather Bags">
                 <div class="banner-overlay">
                     <div class="banner-text">Leather Bags</div>
                 </div>
@@ -560,7 +547,7 @@
                         <li>Heavy-duty anti-tarnish metal alloy zippers</li>
                         <li>Reinforced modular modern tech chambers</li>
                     </ul>
-                    <button onclick="openShop('bags')" class="btn">View Blueprint Catalog</button>
+                    <button onclick="openShop('Leather Bags')" class="btn">Order Now</button>
                 </div>
             </div>
         </section>
@@ -568,7 +555,7 @@
         <!-- Designer Wallets Section -->
         <section id="wallets">
             <div class="product-banner">
-                <img id="wallets-media" src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/DSC07918.jpg" alt="VELLORIN Designer Leather Wallets">
+                <img src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/DSC07918.jpg" alt="VELLORIN Designer Leather Wallets">
                 <div class="banner-overlay">
                     <div class="banner-text">Designer Wallets</div>
                 </div>
@@ -585,7 +572,7 @@
                         <li>Integrated military-grade RFID protection cores</li>
                         <li>Sleek quick-draw external card layouts</li>
                     </ul>
-                    <button onclick="openShop('wallets')" class="btn">View Blueprint Catalog</button>
+                    <button onclick="openShop('Designer Wallet')" class="btn">Order Now</button>
                 </div>
             </div>
         </section>
@@ -593,7 +580,7 @@
         <!-- Luxury Shoes Section -->
         <section id="shoes">
             <div class="product-banner">
-                <img id="shoes-media" src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/shoe%20image.png" alt="VELLORIN Luxury Leather Shoes">
+                <img src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/shoe%20image.png" alt="VELLORIN Luxury Leather Shoes">
                 <div class="banner-overlay">
                     <div class="banner-text">Luxury Shoes</div>
                 </div>
@@ -610,7 +597,7 @@
                         <li>Flexible structured genuine leather outsoles</li>
                         <li>Organic oil hand-burnished deep patinas</li>
                     </ul>
-                    <button onclick="openShop('shoes')" class="btn">View Blueprint Catalog</button>
+                    <button onclick="openShop('Luxury Shoes')" class="btn">Order Now</button>
                 </div>
             </div>
         </section>
@@ -618,7 +605,7 @@
         <!-- Premium Belts Section -->
         <section id="belts">
             <div class="product-banner">
-                <img id="belts-media" src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/belts.jpeg" alt="VELLORIN Premium Leather Belts">
+                <img src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/belts.jpeg" alt="VELLORIN Premium Leather Belts">
                 <div class="banner-overlay">
                     <div class="banner-text">Premium Belts</div>
                 </div>
@@ -635,7 +622,7 @@
                         <li>Hypoallergenic custom polished alloy buckles</li>
                         <li>Precision micro-spaced custom sizing paths</li>
                     </ul>
-                    <button onclick="openShop('belts')" class="btn">View Blueprint Catalog</button>
+                    <button onclick="openShop('Premium Belt')" class="btn">Order Now</button>
                 </div>
             </div>
         </section>
@@ -702,55 +689,18 @@
     </div>
 
     <script>
-        // Premium catalog databases
-        const catalog = {
-            bags: [
-                'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600',
-                'https://images.unsplash.com/photo-1591561954557-26941169b49e?w=600',
-                'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600',
-                'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600'
-            ],
-            wallets: [
-                'https://images.unsplash.com/photo-1627123424574-724758594e93?w=600',
-                'https://images.unsplash.com/photo-1606503825008-909a67e63c3d?w=600',
-                'https://images.unsplash.com/photo-1627996272954-25e4e9a3b5f4?w=600',
-                'https://images.unsplash.com/photo-1517254797898-04edd251b1f5?w=600'
-            ],
-            shoes: [
-                'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600',
-                'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600',
-                'https://images.unsplash.com/photo-1543508282-6319a3e2621f?w=600',
-                'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=600'
-            ],
-            belts: [
-                'https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=600',
-                'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600',
-                'https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=600',
-                'https://images.unsplash.com/photo-1624222247431-6bb0fdd92c4c?w=600'
-            ]
-        };
+        // GitHub integrated premium image database pathing
+        const walletImage = 'https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/DSC07918.jpg';
 
-        // Real-time stock scarcity generation array to mimic active enterprise boutiques
-        const luxuryScarcityMessages = [
-            { text: "Only 2 Left in Heritage Vault", class: "tag-low" },
-            { text: "Bespoke Allocation Available", class: "tag-bespoke" },
-            { text: "Limited Seasonal Run Piece", class: "tag-bespoke" },
-            { text: "1 Left in Stock", class: "tag-low" }
-        ];
+        const catalogImages = {
+            'Leather Bags': [walletImage, walletImage, walletImage, walletImage],
+            'Designer Wallet': [walletImage, walletImage, walletImage, walletImage],
+            'Luxury Shoes': [walletImage, walletImage, walletImage, walletImage],
+            'Premium Belt': [walletImage, walletImage, walletImage, walletImage]
+        };
 
         let currentCategory = '';
         let currentColor = '';
-
-        // Function allowing simple conversion to premium autoplay loop videos later
-        function activatePremiumVideoHero(containerId, videoUrl) {
-            const container = document.getElementById(containerId);
-            if(container) {
-                container.outerHTML = `<video id="${containerId}" autoplay muted loop playsinline><source src="${videoUrl}" type="video/mp4"></video>`;
-            }
-        }
-
-        // Example trigger: To test your video execution later, simply uncomment the line below:
-        // activatePremiumVideoHero('bags-media', 'https://yourdomain.com/luxury-leather-loop.mp4');
 
         function openShop(category) {
             currentCategory = category;
@@ -763,12 +713,13 @@
             popup.style.display = 'block';
             setTimeout(() => popup.classList.add('active'), 10);
 
-            const colors = ['Heritage Oxford Brown', 'Midnight Obsidian Black', 'Classic Suede Tan'];
+            // Updated color layout sequence requested
+            const colors = ['Black', 'Brown', 'Navy Green', 'Dark Brown'];
             document.getElementById('colorArea').innerHTML = colors.map(c => 
                 `<span class="choice" id="color-${c.replace(/\s+/g, '')}" onclick="selectColor('${c}')">${c}</span>`
             ).join('');
             
-            document.getElementById('productArea').innerHTML = '<p style="color:#777; grid-column: 1/-1; font-size:0.9em; padding:10px 0;">Please select a color palette variant above...</p>';
+            document.getElementById('productArea').innerHTML = '<p style="color:#777; grid-column: 1/-1; font-size:0.9em; padding:10px 0;">Please select a color palette variant above to view variants...</p>';
         }
 
         function selectColor(color) {
@@ -778,21 +729,14 @@
             const targetChoice = document.getElementById(`color-${color.replace(/\s+/g, '')}`);
             if(targetChoice) targetChoice.classList.add('selected');
 
-            const items = catalog[currentCategory] || [];
-            
-            document.getElementById('productArea').innerHTML = items.map((img, i) => {
-                // Pick a pseudo-random scarcity notice metric to display dynamically
-                const scarcity = luxuryScarcityMessages[(i + color.length) % luxuryScarcityMessages.length];
-                
-                return `
-                    <div class="product-card" onclick="orderProduct(${i + 1})">
-                        <img src="${img}" alt="Luxury Variant Model ${i + 1}">
-                        <div>Signature Style ${i + 1}</div>
-                        <div class="scarcity-tag ${scarcity.class}">${scarcity.text}</div>
-                        <div style="font-size:0.75em; color:var(--gold); margin-top:6px; letter-spacing:1px; text-transform:uppercase;">Check Availability</div>
-                    </div>
-                `;
-            }).join('');
+            const items = catalogImages[currentCategory] || [];
+            document.getElementById('productArea').innerHTML = items.map((img, i) => `
+                <div class="product-card" onclick="orderProduct(${i + 1})">
+                    <img src="${img}" alt="Luxury Variant Model ${i + 1}">
+                    <div>Model ${i + 1}</div>
+                    <div style="font-size:0.75em; color:var(--gold); margin-top:6px; letter-spacing:1px; text-transform:uppercase;">Select & Inquire</div>
+                </div>
+            `).join('');
         }
 
         function orderProduct(modelNumber) {
@@ -800,7 +744,10 @@
                 alert('Please establish a choice colorway configuration preference first.');
                 return;
             }
-            const structuredMessage = `Hi VELLORIN,%0AI am exploring purchasing configuration options for:%0A%0A• Category: ${currentCategory.toUpperCase()}%0A• Premium Colorway: ${currentColor}%0A• Selected Variant: Signature Style ${modelNumber}%0A%0APlease let me know the availability status and quick checkout steps.`;
+            
+            // Clean dynamic text matching template requested precisely
+            const structuredMessage = `Hi%20VELLORIN,%0A%0AI%20am%20interested%20in%20the%20${encodeURIComponent(currentCategory)}.%0A%0AColor:%20${encodeURIComponent(currentColor)}%0AProduct:%20Wallet%20Model%20${modelNumber}%0A%0APlease%20share%20pricing%20and%20availability.`;
+            
             window.open('https://wa.me/917090635884?text=' + structuredMessage, '_blank');
         }
 
