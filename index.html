@@ -1,904 +1,562 @@
-<!-- Navigation Bar Boilerplate -->
-<header class="main-header">
-    <div class="header-container">
-        <a href="index.html" class="logo">VELLORIN</a>
-        
-        <nav class="nav-links">
-            <a href="index.html" class="nav-item">Home</a>
-            <a href="shop.html" class="nav-item active">Shop</a>
-            <a href="#about" class="nav-item">Heritage</a>
-        </nav>
-        
-        <div class="header-actions">
-            <a href="login.html" class="action-btn" aria-label="Account">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            </a>
-            <a href="cart.html" class="action-btn cart-icon" aria-label="Cart">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-                <span class="cart-count" id="cartCount">0</span>
-            </a>
-        </div>
-    </div>
-</header>
-
-<style>
-:root {
-    --bg-dark: #111111;
-    --accent-gold: #c5a880;
-    --text-main: #222222;
-    --text-muted: #777777;
-    --border-color: #eeeeee;
-}
-
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    color: var(--text-main);
-    background: #fafafa;
-}
-
-.main-header {
-    background: #ffffff;
-    border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    font-family: serif;
-    font-size: 24px;
-    letter-spacing: 3px;
-    font-weight: 700;
-    color: var(--bg-dark);
-    text-decoration: none;
-}
-
-.nav-links {
-    display: flex;
-    gap: 32px;
-}
-
-.nav-item {
-    text-decoration: none;
-    color: var(--text-muted);
-    font-size: 14px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-weight: 500;
-    transition: color 0.2s ease;
-}
-
-.nav-item:hover, .nav-item.active {
-    color: var(--bg-dark);
-}
-
-.header-actions {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
-
-.action-btn {
-    color: var(--bg-dark);
-    text-decoration: none;
-    position: relative;
-    display: flex;
-    align-items: center;
-    transition: transform 0.2s;
-}
-
-.action-btn:hover {
-    transform: translateY(-1px);
-}
-
-.cart-count {
-    position: absolute;
-    top: -8px;
-    right: -10px;
-    background: var(--bg-dark);
-    color: #fff;
-    font-size: 10px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-}
-</style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-site-verification" content="1Ln6gzlirjdFQQs7KdpWoURFuJzVshrRNtmvxJswMf8" />
-    <title>VELLORIN | Premium Leather Goods</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VELLORIN | Handcrafted Premium Leather</title>
     <style>
         :root {
-            --gold: #d4af37;
-            --dark-gold: #aa841c;
-            --bg-black: #090909;
-            --card-bg: #141414;
-            --text-light: #cccccc;
-            --white: #ffffff;
+            --bg-dark: #111111;
+            --accent-gold: #c5a880;
+            --text-main: #222222;
+            --text-muted: #777777;
+            --border-color: #eeeeee;
+            --light-bg: #fafafa;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Georgia', serif;
-            background-color: var(--bg-black);
-            color: var(--gold);
-            line-height: 1.7;
-            overflow-x: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text-main);
+            background: var(--light-bg);
+            line-height: 1.6;
         }
 
-        /* --- Header & Luxury Navigation --- */
-        header {
-            background: rgba(0, 0, 0, 0.85);
-            padding: 50px 20px 30px 20px;
-            text-align: center;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        /* NAVIGATION BAR */
+        .main-header {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .logo {
-            font-size: 3.5em;
-            font-weight: 900;
-            letter-spacing: 10px;
-            margin-bottom: 5px;
-            color: var(--white);
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
-            animation: luxuryShimmer 4s ease-in-out infinite alternate;
-            display: inline-block;
-        }
-
-        .tagline {
-            font-size: 1.1em;
-            margin-top: 5px;
-            margin-bottom: 5px;
-            font-style: italic;
-            color: var(--text-light);
-            letter-spacing: 2px;
-        }
-
-        .sub-tagline {
-            color: var(--gold);
-            font-size: 0.9em;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: bold;
-            opacity: 0.85;
-        }
-
-        nav {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 25px;
-        }
-
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.85em;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: all 0.4s ease;
-            padding: 5px 0;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: 0;
-            left: 50%;
-            background-color: var(--gold);
-            transition: all 0.4s ease;
-        }
-
-        nav a:hover {
-            color: var(--gold);
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-            left: 0;
-        }
-
-        /* --- Main Layout Architecture --- */
-        main {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        section {
-            margin-bottom: 120px;
-            scroll-margin-top: 180px;
-        }
-
-        h2.section-title {
-            color: var(--gold);
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.2em;
+            font-family: 'Cinzel', serif, Georgia;
+            font-size: 26px;
             letter-spacing: 4px;
-            text-transform: uppercase;
-            position: relative;
-        }
-
-        h2.section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 1px;
-            background: var(--gold);
-            margin: 15px auto 0 auto;
-        }
-
-        /* --- Immersive Product Showcase Banners --- */
-        .product-banner {
-            position: relative;
-            height: 480px;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
-            background-color: #000;
-        }
-
-        .product-banner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .product-banner:hover img {
-            transform: scale(1.04);
-        }
-
-        .banner-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to top, rgba(9,9,9,0.95) 15%, rgba(9,9,9,0.1) 70%);
-            display: flex;
-            align-items: flex-end;
-            justify-content: flex-start;
-            padding: 40px;
-            z-index: 2;
-        }
-
-        .banner-text {
-            color: var(--white);
-            font-size: 2.6em;
-            font-weight: bold;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-        }
-
-        /* --- Premium Content Cards --- */
-        .product-section {
-            background: var(--card-bg);
-            padding: 45px;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-radius: 4px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            transition: all 0.4s ease;
-        }
-
-        .product-section:hover {
-            border-color: rgba(212, 175, 55, 0.4);
-            transform: translateY(-4px);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.05);
-        }
-
-        .product-description h3 {
-            color: var(--white);
-            font-size: 2em;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-        }
-
-        .price-range {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            font-size: 1.4em;
-            color: var(--gold);
-            font-weight: bold;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .price-range .label {
-            font-size: 0.6em;
-            text-transform: uppercase;
-            color: var(--text-light);
-            letter-spacing: 2px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 2px 8px;
-            border-radius: 2px;
-        }
-
-        .product-description p {
-            color: var(--text-light);
-            font-size: 1.05em;
-            line-height: 1.8;
-            margin-bottom: 25px;
-        }
-
-        .product-features {
-            margin-bottom: 30px;
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 12px;
-        }
-
-        .product-features li {
-            color: var(--text-light);
-            font-size: 0.95em;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .product-features li::before {
-            content: '✦';
-            color: var(--gold);
-            font-size: 0.8em;
-        }
-
-        /* --- Premium CTA Buttons --- */
-        .btn {
-            background: none;
-            color: var(--gold);
-            padding: 14px 40px;
+            font-weight: 700;
+            color: var(--bg-dark);
             text-decoration: none;
-            border-radius: 0;
-            font-weight: bold;
-            font-size: 0.85em;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            display: inline-block;
-            cursor: pointer;
-            border: 1px solid var(--gold);
-            position: relative;
-            z-index: 1;
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: var(--gold);
-            z-index: -1;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .btn:hover {
-            color: #000000;
-        }
-
-        .btn:hover::before {
-            transform: scaleX(1);
-        }
-
-        /* --- About, Contact & Reviews --- */
-        .about-section, .contact-section {
-            background: var(--card-bg);
-            padding: 60px 40px;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            text-align: center;
-        }
-
-        .about-section p, .contact-section p {
-            font-size: 1.15em;
-            color: var(--text-light);
-            max-width: 750px;
-            margin: 0 auto 25px auto;
-        }
-
-        .contact-section p strong {
-            color: var(--gold);
-            letter-spacing: 1px;
-        }
-
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .review-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            padding: 35px;
-            transition: border-color 0.4s;
-        }
-
-        .review-card:hover {
-            border-color: var(--gold);
-        }
-
-        .stars {
-            color: var(--gold);
-            margin-bottom: 15px;
-            letter-spacing: 2px;
-        }
-
-        .review-text {
-            color: var(--text-light);
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        .reviewer-name {
-            color: var(--white);
-            font-weight: bold;
-            font-size: 0.9em;
-            letter-spacing: 1px;
-        }
-
-        /* --- Catalog Overlay Engine --- */
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.95);
-            background: #111111;
-            padding: 40px;
-            border: 1px solid var(--gold);
-            z-index: 10000;
-            width: 95%;
-            max-width: 850px;
-            max-height: 85vh;
-            overflow-y: auto;
-            box-shadow: 0 0 50px rgba(0,0,0,0.9);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .popup.active {
-            display: block;
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .popup-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.9);
-            z-index: 9999;
-            backdrop-filter: blur(4px);
-        }
-
-        .popup-overlay.active {
-            display: block;
-        }
-
-        .popup h2 {
-            font-size: 1.6em;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        .choice-container {
+        .nav-links {
             display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 30px;
+            gap: 32px;
         }
 
-        .choice {
-            background: #1a1a1a;
-            color: var(--text-light);
-            padding: 10px 20px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+        .nav-item {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 500;
             cursor: pointer;
-            font-size: 0.85em;
-            letter-spacing: 1px;
-            transition: all 0.3s;
+            transition: color 0.2s ease;
         }
 
-        .choice:hover, .choice.selected {
-            border-color: var(--gold);
-            color: var(--gold);
-            background: #000000;
+        .nav-item:hover, .nav-item.active {
+            color: var(--bg-dark);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .action-btn {
+            color: var(--bg-dark);
+            text-decoration: none;
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: var(--bg-dark);
+            color: #fff;
+            font-size: 10px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* TAB SECTIONS */
+        .page-section {
+            display: none;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 24px;
+        }
+
+        .page-section.active-section {
+            display: block;
+        }
+
+        /* HERO HOME SECTION */
+        .hero-banner {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/Bag%20image.png') center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 24px;
+            margin-bottom: 40px;
+        }
+
+        .hero-banner h1 {
+            font-size: 3rem;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .hero-banner p {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: #ddd;
+            margin-bottom: 24px;
+        }
+
+        .cta-btn {
+            background: white;
+            color: black;
+            padding: 12px 32px;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 2px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: var(--accent-gold);
+            color: white;
+        }
+
+        /* SHOP LAYOUT */
+        .shop-wrapper {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 40px;
+        }
+
+        .filter-sidebar h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .filter-list {
+            list-style: none;
+        }
+
+        .filter-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 0;
+            font-size: 14px;
+            display: block;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .filter-btn.active {
+            color: var(--bg-dark);
+            font-weight: bold;
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 32px;
         }
 
         .product-card {
-            background: #161616;
-            padding: 15px;
-            border: 1px solid #222;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            animation: fadeIn 0.4s ease-in-out;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
         }
 
-        .product-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-3px);
+        .product-image-container {
+            position: relative;
+            background: #f5f5f5;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
         }
 
-        .product-card img {
+        .product-image {
             width: 100%;
-            height: 160px;
+            height: 100%;
             object-fit: cover;
-            margin-bottom: 12px;
         }
 
-        .product-card div {
-            font-weight: bold;
-            color: var(--white);
-            font-size: 0.85em;
+        .add-to-cart-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(17, 17, 17, 0.9);
+            color: #fff;
+            border: none;
+            padding: 14px;
+            font-size: 12px;
+            text-transform: uppercase;
             letter-spacing: 1px;
+            cursor: pointer;
+            transform: translateY(100%);
+            transition: transform 0.2s ease;
         }
 
-        /* --- Footer --- */
-        footer {
-            background-color: #000000;
+        .product-card:hover .add-to-cart-overlay {
+            transform: translateY(0);
+        }
+
+        .product-info {
+            padding: 16px;
             text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            margin-top: 100px;
         }
 
-        footer p {
-            color: #666666;
-            font-size: 0.85em;
+        .product-name {
+            font-size: 15px;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .product-price {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        /* CART SECTION */
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+        }
+
+        .cart-table th, .cart-table td {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .cart-table th {
+            text-transform: uppercase;
+            font-size: 12px;
             letter-spacing: 1px;
+            color: var(--text-muted);
         }
 
-        /* --- Keyframe Animations --- */
-        @keyframes luxuryShimmer {
-            0% {
-                color: var(--white);
-                text-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
-                letter-spacing: 10px;
-            }
-            100% {
-                color: var(--gold);
-                text-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
-                letter-spacing: 13px;
-            }
+        .cart-summary {
+            margin-top: 30px;
+            text-align: right;
+            padding: 20px;
+            background: white;
+            border: 1px solid var(--border-color);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .checkout-btn {
+            background: var(--bg-dark);
+            color: white;
+            padding: 14px 40px;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 13px;
+            margin-top: 15px;
+            cursor: pointer;
         }
 
-        /* --- Responsive Structural Adapters --- */
-        @media (max-width: 768px) {
-            header { padding: 35px 15px; }
-            .logo { font-size: 2.4em; letter-spacing: 4px !important; animation: none; color: var(--gold); }
-            nav { gap: 10px; }
-            nav a { font-size: 0.75em; letter-spacing: 1px; }
-            h2.section-title { font-size: 1.6em; }
-            .product-banner { height: 320px; padding: 25px; }
-            .banner-text { font-size: 1.8em; }
-            .product-section { padding: 25px; }
-            .product-description h3 { font-size: 1.6em; }
-            .price-range { font-size: 1.1em; }
+        /* MODAL POPUP FOR GOOGLE LOGIN */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .login-card {
+            background: #ffffff;
+            max-width: 400px;
+            width: 100%;
+            padding: 48px 32px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: none; border: none; font-size: 20px; cursor: pointer;
+        }
+
+        .google-auth-btn {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #dcdcdc;
+            border-radius: 4px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #3c4043;
+            cursor: pointer;
+            margin-top: 24px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-top: 1px solid var(--border-color);
+            margin-top: 80px;
+            font-size: 13px;
+            color: var(--text-muted);
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">VELLORIN</div>
-        <p class="tagline">Crafted for Eternity</p>
-        <p class="sub-tagline">The Art of Pure Full-Grain Leather</p>
-        <nav>
-            <a href="#bags">Bags</a>
-            <a href="#wallets">Wallets</a>
-            <a href="#shoes">Shoes</a>
-            <a href="#belts">Belts</a>
-            <a href="#about">Heritage</a>
-            <a href="#reviews">Chronicles</a>
-            <a href="#contact">Concierge</a>
-        </nav>
+    <!-- SHARED NAVIGATION -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#" class="logo" onclick="switchTab('home')">VELLORIN</a>
+            <nav class="nav-links">
+                <a class="nav-item active" id="nav-home" onclick="switchTab('home')">Home</a>
+                <a class="nav-item" id="nav-shop" onclick="switchTab('shop')">Shop</a>
+            </nav>
+            <div class="header-actions">
+                <button class="action-btn" onclick="toggleLoginModal()" aria-label="Account">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </button>
+                <button class="action-btn" onclick="switchTab('cart')" aria-label="Cart">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <!-- Leather Bags Section -->
-        <section id="bags">
-            <div class="product-banner">
-                <img src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/Bag%20image.png" alt="VELLORIN Premium Leather Bags">
-                <div class="banner-overlay">
-                    <div class="banner-text">Leather Bags</div>
-                </div>
-            </div>
-            <div class="product-section">
-                <div class="product-description">
-                    <h3>Premium Leather Duffle & Cabin Briefcases</h3>
-                    <div class="price-range">
-                        <span class="label">Price Tier</span> ₹2,000 – ₹4,000
+    <!-- SECTION: HOMEPAGE -->
+    <section id="sec-home" class="page-section active-section">
+        <div class="hero-banner">
+            <h1>CRAFTED FOR ETERNITY</h1>
+            <p>The Art of Pure Full-Grain Leather Goods</p>
+            <button class="cta-btn" onclick="switchTab('shop')">Explore Storefront</button>
+        </div>
+    </section>
+
+    <!-- SECTION: SHOP GRID -->
+    <section id="sec-shop" class="page-section">
+        <div class="shop-wrapper">
+            <aside class="filter-sidebar">
+                <h3>Collections</h3>
+                <ul class="filter-list">
+                    <li><button class="filter-btn active">All Masterpieces</button></li>
+                </ul>
+            </aside>
+            <main class="product-grid">
+                <!-- Product 1 -->
+                <article class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/Bag%20image.png" alt="Leather Bag" class="product-image">
+                        <button class="add-to-cart-overlay" onclick="addToCart('Premium Cabin Briefcase', 3400)">Add to Cart</button>
                     </div>
-                    <p>Meticulously handcrafted using high-tensile full-grain hides. Tailored gracefully to serve as a lifelong companion for the refined cosmopolitan traveler.</p>
-                    <ul class="product-features">
-                        <li>Sustainably sourced structural hides</li>
-                        <li>Heavy-duty anti-tarnish metal alloy zippers</li>
-                        <li>Reinforced modular modern tech chambers</li>
-                    </ul>
-                    <button onclick="openShop('Leather Bags')" class="btn">Order Now</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Designer Wallets Section -->
-        <section id="wallets">
-            <div class="product-banner">
-                <img src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/DSC07918.jpg" alt="VELLORIN Designer Leather Wallets">
-                <div class="banner-overlay">
-                    <div class="banner-text">Designer Wallets</div>
-                </div>
-            </div>
-            <div class="product-section">
-                <div class="product-description">
-                    <h3>Artisan Bi-Fold & Minimalist Cases</h3>
-                    <div class="price-range">
-                        <span class="label">Price Tier</span> ₹500 – ₹2,000
+                    <div class="product-info">
+                        <h4 class="product-name">Premium Cabin Briefcase</h4>
+                        <p class="product-price">₹3,400</p>
                     </div>
-                    <p>Ultra-slim pocket silhouettes crafted to age beautifully. Features intelligent storage arrays that eliminate pocket bulk completely.</p>
-                    <ul class="product-features">
-                        <li>Hand-burnished edge sealing cream finishes</li>
-                        <li>Integrated military-grade RFID protection cores</li>
-                        <li>Sleek quick-draw external card layouts</li>
-                    </ul>
-                    <button onclick="openShop('Designer Wallet')" class="btn">Order Now</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Luxury Shoes Section -->
-        <section id="shoes">
-            <div class="product-banner">
-                <img src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/shoe%20image.png" alt="VELLORIN Luxury Leather Shoes">
-                <div class="banner-overlay">
-                    <div class="banner-text">Luxury Shoes</div>
-                </div>
-            </div>
-            <div class="product-section">
-                <div class="product-description">
-                    <h3>Hand-Sculpted Leather Dress Footwear</h3>
-                    <div class="price-range">
-                        <span class="label">Price Tier</span> ₹1,000 – ₹3,000
+                </article>
+                <!-- Product 2 -->
+                <article class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/DSC07918.jpg" alt="Leather Wallet" class="product-image">
+                        <button class="add-to-cart-overlay" onclick="addToCart('Artisan Bi-Fold Case', 1200)">Add to Cart</button>
                     </div>
-                    <p>From formal dress Oxfords to relaxed slip-on loafers, our master shoemakers build deep anatomical comfort directly into pristine visual design layouts.</p>
-                    <ul class="product-features">
-                        <li>Breathable dual-density cushioned layers</li>
-                        <li>Flexible structured genuine leather outsoles</li>
-                        <li>Organic oil hand-burnished deep patinas</li>
-                    </ul>
-                    <button onclick="openShop('Luxury Shoes')" class="btn">Order Now</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Premium Belts Section -->
-        <section id="belts">
-            <div class="product-banner">
-                <img src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/belts.jpeg" alt="VELLORIN Premium Leather Belts">
-                <div class="banner-overlay">
-                    <div class="banner-text">Premium Belts</div>
-                </div>
-            </div>
-            <div class="product-section">
-                <div class="product-description">
-                    <h3>Full-Grain Masterpiece Utility Belts</h3>
-                    <div class="price-range">
-                        <span class="label">Price Tier</span> ₹500 – ₹2,000
+                    <div class="product-info">
+                        <h4 class="product-name">Artisan Bi-Fold Case</h4>
+                        <p class="product-price">₹1,200</p>
                     </div>
-                    <p>Carved seamlessly out of single solid-hide selections to prevent splitting or folding. Complemented by custom architectural premium metal buckles.</p>
-                    <ul class="product-features">
-                        <li>Single continuous cut devoid of fillers</li>
-                        <li>Hypoallergenic custom polished alloy buckles</li>
-                        <li>Precision micro-spaced custom sizing paths</li>
-                    </ul>
-                    <button onclick="openShop('Premium Belt')" class="btn">Order Now</button>
-                </div>
-            </div>
-        </section>
+                </article>
+                <!-- Product 3 -->
+                <article class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/shoe%20image.png" alt="Leather Shoes" class="product-image">
+                        <button class="add-to-cart-overlay" onclick="addToCart('Luxury Dress Footwear', 2500)">Add to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-name">Luxury Dress Footwear</h4>
+                        <p class="product-price">₹2,500</p>
+                    </div>
+                </article>
+            </main>
+        </div>
+    </section>
 
-        <!-- About Section -->
-        <section id="about">
-            <h2 class="section-title">The Heritage House</h2>
-            <div class="about-section">
-                <p>VELLORIN stands as an absolute standard of luxury, offering premium leather products crafted with precision, passion, and timeless elegance.</p>
-                <p>By bypassing standard wholesale markups, we render ancestral bench craft standards accessible without ever sacrificing the uncompromising standard of raw materials.</p>
-            </div>
-        </section>
+    <!-- SECTION: CART PAGE -->
+    <section id="sec-cart" class="page-section">
+        <h2 style="font-family: serif; font-size: 24px; margin-bottom: 20px; letter-spacing: 1px;">Your Shopping Cart</h2>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="cartTableBody">
+                <!-- Generated dynamically via Javascript -->
+            </tbody>
+        </table>
+        <div class="cart-summary">
+            <h3>Total Amount: <span id="cartTotalText" style="color: var(--accent-gold);">₹0</span></h3>
+            <button class="checkout-btn" onclick="alert('Please sign in with your Gmail identity to complete verification checkout.')">Proceed Securely</button>
+        </div>
+    </section>
 
-        <!-- Reviews Section -->
-        <section id="reviews">
-            <h2 class="section-title">Customer Chronicles</h2>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="review-text">"The leather quality of the duffle bag is phenomenal for this tier. It handles constant travel effortlessly."</p>
-                    <div class="reviewer-name">— Arpit K., Mumbai</div>
-                </div>
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="review-text">"Superb leather texture on the shoes. They broken in beautifully within two days of wearing them."</p>
-                    <div class="reviewer-name">— Sameer M., Delhi</div>
-                </div>
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="review-text">"Beautifully sleek wallet. The RFID shield block works flawlessly and the stitching profile is very uniform."</p>
-                    <div class="reviewer-name">— Neha S., Bengaluru</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <h2 class="section-title">Bespoke Concierge</h2>
-            <div class="contact-section">
-                <p>Connect immediately with our client registry team for custom size configurations or direct stock allocations.</p>
-                <p><strong>Email:</strong> Vellorinpremium@gmail.com</p>
-                <p><strong>Phone Support:</strong> +91 7090635884</p>
-                <p><strong>Instagram Feed:</strong> @vellorinleatherpremium</p>
-                <br>
-                <a href="https://wa.me/917090635884?text=Hi%20VELLORIN,%20I%20am%20interested%20in%20browsing%20your%20premium%20leather%20goods%20catalog." class="btn" target="_blank">Connect via WhatsApp Concierge</a>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 VELLORIN | Handcrafted Premium Leather Goods. All rights reserved.</p>
-    </footer>
-
-    <!-- Interactive Luxury Selection Drawer Overlay -->
-    <div id="popupOverlay" class="popup-overlay" onclick="closeShop()"></div>
-    <div id="shopPopup" class="popup">
-        <h2 id="popupTitle">Select Preferences</h2>
-        <h3 style="font-size:1em; margin-bottom:12px; color:#fff; letter-spacing:1px; text-transform:uppercase;">1. Select Colorway</h3>
-        <div id="colorArea" class="choice-container"></div>
-        <h3 style="font-size:1em; margin-bottom:12px; color:#fff; letter-spacing:1px; text-transform:uppercase;">2. Select Silhouette Model</h3>
-        <div id="productArea" class="product-grid"></div>
-        <br><br>
-        <button class="btn" onclick="closeShop()">Return to Main Gallery</button>
+    <!-- LOGIN POPUP OVERLAY MODAL -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="login-card">
+            <button class="close-modal" onclick="toggleLoginModal()">&times;</button>
+            <h2 style="font-family: serif; letter-spacing: 3px; margin-bottom: 12px;">VELLORIN</h2>
+            <p style="font-size: 13px; color: var(--text-muted);">Sign in to access secure catalog verification and track your concierge shipments.</p>
+            
+            <button class="google-auth-btn" onclick="alert('Connecting to secure Gmail Account verification APIs...')">
+                <svg viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                <span>Sign In With Gmail</span>
+            </button>
+        </div>
     </div>
 
+    <footer>
+        <p>© 2026 VELLORIN | Handcrafted Premium Leather Goods. All rights reserved.</p>
+    </footer>
+
+    <!-- INTERACTION LOGIC SCRIPT -->
     <script>
-        // High-fidelity structured base mappings matching your exact GitHub naming configurations
-        const baseGitHubUrl = "https://raw.githubusercontent.com/Naqeeb-tech/vellorin-leather-premium/main/";
-        
-        const catalogAssets = {
-            'Leather Bags': {
-                fallback: baseGitHubUrl + "Bag%20image.png",
-                models: ['Bag image.png', 'Bag image.png', 'Bag image.png']
-            },
-            'Designer Wallet': {
-                fallback: baseGitHubUrl + "DSC07918.jpg",
-                models: ['DSC07918.jpg', 'DSC07918.jpg', 'DSC07918.jpg']
-            },
-            'Luxury Shoes': {
-                fallback: baseGitHubUrl + "shoe%20image.png",
-                models: ['shoe image.png', 'shoe image.png', 'shoe image.png']
-            },
-            'Premium Belt': {
-                fallback: baseGitHubUrl + "belts.jpeg",
-                models: ['belts.jpeg', 'belts.jpeg', 'belts.jpeg']
+        let cart = [];
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.page-section').forEach(section => section.classList.remove('active-section'));
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            
+            const targetedSection = document.getElementById(`sec-${tabName}`);
+            if(targetedSection) targetedSection.classList.add('active-section');
+            
+            const targetedNavItem = document.getElementById(`nav-${tabName}`);
+            if(targetedNavItem) targetedNavItem.classList.add('active');
+
+            if(tabName === 'cart') renderCart();
+        }
+
+        function toggleLoginModal() {
+            document.getElementById('loginModal').classList.toggle('open');
+        }
+
+        function addToCart(name, price) {
+            const matchIndex = cart.findIndex(item => item.name === name);
+            if(matchIndex > -1) {
+                cart[matchIndex].qty += 1;
+            } else {
+                cart.push({name, price, qty: 1});
             }
-        };
-
-        let currentCategory = '';
-        let currentColor = '';
-
-        function openShop(category) {
-            currentCategory = category;
-            currentColor = ''; 
-            
-            document.getElementById('popupTitle').innerText = "VELLORIN " + category.toUpperCase() + " EDITIONS";
-            document.getElementById('popupOverlay').classList.add('active');
-            
-            const popup = document.getElementById('shopPopup');
-            popup.style.display = 'block';
-            setTimeout(() => popup.classList.add('active'), 10);
-
-            const colors = ['Black', 'Brown', 'Navy Green', 'Dark Brown'];
-            document.getElementById('colorArea').innerHTML = colors.map(c => 
-                `<span class="choice" id="color-${c.replace(/\s+/g, '')}" onclick="selectColor('${c}')">${c}</span>`
-            ).join('');
-            
-            document.getElementById('productArea').innerHTML = '<p style="color:#777; grid-column: 1/-1; font-size:0.9em; padding:10px 0;">Please select a color palette variant above to view variants...</p>';
+            updateCartCount();
+            alert(`${name} added to checkout selections.`);
         }
 
-        function selectColor(color) {
-            currentColor = color;
-            
-            document.querySelectorAll('.choice').forEach(el => el.classList.remove('selected'));
-            const targetChoice = document.getElementById(`color-${color.replace(/\s+/g, '')}`);
-            if(targetChoice) targetChoice.classList.add('selected');
-
-            const assetGroup = catalogAssets[currentCategory];
-            const models = assetGroup ? assetGroup.models : [];
-            
-            document.getElementById('productArea').innerHTML = models.map((filename, i) => {
-                // If you upload color-specific variants later (e.g., 'wallet_black_1.jpg'), simply append logic here
-                const imageSrc = baseGitHubUrl + encodeURIComponent(filename);
-                
-                return `
-                    <div class="product-card" onclick="orderProduct(${i + 1})">
-                        <img src="${imageSrc}" alt="${currentCategory} Model ${i + 1}" onerror="this.src='${assetGroup.fallback}'">
-                        <div>Model ${i + 1}</div>
-                        <div style="font-size:0.75em; color:var(--gold); margin-top:6px; letter-spacing:1px; text-transform:uppercase;">Select & Inquire</div>
-                    </div>
-                `;
-            }).join('');
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.qty, 0);
+            document.getElementById('cartCount').textContent = count;
         }
 
-        function orderProduct(modelNumber) {
-            if (!currentColor) {
-                alert('Please establish a choice colorway configuration preference first.');
+        function renderCart() {
+            const tbody = document.getElementById('cartTableBody');
+            tbody.innerHTML = '';
+            let grandTotal = 0;
+
+            if(cart.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:#999; padding: 40px;">Your cart selection is empty.</td></tr>`;
+                document.getElementById('cartTotalText').textContent = "₹0";
                 return;
             }
-            
-            const structuredMessage = `Hi VELLORIN,\n\nI am interested in the ${currentCategory}.\n\nColor: ${currentColor}\nProduct: Wallet Model ${modelNumber}\n\nPlease share pricing and availability.`;
-            
-            window.open('https://wa.me/917090635884?text=' + encodeURIComponent(structuredMessage), '_blank');
-        }
 
-        function closeShop() {
-            document.getElementById('popupOverlay').classList.remove('active');
-            const popup = document.getElementById('shopPopup');
-            popup.classList.remove('active');
-            setTimeout(() => popup.style.display = 'none', 400);
+            cart.forEach(item => {
+                const total = item.price * item.qty;
+                grandTotal += total;
+                tbody.innerHTML += `
+                    <tr>
+                        <td><strong>${item.name}</strong></td>
+                        <td>₹${item.price}</td>
+                        <td>${item.qty}</td>
+                        <td><strong>₹${total}</strong></td>
+                    </tr>
+                `;
+            });
+            document.getElementById('cartTotalText').textContent = "₹" + grandTotal;
         }
     </script>
 </body>
