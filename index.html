@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VELLORIN | Handcrafted Premium Leather Goods</title>
+    <!-- INCLUDE OFFICIAL RAZORPAY CHECKOUT INTERFACE ENGINE -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
         :root {
             --bg-dark: #0f0f11;
@@ -1058,7 +1060,7 @@
         let selectedProductKey = null;
         let selectedColorVariant = "Obsidian Tan";
 
-        // Navigation Engine - Fixed to auto-scroll windows to top view upon execution 
+        // Navigation Engine
         function switchTab(tabKey) {
             document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active-section'));
             document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
@@ -1067,7 +1069,6 @@
             const navLink = document.getElementById(`nav-${tabKey}`);
             if(navLink) navLink.classList.add('active');
 
-            // Force browser to pull back layout position cleanly
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
             if(tabKey === 'cart') renderCartSystem();
@@ -1082,13 +1083,11 @@
             selectedProductKey = productKey;
             const data = catalogDatabase[productKey];
 
-            // Setup Step 2 Content mapping inside the sheet
             document.getElementById('prodTitle').textContent = data.title;
             document.getElementById('prodTag').textContent = data.tag;
             document.getElementById('prodDesc').textContent = data.desc;
             document.getElementById('prodPriceDisplay').textContent = "₹" + data.price.toLocaleString('en-IN');
             
-            // Render Multi Image Grid arrays dynamically
             const mainImg = document.getElementById('mainGalleryImage');
             mainImg.src = data.images[0];
 
@@ -1102,11 +1101,9 @@
                 `;
             });
 
-            // Ensure Hidden Price state protection triggers on layout initialization
             document.getElementById('priceRevealBox').style.display = "none";
             document.getElementById('revealPriceBtn').style.display = "block";
 
-            // Toggle view visibility matrices
             document.getElementById('shop-step1').style.display = "none";
             document.getElementById('shop-discovery-view').style.display = "block";
             
@@ -1150,7 +1147,7 @@
             }
             authenticatedUser = emailInput;
             localStorage.setItem('VELLORIN_user', emailInput);
-            document.getElementById('userStatusDot').style.background = "#25d366"; // Active green notification status
+            document.getElementById('userStatusDot').style.background = "#25d366";
             toggleLoginModal();
             showToastNotification("Authorized Successfully via Google Connection.");
             if(selectedProductKey) handlePriceRevealRequest();
@@ -1227,13 +1224,61 @@
             document.getElementById('cartGrandTotal').textContent = "₹" + totalAccumulated.toLocaleString('en-IN');
         }
 
+        // INTEGRATED RAZORPAY STANDARD FRONTEND GATEWAY METHOD
         function executeFinalCheckoutGate() {
             if(!authenticatedUser) {
                 alert("Authorization Required: Please complete Gmail verification steps before interacting with checkout payment routing points.");
                 toggleLoginModal();
                 return;
             }
-            alert("Redirecting securely to secure processing payment network hooks...");
+
+            if(cartState.length === 0) {
+                alert("Your checkout manifest is empty.");
+                return;
+            }
+
+            // Calculate overall total price in sub-units (Paise) for Indian Rupees
+            let grossTotalAmount = 0;
+            cartState.forEach(item => grossTotalAmount += item.price);
+            const amountInPaise = grossTotalAmount * 100;
+
+            // Compile descriptive manifest checklist text
+            const orderManifestSummary = cartState.map(i => `${i.name} (${i.variant})`).join(', ');
+
+            // Razorpay Unified Configuration Layer
+            const checkoutOptions = {
+                "key": "rzp_live_TEft2IA1fFS4W4,YCstf4roXNTQrTgQQzPP2DB8", // Place your real Razorpay public Key ID here
+                "amount": amountInPaise.toString(),
+                "currency": "INR",
+                "name": "VELLORIN CO.",
+                "description": orderManifestSummary.substring(0, 255),
+                "image": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg",
+                "handler": function (transactionResponse){
+                    // Triggered instantly upon successful authorization captures
+                    alert("Payment Authorized Successfully!\nRazorpay Reference: " + transactionResponse.razorpay_payment_id);
+                    
+                    // Clear app cart parameters state upon capture
+                    cartState = [];
+                    updateGlobalCartMetrics();
+                    switchTab('home');
+                    showToastNotification("Order secured successfully!");
+                },
+                "prefill": {
+                    "name": "Patron Name",
+                    "email": authenticatedUser
+                },
+                "theme": {
+                    "color": "#bfa175" // Matching your luxury gold theme coloring accent rules
+                }
+            };
+
+            try {
+                const razorpayGatewayInstance = new Razorpay(checkoutOptions);
+                razorpayGatewayInstance.open();
+            } catch (error) {
+                console.error("Razorpay instance construction exception error:", error);
+                alert("Failed to initialize Razorpay frame. Please ensure your Key ID is correct.");
+            }
         }
 
         function showToastNotification(message) {
@@ -1243,7 +1288,6 @@
             setTimeout(() => { toast.style.display = 'none'; }, 3000);
         }
 
-        // Initialize user status dots instantly on application runtime execution load
         if(authenticatedUser) {
             document.getElementById('userStatusDot').style.background = "#25d366";
         }
