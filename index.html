@@ -1414,8 +1414,9 @@
             const amountInPaise = totalSumValue * 100;
             const descriptiveSummary = cartState.map(i => `${i.name} (${i.variant})`).join(', ');
 
+            // 1. Structural Configuration Options to force Direct PhonePe/UPI intents
             const razorpayOptions = {
-                "key": "rzp_live_TEft2IA1fFS4W4,YCstf4roXNTQrTgQQzPP2DB8", // Place standard public interface identifier here
+                "key": "rzp_live_TEft2IA1fFS4W4,YCstf4roXNTQrTgQQzPP2DB8", // IMPORTANT: Swap this out for your actual Razorpay Key
                 "amount": amountInPaise.toString(),
                 "currency": "INR",
                 "name": "VELLORIN LEATHER CO.",
@@ -1426,13 +1427,57 @@
                 },
                 "prefill": {
                     "name": lockedAddressDetails.name,
-                    "email": authenticatedUser,
-                    "contact": lockedAddressDetails.phone
+                    "email": authenticatedUser || "guest@vellorin.com", // Auto-fallback skips the profile lookup login wall entirely
+                    "contact": lockedAddressDetails.phone,
+                    "method": "upi" // Directly defaults the interface pipeline to UPI instantly
+                },
+                "config": {
+                    "display": {
+                        "blocks": {
+                            "upi": {
+                                "name": "Instant Mobile UPI Gateway",
+                                "instruments": [
+                                    {
+                                        "method": "upi",
+                                        "apps": ["phonepe"], // Automatically prioritizes PhonePe intent hooks on mobile devices
+                                        "flows": ["intent", "qr", "collect"] // Exposes Apps, Scan-Code, and Manual UPI ID fields
+                                    }
+                                ]
+                            }
+                        },
+                        "sequence": ["block.upi"],
+                        "preferences": {
+                            "show_default_blocks": false // Completely hides standard credit cards or separate login/OTP screens
+                        }
+                    }
                 },
                 "theme": {
                     "color": "#bfa175"
                 }
             };
+
+            // 2. Custom Secondary Fallback Interface (Manual Scanner, UPI ID, and Merchant ID display)
+            // This injects your static backup metrics directly beneath the checkout action block.
+            const checkoutPayBlock = document.getElementById('checkout-pay-block');
+            
+            // Clear any old dynamically appended fallback blocks before rendering a new one
+            const oldFallback = document.getElementById('manual-payment-fallback');
+            if (oldFallback) oldFallback.remove();
+
+            const fallbackDiv = document.createElement('div');
+            fallbackDiv.id = 'manual-payment-fallback';
+            fallbackDiv.style.cssText = "margin-top: 24px; padding: 20px; background: #fafafa; border: 1px dashed var(--accent-gold); text-align: left;";
+            fallbackDiv.innerHTML = `
+                <h4 style="font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; color: var(--bg-dark);">Manual Alternate Checkout Vectors:</h4>
+                <p style="font-size: 12px; margin-bottom: 6px;"><strong>Storefront UPI ID:</strong> <span style="font-family: monospace; background: #e5e5ea; padding: 2px 6px;">7090635884-2@ybl</span></p>
+                <p style="font-size: 12px; margin-bottom: 12px;"><strong>Merchant Razorpay Account ID:</strong> <span style="font-family: monospace; background: #e5e5ea; padding: 2px 6px;">TEez50HoYcGwwE</span></p>
+                <div style="text-align: center; margin-top: 10px;">
+                    <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">Scan QR to Complete Allocation:</p>
+                    <!-- Replace the src URL below with your actual static QR code image link if necessary -->
+                    <img src="https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg" alt="UPI Merchant QR Code Scanner" style="width: 140px; height: 140px; border: 1px solid var(--border-color); padding: 4px; background: #fff;">
+                </div>
+            `;
+            checkoutPayBlock.appendChild(fallbackDiv);
 
             try {
                 const gatewayWindowInstance = new Razorpay(razorpayOptions);
