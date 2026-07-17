@@ -16,6 +16,7 @@
             --border-color: #e5e5ea;
             --light-bg: #f9f9fb;
             --white: #ffffff;
+            --success-green: #25d366;
         }
 
         * {
@@ -511,7 +512,7 @@
         /* Step 5 & 6 Trigger Actions */
         .action-button-stack {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 16px;
         }
 
@@ -530,27 +531,6 @@
 
         .btn-primary:hover {
             background: #232329;
-        }
-
-        .btn-whatsapp {
-            background: #25d366;
-            color: var(--white);
-            border: none;
-            padding: 18px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-            font-size: 13px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: background 0.2s;
-        }
-
-        .btn-whatsapp:hover {
-            background: #20ba5a;
         }
 
         /* COMPREHENSIVE LUXURY CART SECTION */
@@ -675,6 +655,66 @@
 
         .checkout-btn:hover {
             background: #232329;
+        }
+
+        /* CHECKOUT STEP ARCHITECTURE VIEW PANEL */
+        .checkout-box {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border-color);
+            background: var(--light-bg);
+            font-size: 14px;
+            margin-bottom: 16px;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: var(--accent-gold);
+            background: var(--white);
+        }
+
+        /* INVOICE DESIGN GENERATOR ACCENT */
+        .invoice-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 50px;
+        }
+
+        .invoice-hdr {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--bg-dark);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+        }
+
+        .invoice-table th, .invoice-table td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .invoice-table th {
+            background: var(--light-bg);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* GMAIL MANDATORY AUTH MODAL WALL */
@@ -912,7 +952,7 @@
                         <p class="configurator-desc" id="prodDesc">Artifact baseline structural descriptions.</p>
                         
                         <!-- STEP 3: 4 Premium Variant Swatch Options -->
-                        <span class="config-label">Step 3: Select Leather Profile Colorway</span>
+                        <span class="config-label">Step 3: Choose Color Variant</span>
                         <div class="color-swatch-group" id="colorGroup">
                             <div class="color-option selected-color" style="background: #3d2314;" onclick="selectColorSwatch(this, 'Obsidian Tan')"></div>
                             <div class="color-option" style="background: #1c1c1c;" onclick="selectColorSwatch(this, 'Charcoal Black')"></div>
@@ -928,13 +968,9 @@
                         <button class="btn-primary" id="revealPriceBtn" style="margin-bottom: 32px;" onclick="handlePriceRevealRequest()">Reveal Custom Price</button>
 
                         <!-- STEP 5 & 6: Action Call Stack -->
-                        <span class="config-label">Step 5 & 6: Dispatch Order Routines</span>
+                        <span class="config-label">Step 5 & 6: Add to Basket Mapping</span>
                         <div class="action-button-stack">
                             <button class="btn-primary" onclick="executeAddToCartRoutine()">Add to Cart</button>
-                            <button class="btn-whatsapp" onclick="executeWhatsAppCheckoutRoutine()">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.488 1.449 5.412 1.451 5.428 0 9.845-4.394 9.848-9.793.002-2.618-1.002-5.08-2.83-6.913-1.827-1.83-4.258-2.836-6.878-2.837-5.43 0-9.85 4.394-9.853 9.793-.001 1.956.513 3.868 1.49 5.572l-.995 3.633 3.737-.978zm11.365-4.435c-.29-.145-1.716-.845-1.98-.94-.265-.096-.457-.145-.65.145-.19.29-.738.94-.904 1.13-.166.19-.332.215-.622.07-1.256-.63-2.15-1.1-3.003-2.56-.226-.388.226-.36.646-1.196.07-.145.035-.27-.018-.38-.053-.108-.456-1.1-.626-1.51-.165-.4-.365-.343-.5-.35-.13-.006-.28-.006-.43-.006-.15 0-.395.056-.6.28-.206.224-.785.767-.785 1.87s.8 2.17.91 2.32c.11.147 1.575 2.404 3.816 3.37.533.23 1.01.37 1.357.48.536.17 1.02.146 1.405.088.428-.063 1.32-.54 1.505-1.06.183-.52.183-.965.13-1.06-.055-.094-.2-.146-.49-.29z"/></svg>
-                                WhatsApp Express
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -977,7 +1013,97 @@
                     <span>Total Amount</span>
                     <span id="cartGrandTotal" style="color: var(--accent-gold);">₹0</span>
                 </div>
-                <button class="checkout-btn" style="width: 100%;" onclick="executeFinalCheckoutGate()">Proceed to Payment Portal</button>
+                <button class="checkout-btn" style="width: 100%;" onclick="startCheckoutTunnel()">Proceed to Checkout</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. STEPPED INTERACTIVE CHECKOUT GATEWAY PANEL -->
+    <section id="sec-checkout" class="page-section">
+        <h2 class="section-title">Secure Logistics Checkout Portal</h2>
+        <div class="checkout-box">
+            
+            <!-- SUB-STEP A: Address Entry Block Form -->
+            <div id="checkout-address-block">
+                <h3 style="font-family: serif; margin-bottom: 15px;">Shipping Address Parameters</h3>
+                <input type="text" id="custName" class="form-input" placeholder="Full Legal Recipient Name">
+                <input type="text" id="custStreet" class="form-input" placeholder="Street Address, Appartment, Unit">
+                <input type="text" id="custCity" class="form-input" placeholder="City, State & Postal Zip Code">
+                <input type="text" id="custPhone" class="form-input" placeholder="WhatsApp Contact Mobile Number">
+                <button class="btn-primary" style="width:100%;" onclick="submitAddressAndLockStage()">Validate & Save Address Details</button>
+            </div>
+
+            <!-- SUB-STEP B: Google Authentication Required Wall Gate -->
+            <div id="checkout-login-block" style="display: none; text-align: center;">
+                <h3 style="font-family: serif; margin-bottom: 12px;">Google Verification Mandatory</h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Please authenticate your profile via standard Google credentials to enable secure billing access channels.</p>
+                <button class="google-auth-btn" style="margin: 0 auto;" onclick="processCheckoutGoogleLogin()">
+                    <svg viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                    <span>Log In via Google Identity</span>
+                </button>
+            </div>
+
+            <!-- SUB-STEP C: Launch Razorpay Trigger Interface -->
+            <div id="checkout-pay-block" style="display: none; text-align: center;">
+                <h3 style="font-family: serif; margin-bottom: 12px;">Logistics Verified & Locked</h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Your order routing path is secured. Click the button down below to initialize the Razorpay Secure Interface frame overlay.</p>
+                <button class="btn-primary" style="width: 100%; background: var(--accent-gold);" onclick="triggerRazorpayTransaction()">Open Razorpay Secure Gateway</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. VERIFIED INVOICE SUMMARY ACCENT PANEL -->
+    <section id="sec-invoice" class="page-section">
+        <div class="invoice-card">
+            <div class="invoice-hdr">
+                <div>
+                    <h2 style="font-family: serif; letter-spacing: 3px;">VELLORINS INC.</h2>
+                    <p style="font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px;">Bespoke Luxury Design Manifest</p>
+                </div>
+                <div style="text-align: right;">
+                    <h3 style="color: var(--success-green); font-size: 14px; letter-spacing: 1px;">✓ PAYMENT TRANSACTION VERIFIED</h3>
+                    <p id="invoiceIdDisplay" style="font-weight: 700; margin-top: 5px;">INV-000000</p>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; font-size: 14px;">
+                <div>
+                    <strong style="text-transform: uppercase; font-size: 11px; letter-spacing: 1px; color: var(--text-muted);">Shipped To Logistical Coordinates:</strong>
+                    <div id="invShippingBlock" style="margin-top: 8px; line-height: 1.5;"></div>
+                </div>
+                <div style="text-align: right;">
+                    <strong style="text-transform: uppercase; font-size: 11px; letter-spacing: 1px; color: var(--text-muted);">Transaction References:</strong>
+                    <div style="margin-top: 8px;">
+                        <p>Gateway Reference ID: <span id="invPayId" style="font-family: monospace;">--</span></p>
+                        <p>Verified Profile Identity: <span id="invUser">--</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th>Asset Allocation Specification</th>
+                        <th>Colorway Variant</th>
+                        <th style="text-align: right;">Value Metric</th>
+                    </tr>
+                </thead>
+                <tbody id="invoiceTableBody"></tbody>
+            </table>
+
+            <div style="text-align: right; margin-top: 20px; font-size: 18px; font-weight: 700;">
+                <span>Total Amount Charged: </span>
+                <span id="invoiceGrandTotal" style="color: var(--accent-gold); margin-left: 15px;">₹0</span>
+            </div>
+
+            <!-- WHATSAPP DISPATCH CONFIRMATION LAYER ACCENT -->
+            <div style="margin-top: 40px; padding: 24px; background: #f4f4f6; border-left: 4px solid var(--success-green); text-align: center;">
+                <p style="font-weight: 600; font-size: 14px; margin-bottom: 16px;">Click the confirmation line below to automatically register your dispatch details with our workshop management system:</p>
+                <button class="btn-primary" style="background: var(--success-green); display: inline-flex; align-items: center; gap: 8px; width: auto; padding: 14px 32px;" onclick="dispatchWhatsAppConfirmationManifest()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.488 1.449 5.412 1.451 5.428 0 9.845-4.394 9.848-9.793.002-2.618-1.002-5.08-2.83-6.913-1.827-1.83-4.258-2.836-6.878-2.837-5.43 0-9.85 4.394-9.853 9.793-.001 1.956.513 3.868 1.49 5.572l-.995 3.633 3.737-.978zm11.365-4.435c-.29-.145-1.716-.845-1.98-.94-.265-.096-.457-.145-.65.145-.19.29-.738.94-.904 1.13-.166.19-.332.215-.622.07-1.256-.63-2.15-1.1-3.003-2.56-.226-.388.226-.36.646-1.196.07-.145.035-.27-.018-.38-.053-.108-.456-1.1-.626-1.51-.165-.4-.365-.343-.5-.35-.13-.006-.28-.006-.43-.006-.15 0-.395.056-.6.28-.206.224-.785.767-.785 1.87s.8 2.17.91 2.32c.11.147 1.575 2.404 3.816 3.37.533.23 1.01.37 1.357.48.536.17 1.02.146 1.405.088.428-.063 1.32-.54 1.505-1.06.183-.52.183-.965.13-1.06-.055-.094-.2-.146-.49-.29z"/></svg>
+                    Send WhatsApp Confirmation Line
+                </button>
             </div>
         </div>
     </section>
@@ -1059,6 +1185,11 @@
         let authenticatedUser = localStorage.getItem('VELLORIN_user') || null;
         let selectedProductKey = null;
         let selectedColorVariant = "Obsidian Tan";
+        
+        // Checkout state variables
+        let lockedAddressDetails = null;
+        let activeInvoiceData = null;
+        const TARGET_WORKSHOP_WHATSAPP = "917090635884";
 
         // Navigation Engine
         function switchTab(tabKey) {
@@ -1169,14 +1300,6 @@
             showToastNotification("Item logged into cart manifest.");
         }
 
-        function executeWhatsAppCheckoutRoutine() {
-            if(!authenticatedUser) { return handlePriceRevealRequest(); }
-            const activeItem = catalogDatabase[selectedProductKey];
-            const baseText = `Greetings VELLORIN Concierge, I am verified under profile ${authenticatedUser}. I would like to instantly secure booking lines for the curated [${activeItem.title}] configured in colorway variant [${selectedColorVariant}]. Please confirm stock allocation.`;
-            const encodedUrlString = encodeURIComponent(baseText);
-            window.open(`https://wa.me/917090635884?text=${encodedUrlString}`, '_blank');
-        }
-
         function updateGlobalCartMetrics() {
             document.getElementById('cartCount').textContent = cartState.length;
         }
@@ -1208,7 +1331,7 @@
                                 <img src="${item.image}" class="cart-item-img" alt="Thumbnail">
                                 <div>
                                     <div class="cart-item-title">${item.name}</div>
-                                    <div class="cart-item-variant">Dye Variant: ${item.variant}</div>
+                                    <div class="cart-item-variant">Color Choice: ${item.variant}</div>
                                     <button class="remove-cart-item" onclick="removeCartItem(${index})">De-allocate</button>
                                 </div>
                             </div>
@@ -1224,61 +1347,163 @@
             document.getElementById('cartGrandTotal').textContent = "₹" + totalAccumulated.toLocaleString('en-IN');
         }
 
-        // INTEGRATED RAZORPAY STANDARD FRONTEND GATEWAY METHOD
-        function executeFinalCheckoutGate() {
-            if(!authenticatedUser) {
-                alert("Authorization Required: Please complete Gmail verification steps before interacting with checkout payment routing points.");
-                toggleLoginModal();
-                return;
-            }
-
+        // TUNNELED INLINE CHECKOUT CONTROLLER ACTIONS
+        function startCheckoutTunnel() {
             if(cartState.length === 0) {
-                alert("Your checkout manifest is empty.");
+                alert("Your cart allocation array is empty.");
+                return;
+            }
+            switchTab('shop'); // Keep layout view isolated inside storefront boundaries
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active-section'));
+            document.getElementById('sec-checkout').add;
+            document.getElementById('sec-checkout').classList.add('active-section');
+            
+            // Set up original starting state metrics
+            document.getElementById('checkout-address-block').style.display = "block";
+            document.getElementById('checkout-login-block').style.display = "none";
+            document.getElementById('checkout-pay-block').style.display = "none";
+        }
+
+        function submitAddressAndLockStage() {
+            const name = document.getElementById('custName').value.trim();
+            const street = document.getElementById('custStreet').value.trim();
+            const city = document.getElementById('custCity').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+
+            if(!name || !street || !city || !phone) {
+                alert("Logistics Warning: All address parameters must be filled completely.");
                 return;
             }
 
-            // Calculate overall total price in sub-units (Paise) for Indian Rupees
-            let grossTotalAmount = 0;
-            cartState.forEach(item => grossTotalAmount += item.price);
-            const amountInPaise = grossTotalAmount * 100;
+            lockedAddressDetails = { name, street, city, phone };
+            
+            // Calculate grand total 
+            let grossAmount = cartState.reduce((sum, item) => sum + item.price, 0);
+            let itemsString = cartState.map(i => `• ${i.name} [Color: ${i.variant}]`).join('\n');
 
-            // Compile descriptive manifest checklist text
-            const orderManifestSummary = cartState.map(i => `${i.name} (${i.variant})`).join(', ');
+            // FEATURE LOG: Immediate dispatch payload to owner lines once proceed action is initialized
+            const addressNoticeText = `⚠️ [INCOMING ADDRESS SUBMISSION]\nCustomer has provided delivery information and is moving forward with the checkout process.\n\nLOGISTICAL ADDRESS:\nName: ${name}\nStreet: ${street}\nCity/Zip: ${city}\nPhone/WhatsApp: ${phone}\n\nPICKED ARTIFACTS:\n${itemsString}\n\nSubtotal Matrix: ₹${grossAmount.toLocaleString('en-IN')}`;
+            
+            // Fire off a background redirection context tab out to WhatsApp channel hook
+            window.open(`https://wa.me/${TARGET_WORKSHOP_WHATSAPP}?text=${encodeURIComponent(addressNoticeText)}`, '_blank');
 
-            // Razorpay Unified Configuration Layer
-            const checkoutOptions = {
-                "key": "rzp_test_replaceWithYourActualKey", // Place your real Razorpay public Key ID here
+            // Evaluate if Google login profile configuration mapping requirements are already configured
+            document.getElementById('checkout-address-block').style.display = "none";
+            if(!authenticatedUser) {
+                document.getElementById('checkout-login-block').style.display = "block";
+            } else {
+                document.getElementById('checkout-pay-block').style.display = "block";
+            }
+        }
+
+        function processCheckoutGoogleLogin() {
+            // Re-uses global application input matrix checkpoints
+            toggleLoginModal();
+            // Attach state change listener override loop specifically to detect modal auth changes during payment actions
+            const validationCheckTimer = setInterval(() => {
+                if(authenticatedUser) {
+                    clearInterval(validationCheckTimer);
+                    document.getElementById('checkout-login-block').style.display = "none";
+                    document.getElementById('checkout-pay-block').style.display = "block";
+                }
+            }, 500);
+        }
+
+        function triggerRazorpayTransaction() {
+            let totalSumValue = cartState.reduce((sum, item) => sum + item.price, 0);
+            const amountInPaise = totalSumValue * 100;
+            const descriptiveSummary = cartState.map(i => `${i.name} (${i.variant})`).join(', ');
+
+            const razorpayOptions = {
+                "key": "rzp_live_TEft2IA1fFS4W4,YCstf4roXNTQrTgQQzPP2DB8", // Place standard public interface identifier here
                 "amount": amountInPaise.toString(),
                 "currency": "INR",
-                "name": "VELLORIN CO.",
-                "description": orderManifestSummary.substring(0, 255),
+                "name": "VELLORIN LEATHER CO.",
+                "description": descriptiveSummary.substring(0, 255),
                 "image": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg",
-                "handler": function (transactionResponse){
-                    // Triggered instantly upon successful authorization captures
-                    alert("Payment Authorized Successfully!\nRazorpay Reference: " + transactionResponse.razorpay_payment_id);
-                    
-                    // Clear app cart parameters state upon capture
-                    cartState = [];
-                    updateGlobalCartMetrics();
-                    switchTab('home');
-                    showToastNotification("Order secured successfully!");
+                "handler": function (rzpResponse) {
+                    processFulfillmentAndGenerateInvoice(rzpResponse.razorpay_payment_id);
                 },
                 "prefill": {
-                    "name": "Patron Name",
-                    "email": authenticatedUser
+                    "name": lockedAddressDetails.name,
+                    "email": authenticatedUser,
+                    "contact": lockedAddressDetails.phone
                 },
                 "theme": {
-                    "color": "#bfa175" // Matching your luxury gold theme coloring accent rules
+                    "color": "#bfa175"
                 }
             };
 
             try {
-                const razorpayGatewayInstance = new Razorpay(checkoutOptions);
-                razorpayGatewayInstance.open();
-            } catch (error) {
-                console.error("Razorpay instance construction exception error:", error);
-                alert("Failed to initialize Razorpay frame. Please ensure your Key ID is correct.");
+                const gatewayWindowInstance = new Razorpay(razorpayOptions);
+                gatewayWindowInstance.open();
+            } catch (err) {
+                alert("Failed to initialize Razorpay overlay element window frame.");
             }
+        }
+
+        function processFulfillmentAndGenerateInvoice(paymentReferenceId) {
+            const staticGeneratedInvoiceId = "VEL-INV-" + Math.floor(100000 + Math.random() * 900000);
+            let absoluteCalculatedTotal = cartState.reduce((sum, item) => sum + item.price, 0);
+
+            activeInvoiceData = {
+                invoiceNumber: staticGeneratedInvoiceId,
+                paymentId: paymentReferenceId,
+                buyerEmail: authenticatedUser,
+                address: { ...lockedAddressDetails },
+                items: [...cartState],
+                total: absoluteCalculatedTotal
+            };
+
+            // Inject metrics dynamically down into UI invoice blocks
+            document.getElementById('invoiceIdDisplay').textContent = staticGeneratedInvoiceId;
+            document.getElementById('invPayId').textContent = paymentReferenceId;
+            document.getElementById('invUser').textContent = authenticatedUser;
+            document.getElementById('invShippingBlock').innerHTML = `
+                <strong>${lockedAddressDetails.name}</strong><br>
+                ${lockedAddressDetails.street}<br>
+                ${lockedAddressDetails.city}<br>
+                Contact: ${lockedAddressDetails.phone}
+            `;
+
+            const tableBody = document.getElementById('invoiceTableBody');
+            tableBody.innerHTML = '';
+            activeInvoiceData.items.forEach(item => {
+                tableBody.innerHTML += `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>${item.variant}</td>
+                        <td style="text-align: right;">₹${item.price.toLocaleString('en-IN')}</td>
+                    </tr>
+                `;
+            });
+            document.getElementById('invoiceGrandTotal').textContent = "₹" + absoluteCalculatedTotal.toLocaleString('en-IN');
+
+            // Reset cart parameters 
+            cartState = [];
+            updateGlobalCartMetrics();
+
+            // Clear internal entry elements
+            document.getElementById('custName').value = '';
+            document.getElementById('custStreet').value = '';
+            document.getElementById('custCity').value = '';
+            document.getElementById('custPhone').value = '';
+
+            // Route execution pane to Invoice view layer layout
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active-section'));
+            document.getElementById('sec-invoice').classList.add('active-section');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function dispatchWhatsAppConfirmationManifest() {
+            if(!activeInvoiceData) return;
+
+            let itemsChecklistLines = activeInvoiceData.items.map(i => `• ${i.name} [Variant Color: ${i.variant}]`).join('\n');
+            
+            // FEATURE: Direct physical customer destination location coordinates are streamed seamlessly on payment validation
+            const businessConfirmationManifest = `✅ [SUCCESSFUL TRANSACTION RECEIVED]\n\nInvoice ID Trace: ${activeInvoiceData.invoiceNumber}\nRazorpay Payment ID: ${activeInvoiceData.paymentId}\nPatron Profile: ${activeInvoiceData.buyerEmail}\n\n📦 MANDATORY DISPATCH DESTINATION LOCATION:\nRecipient Name: ${activeInvoiceData.address.name}\nStreet Route Details: ${activeInvoiceData.address.street}\nCity Vector Coordinates: ${activeInvoiceData.address.city}\nRegistered Phone Index: ${activeInvoiceData.address.phone}\n\nALLOCATED PREMIUM STOCK:\n${itemsChecklistLines}\n\nTotal Paid Capture Matrix Value: ₹${activeInvoiceData.total.toLocaleString('en-IN')}\n\nAuthorization verified successfully. Proceed with inventory allocation and package tracking configurations.`;
+
+            window.open(`https://wa.me/${TARGET_WORKSHOP_WHATSAPP}?text=${encodeURIComponent(businessConfirmationManifest)}`, '_blank');
         }
 
         function showToastNotification(message) {
