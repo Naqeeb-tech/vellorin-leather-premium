@@ -57,6 +57,7 @@
             font-weight: 700;
             color: var(--bg-dark);
             text-decoration: none;
+            cursor: pointer;
         }
 
         .nav-links {
@@ -232,7 +233,7 @@
 
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             background: #000;
@@ -496,7 +497,7 @@
             padding: 20px;
             background: var(--light-bg);
             border-left: 3px solid var(--accent-gold);
-            display: none; /* Controlled via step array tracking */
+            display: none;
         }
 
         .revealed-price {
@@ -561,11 +562,16 @@
             .cart-layout { grid-template-columns: 1fr; }
         }
 
+        .cart-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            background: var(--white);
+            border: 1px solid var(--border-color);
+        }
+
         .cart-items-table {
             width: 100%;
             border-collapse: collapse;
-            background: var(--white);
-            border: 1px solid var(--border-color);
         }
 
         .cart-items-table th, .cart-items-table td {
@@ -621,6 +627,8 @@
             border: 1px solid var(--border-color);
             padding: 32px;
             height: fit-content;
+            position: sticky;
+            top: 120px;
         }
 
         .summary-title {
@@ -647,6 +655,24 @@
             border-top: 1px solid var(--border-color);
             font-size: 18px;
             font-weight: 700;
+        }
+
+        .checkout-btn {
+            background: var(--bg-dark);
+            color: var(--white);
+            border: none;
+            padding: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 20px;
+        }
+
+        .checkout-btn:hover {
+            background: #232329;
         }
 
         /* GMAIL MANDATORY AUTH MODAL WALL */
@@ -750,7 +776,7 @@
     <!-- GLOBAL SITE HEADER NAVIGATION -->
     <header class="main-header">
         <div class="header-container">
-            <a href="#" class="logo" onclick="switchTab('home')">VELLORINS</a>
+            <div class="logo" onclick="switchTab('home')">VELLORINS</div>
             <nav class="nav-links">
                 <a class="nav-item active" id="nav-home" onclick="switchTab('home')">Home</a>
                 <a class="nav-item" id="nav-shop" onclick="switchTab('shop')">Shop Storefront</a>
@@ -782,16 +808,15 @@
         <div class="video-showcase">
             <div class="video-card">
                 <div class="video-wrapper">
-                    <!-- Standard placeholder curated leather video streams -->
-                      <iframe 
-width="560" 
-height="315" 
-src="https://www.youtube.com/embed/2A82lSxx4gs?si=0sbguSsEqemIEEaY" 
-title="YouTube video player" 
-frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
-allowfullscreen>
-</iframe>
+                    <iframe 
+                        width="560" 
+                        height="315" 
+                        src="https://www.youtube.com/embed/2A82lSxx4gs?si=0sbguSsEqemIEEaY" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
                 <div class="video-meta">
                     <h3>The Art of Hand-Stitching</h3>
@@ -800,15 +825,15 @@ allowfullscreen>
             </div>
             <div class="video-card">
                 <div class="video-wrapper">
-                      <iframe 
-width="560" 
-height="315" 
-src="https://www.youtube.com/embed/2A82lSxx4gs?si=0sbguSsEqemIEEaY" 
-title="YouTube video player" 
-frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
-allowfullscreen>
-</iframe>
+                    <iframe 
+                        width="560" 
+                        height="315" 
+                        src="https://www.youtube.com/embed/2A82lSxx4gs?si=0sbguSsEqemIEEaY" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
                 <div class="video-meta">
                     <h3>Edge Burnishing & Skiving</h3>
@@ -909,11 +934,9 @@ allowfullscreen>
                                 WhatsApp Express
                             </button>
                         </div>
-
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -921,8 +944,7 @@ allowfullscreen>
     <section id="sec-cart" class="page-section">
         <h2 class="section-title" style="text-align: left; margin-bottom: 24px;">Your Selected Manifest</h2>
         <div class="cart-layout">
-            
-            <div>
+            <div class="cart-table-wrapper">
                 <table class="cart-items-table">
                     <thead>
                         <tr>
@@ -955,7 +977,6 @@ allowfullscreen>
                 </div>
                 <button class="checkout-btn" style="width: 100%;" onclick="executeFinalCheckoutGate()">Proceed to Payment Portal</button>
             </div>
-
         </div>
     </section>
 
@@ -1037,7 +1058,7 @@ allowfullscreen>
         let selectedProductKey = null;
         let selectedColorVariant = "Obsidian Tan";
 
-        // Navigation Engine
+        // Navigation Engine - Fixed to auto-scroll windows to top view upon execution 
         function switchTab(tabKey) {
             document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active-section'));
             document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
@@ -1045,6 +1066,9 @@ allowfullscreen>
             document.getElementById(`sec-${tabKey}`).classList.add('active-section');
             const navLink = document.getElementById(`nav-${tabKey}`);
             if(navLink) navLink.classList.add('active');
+
+            // Force browser to pull back layout position cleanly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
 
             if(tabKey === 'cart') renderCartSystem();
         }
@@ -1085,6 +1109,8 @@ allowfullscreen>
             // Toggle view visibility matrices
             document.getElementById('shop-step1').style.display = "none";
             document.getElementById('shop-discovery-view').style.display = "block";
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function changeDisplayPhoto(element, targetUrl) {
@@ -1102,6 +1128,7 @@ allowfullscreen>
         function resetShopView() {
             document.getElementById('shop-discovery-view').style.display = "none";
             document.getElementById('shop-step1').style.display = "block";
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Secure Rule Verification Gateway Actions
@@ -1146,6 +1173,7 @@ allowfullscreen>
         }
 
         function executeWhatsAppCheckoutRoutine() {
+            if(!authenticatedUser) { return handlePriceRevealRequest(); }
             const activeItem = catalogDatabase[selectedProductKey];
             const baseText = `Greetings VELLORIN Concierge, I am verified under profile ${authenticatedUser}. I would like to instantly secure booking lines for the curated [${activeItem.title}] configured in colorway variant [${selectedColorVariant}]. Please confirm stock allocation.`;
             const encodedUrlString = encodeURIComponent(baseText);
@@ -1219,8 +1247,6 @@ allowfullscreen>
         if(authenticatedUser) {
             document.getElementById('userStatusDot').style.background = "#25d366";
         }
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script src="payment.js"></script>
+    </script>
 </body>
 </html>
-
