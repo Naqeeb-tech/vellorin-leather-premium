@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VELLORIN | Handcrafted Premium Leather Goods</title>
-    <!-- RAZORPAY STANDARD FRONTEND ENGINE -->
+    <!-- INCLUDE OFFICIAL RAZORPAY CHECKOUT INTERFACE ENGINE -->
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
         :root {
@@ -16,7 +16,6 @@
             --border-color: #e5e5ea;
             --light-bg: #f9f9fb;
             --white: #ffffff;
-            --success-green: #25d366;
         }
 
         * {
@@ -26,14 +25,14 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             color: var(--text-main);
             background: var(--light-bg);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* NAVIGATION & HEADER */
+        /* PREMIUM HEADER & NAVIGATION */
         .main-header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(8px);
@@ -54,9 +53,9 @@
         }
 
         .logo {
-            font-family: Georgia, serif;
-            font-size: 26px;
-            letter-spacing: 4px;
+            font-family: 'Cinzel', serif, Georgia, 'Times New Roman';
+            font-size: 28px;
+            letter-spacing: 5px;
             font-weight: 700;
             color: var(--bg-dark);
             text-decoration: none;
@@ -65,19 +64,20 @@
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 40px;
         }
 
         .nav-item {
             text-decoration: none;
             color: var(--text-muted);
-            font-size: 12px;
+            font-size: 13px;
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: 500;
             cursor: pointer;
-            padding: 8px 0;
+            transition: color 0.2s ease;
             position: relative;
+            padding: 8px 0;
         }
 
         .nav-item:hover, .nav-item.active {
@@ -96,16 +96,24 @@
 
         .header-actions {
             display: flex;
-            gap: 20px;
+            gap: 24px;
             align-items: center;
         }
 
         .action-btn {
             color: var(--bg-dark);
+            text-decoration: none;
+            position: relative;
+            display: flex;
+            align-items: center;
             background: none;
             border: none;
             cursor: pointer;
-            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-1px);
         }
 
         .cart-count {
@@ -124,677 +132,1165 @@
             font-weight: 700;
         }
 
-        /* APP VIEWPORT MANAGEMENT */
+        /* PAGE MANAGEMENT ARCHITECTURE */
         .page-section {
             display: none;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 40px;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .page-section.active-section {
             display: block;
         }
 
-        .section-title {
-            font-family: Georgia, serif;
-            font-size: 28px;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
+        /* HERO & HOME PAGE STYLING */
+        .hero-banner {
+            background: linear-gradient(rgba(15, 15, 17, 0.45), rgba(15, 15, 17, 0.45)), url('https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/Bag%20image.png') center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+
+        .hero-banner h1 {
+            font-family: serif;
+            font-size: 4rem;
+            letter-spacing: 8px;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .hero-banner p {
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            color: #e5e5ea;
+            margin-bottom: 32px;
             text-transform: uppercase;
+        }
+
+        .cta-btn {
+            background: var(--white);
+            color: var(--bg-dark);
+            padding: 16px 40px;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 2px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background: var(--accent-gold);
+            color: var(--white);
+        }
+
+        /* LUXURY MEDIA SECTION (VIDEOS) */
+        .section-title {
+            text-align: center;
+            font-family: serif;
+            font-size: 32px;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--accent-gold);
+        }
+
+        .video-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .video-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            padding: 16px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            margin-bottom: 16px;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border: 0;
+        }
+
+        .video-meta h3 {
+            font-size: 18px;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .video-meta p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* JOURNEY AND COMPLIANCE BLOCK */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .info-block {
+            background: var(--white);
+            padding: 50px;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-block h2 {
+            font-family: serif;
+            font-size: 24px;
+            letter-spacing: 1.5px;
+            margin-bottom: 24px;
+            color: var(--bg-dark);
+        }
+
+        .info-block p {
+            color: var(--text-main);
+            font-size: 15px;
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+
+        .info-block ul {
+            padding-left: 20px;
+            color: var(--text-main);
+            font-size: 14px;
+        }
+
+        .info-block li {
+            margin-bottom: 12px;
+        }
+
+        /* STEP-BY-STEP SHOP TUNNEL STYLING */
+        .shop-container {
+            min-height: 60vh;
+        }
+
+        /* Step 1 Grid: High level Categories */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 992px) {
+            .category-grid { grid-template-columns: repeat(2, 1fr); }
+            .info-grid { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        .category-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
             text-align: center;
         }
 
-        /* STEP 1 & 2: PRODUCT STOREFRONT & COLOR CHOOSER */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        .product-card {
-            background: var(--white);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .product-img {
-            width: 100%;
+        .category-img-box {
             aspect-ratio: 1/1;
-            object-fit: cover;
             background: #f4f4f6;
-            margin-bottom: 15px;
+            overflow: hidden;
         }
 
-        .product-name {
-            font-size: 16px;
+        .category-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-card:hover .category-img-box img {
+            transform: scale(1.04);
+        }
+
+        .category-title {
+            padding: 20px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             font-weight: 600;
-            margin-bottom: 5px;
         }
 
-        .product-price {
-            color: var(--accent-gold);
-            font-weight: 700;
-            margin-bottom: 15px;
+        /* Dynamic Product Discovery Screen Styles */
+        .discovery-view {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            background: var(--white);
+            padding: 40px;
+            border: 1px solid var(--border-color);
         }
 
-        .color-selector {
-            margin-bottom: 15px;
-        }
-
-        .color-label {
-            font-size: 11px;
+        .back-to-categories {
+            background: none;
+            border: none;
+            font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            cursor: pointer;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             color: var(--text-muted);
-            margin-bottom: 5px;
+        }
+
+        .back-to-categories:hover {
+            color: var(--bg-dark);
+        }
+
+        /* Step 2 Gallery System */
+        .gallery-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .main-gallery-display {
+            aspect-ratio: 1/1;
+            background: #f4f4f6;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .main-gallery-display img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-strip {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+
+        .thumb-box {
+            aspect-ratio: 1/1;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            overflow: hidden;
+            background: #f4f4f6;
+        }
+
+        .thumb-box.active-thumb {
+            border-color: var(--accent-gold);
+            outline: 1px solid var(--accent-gold);
+        }
+
+        .thumb-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Step 3 & 4: Variant Attributes Configurator */
+        .configurator-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .product-header-tag {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .configurator-title {
+            font-family: serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .configurator-desc {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 32px;
+        }
+
+        .config-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            margin-bottom: 12px;
             display: block;
         }
 
-        .color-options {
+        .color-swatch-group {
             display: flex;
-            gap: 8px;
+            gap: 16px;
+            margin-bottom: 40px;
         }
 
-        .color-dot {
-            width: 20px;
-            height: 20px;
+        .color-option {
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             cursor: pointer;
+            position: relative;
             border: 2px solid transparent;
+            transition: transform 0.2s;
         }
 
-        .color-dot.selected {
-            border-color: var(--bg-dark);
-            box-shadow: 0 0 0 1px var(--accent-gold);
+        .color-option:hover {
+            transform: scale(1.08);
         }
 
-        /* BUTTON MECHANICS */
-        .btn {
-            width: 100%;
+        .color-option.selected-color::after {
+            content: '';
+            position: absolute;
+            top: -5px; left: -5px; right: -5px; bottom: -5px;
+            border: 1px solid var(--accent-gold);
+            border-radius: 50%;
+        }
+
+        /* Step 4 Price State Reveal styling */
+        .price-reveal-box {
+            margin-bottom: 32px;
+            padding: 20px;
+            background: var(--light-bg);
+            border-left: 3px solid var(--accent-gold);
+            display: none;
+        }
+
+        .revealed-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--bg-dark);
+        }
+
+        /* Step 5 & 6 Trigger Actions */
+        .action-button-stack {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .btn-primary {
             background: var(--bg-dark);
             color: var(--white);
             border: none;
-            padding: 12px;
+            padding: 18px;
             text-transform: uppercase;
-            font-size: 11px;
             letter-spacing: 2px;
             font-weight: 600;
+            font-size: 13px;
             cursor: pointer;
             transition: background 0.2s;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
         }
 
-        .btn:hover { background: #232329; }
-        .btn-success { background: var(--success-green); }
-        .btn-success:hover { background: #1ebd54; }
+        .btn-primary:hover {
+            background: #232329;
+        }
 
-        /* STEP 3 & 4: CART PREVIEW OVERVIEW */
+        .btn-whatsapp {
+            background: #25d366;
+            color: var(--white);
+            border: none;
+            padding: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20ba5a;
+        }
+
+        /* COMPREHENSIVE LUXURY CART SECTION */
         .cart-layout {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: 1fr 380px;
             gap: 40px;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .cart-layout { grid-template-columns: 1fr; }
         }
 
-        .cart-table {
+        .cart-table-wrapper {
             width: 100%;
-            border-collapse: collapse;
+            overflow-x: auto;
             background: var(--white);
             border: 1px solid var(--border-color);
         }
 
-        .cart-table th, .cart-table td {
-            padding: 15px;
+        .cart-items-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cart-items-table th, .cart-items-table td {
+            padding: 24px;
             border-bottom: 1px solid var(--border-color);
             text-align: left;
         }
 
-        .cart-table th {
-            background: #fafafa;
+        .cart-items-table th {
+            text-transform: uppercase;
             font-size: 11px;
-            text-transform: uppercase;
+            letter-spacing: 1.5px;
             color: var(--text-muted);
+            background: #fafafa;
         }
 
-        .summary-box {
-            background: var(--white);
+        .cart-item-meta {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .cart-item-img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            background: #f4f4f6;
             border: 1px solid var(--border-color);
-            padding: 25px;
-            height: fit-content;
         }
 
-        /* STEP 5, 6 & 7: CHECKOUT FLOW MECHANICS (ADDRESS & AUTH WALL) */
-        .checkout-flow-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: var(--white);
-            border: 1px solid var(--border-color);
-            padding: 40px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 12px;
-            text-transform: uppercase;
-            margin-bottom: 6px;
+        .cart-item-title {
             font-weight: 600;
+            font-size: 15px;
         }
 
-        .form-control {
-            width: 100%;
-            padding: 12px;
+        .cart-item-variant {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .remove-cart-item {
+            background: none;
+            border: none;
+            color: #ff3b30;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 4px;
+        }
+
+        .summary-card {
+            background: var(--white);
             border: 1px solid var(--border-color);
-            outline: none;
+            padding: 32px;
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+        }
+
+        .summary-title {
+            font-family: serif;
+            font-size: 20px;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
             font-size: 14px;
         }
 
-        .auth-panel {
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-            margin-top: 30px;
-            padding-top: 20px;
-        }
-
-        /* STEP 8 & 9: SUCCESS & BESPOKE INVOICE GRAPHIC */
-        .invoice-box {
-            max-width: 700px;
-            margin: 0 auto;
-            background: var(--white);
-            border: 1px solid var(--border-color);
-            padding: 40px;
-            position: relative;
-        }
-
-        .invoice-header {
+        .summary-total-row {
             display: flex;
             justify-content: space-between;
-            border-bottom: 2px solid var(--bg-dark);
-            padding-bottom: 20px;
-            margin-bottom: 20px;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+            font-size: 18px;
+            font-weight: 700;
         }
 
-        /* ORDER HISTORY LOG OVERVIEW */
-        .history-card {
-            background: var(--white);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            margin-bottom: 15px;
-        }
-
-        .toast-notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
+        .checkout-btn {
             background: var(--bg-dark);
             color: var(--white);
-            padding: 12px 24px;
-            font-size: 12px;
+            border: none;
+            padding: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 20px;
+        }
+
+        .checkout-btn:hover {
+            background: #232329;
+        }
+
+        /* GMAIL MANDATORY AUTH MODAL WALL */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15,15,17,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .login-card {
+            background: var(--white);
+            max-width: 450px;
+            width: 100%;
+            padding: 56px 40px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px; right: 20px;
+            background: none; border: none; font-size: 24px; cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .gmail-input-field {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border-color);
+            margin-top: 24px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .gmail-input-field:focus {
+            border-color: var(--accent-gold);
+        }
+
+        .google-auth-btn {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #dcdcdc;
+            border-radius: 4px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #3c4043;
+            cursor: pointer;
+            margin-top: 16px;
+            transition: background-color 0.2s;
+        }
+
+        .google-auth-btn:hover {
+            background-color: #f8fafc;
+        }
+
+        /* SYSTEM CORNER NOTIFICATION FLOATER */
+        .toast-notification {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            background: var(--bg-dark);
+            color: var(--white);
+            padding: 16px 24px;
+            font-size: 13px;
             letter-spacing: 1px;
             text-transform: uppercase;
-            z-index: 5000;
+            z-index: 3000;
             display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 40px;
+            background: var(--white);
+            border-top: 1px solid var(--border-color);
+            margin-top: 100px;
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
-    <!-- APPLICATION SITE NAVIGATION BAR -->
+    <!-- GLOBAL SITE HEADER NAVIGATION -->
     <header class="main-header">
         <div class="header-container">
-            <div class="logo" onclick="switchSection('storefront')">VELLORINS</div>
+            <div class="logo" onclick="switchTab('home')">VELLORINS</div>
             <nav class="nav-links">
-                <a class="nav-item active" id="nav-storefront" onclick="switchSection('storefront')">Products</a>
-                <a class="nav-item" id="nav-cart" onclick="switchSection('cart')">Cart Selection</a>
-                <a class="nav-item" id="nav-history" onclick="switchSection('history')">Order History</a>
+                <a class="nav-item active" id="nav-home" onclick="switchTab('home')">Home</a>
+                <a class="nav-item" id="nav-shop" onclick="switchTab('shop')">Shop Storefront</a>
+                <a class="nav-item" id="nav-cart" onclick="switchTab('cart')">Cart Selection</a>
             </nav>
             <div class="header-actions">
-                <button class="action-btn" onclick="switchSection('cart')">
+                <button class="action-btn" onclick="toggleLoginModal()" aria-label="Account Management">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <span id="userStatusDot" style="position:absolute; bottom:0; right:0; width:8px; height:8px; background:#ff3b30; border-radius:50%;"></span>
+                </button>
+                <button class="action-btn" onclick="switchTab('cart')" aria-label="View Shopping Cart">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-                    <span class="cart-count" id="globalCartCount">0</span>
+                    <span class="cart-count" id="cartCount">0</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- FLOW INDEX 1 & 2: PRODUCT CATALOGUE + COLOR SELECTOR -->
-    <section id="sec-storefront" class="page-section active-section">
-        <h2 class="section-title">Architectural Leather Matrix</h2>
-        <div class="product-grid" id="catalogDisplayGrid"></div>
+    <!-- 1. HOME SECTION -->
+    <section id="sec-home" class="page-section active-section">
+        <div class="hero-banner">
+            <h1>CRAFTED FOR ETERNITY</h1>
+            <p>Full-Grain Architectural Leather Artifacts</p>
+            <button class="cta-btn" onclick="switchTab('shop')">Enter Storefront</button>
+        </div>
+
+        <!-- Dynamic Leather Video Showcase -->
+        <h2 class="section-title">The Leather Crafting Chronicles</h2>
+        <div class="video-showcase">
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe 
+                        width="560" 
+                        height="315" 
+                        src="https://www.youtube.com/embed/2A82lSxx4gs?si=0sbguSsEqemIEEaY" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-meta">
+                    <h3>The Art of Hand-Stitching</h3>
+                    <p>Watch our master artisans run saddle-stitch passes over pure vegetable-tanned hides.</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe 
+                        width="560" 
+                        height="315" 
+                        src="https://www.youtube.com/embed/2A82lSxx4gs?si=0sbguSsEqemIEEaY" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-meta">
+                    <h3>Edge Burnishing & Skiving</h3>
+                    <p>The rigorous process behind refining edge matrices for completely seamless pocket profiles.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- House Journey and Rules Infrastructure -->
+        <div class="info-grid">
+            <div class="info-block">
+                <h2>Our Journey & Lineage</h2>
+                <p>VELLORINS was born out of a rebellion against fast fashion synthetic alternatives. Our lineage is tethered directly to generational tanneries, operating with the foundational understanding that leather should not break down—it should acquire a personal storytelling patina.</p>
+                <p>By shifting standard raw processing pipelines entirely in-house, we secure custom full-grain cuts, completely devoid of correction sprays or surface masking fillers. Every wallet, bag, and shoe cut tells the raw, unfiltered story of the hide it was pulled from.</p>
+            </div>
+            <div class="info-block">
+                <h2>Rules & Brand Regulations</h2>
+                <p>To ensure fairness across all custom allocations, all patrons must adhere to the following house terms:</p>
+                <ul>
+                    <li><strong>Mandatory Verification:</strong> You must authenticate using an authorized identity profile (Gmail) to unlock the pricing index or invoke order completion routines.</li>
+                    <li><strong>Allocation Caps:</strong> Due to limited small-batch tannery processing scales, users are capped at a maximum configuration of 5 units per item type.</li>
+                    <li><strong>Bespoke Customization Rules:</strong> Adjusting items inside the step-funnel changes dispatch schedules. Custom-dyed color profiles require a production queue clearance window of 7 to 10 processing days.</li>
+                </ul>
+            </div>
+        </div>
     </section>
 
-    <!-- FLOW INDEX 3 & 4: BASKET OVERVIEW MANIFEST -->
+    <!-- 2. SHOPPING SECTION WITH THE STEP-BY-STEP STEPPER FUNNEL -->
+    <section id="sec-shop" class="page-section">
+        <div class="shop-container" id="shopContainer">
+            
+            <!-- STEP 1 VIEW: Simple Product Category Blocks -->
+            <div id="shop-step1">
+                <h2 class="section-title">Select A Category Matrix</h2>
+                <div class="category-grid">
+                    <div class="category-card" onclick="startDiscovery('shoes')">
+                        <div class="category-img-box"><img src="https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20image.png" alt="Shoes Cut"></div>
+                        <div class="category-title">Luxury Footwear</div>
+                    </div>
+                    <div class="category-card" onclick="startDiscovery('wallets')">
+                        <div class="category-img-box"><img src="https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg" alt="Wallets Cut"></div>
+                        <div class="category-title">Artisan Wallets</div>
+                    </div>
+                    <div class="category-card" onclick="startDiscovery('belts')">
+                        <div class="category-img-box"><img src="https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/belts.jpeg" alt="Belts Cut"></div>
+                        <div class="category-title">Architectural Belts</div>
+                    </div>
+                    <div class="category-card" onclick="startDiscovery('bags')">
+                        <div class="category-img-box"><img src="https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/Bag%20image.png" alt="Bags Cut"></div>
+                        <div class="category-title">Travel Duffles</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 2, 3, 4, 5, 6 VIEW: Deep Interactive Discovery Sheet -->
+            <div id="shop-discovery-view" style="display: none;">
+                <button class="back-to-categories" onclick="resetShopView()">← Back to Categories</button>
+                <div class="discovery-view">
+                    
+                    <!-- LEFT COLUMN: Step 2 Multi-Image Gallery Grid -->
+                    <div class="gallery-container">
+                        <div class="main-gallery-display">
+                            <img id="mainGalleryImage" src="" alt="Primary Focus Aspect">
+                        </div>
+                        <div class="thumbnail-strip" id="galleryThumbStrip">
+                            <!-- Populated dynamically via Javascript database matrix -->
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Configuration Mechanics & Price Reveals -->
+                    <div class="configurator-details">
+                        <div class="product-header-tag" id="prodTag">VELLORIN LABS</div>
+                        <h1 class="configurator-title" id="prodTitle">Artifact Name</h1>
+                        <p class="configurator-desc" id="prodDesc">Artifact baseline structural descriptions.</p>
+                        
+                        <!-- STEP 3: 4 Premium Variant Swatch Options -->
+                        <span class="config-label">Step 3: Select Leather Profile Colorway</span>
+                        <div class="color-swatch-group" id="colorGroup">
+                            <div class="color-option selected-color" style="background: #3d2314;" onclick="selectColorSwatch(this, 'Obsidian Tan')"></div>
+                            <div class="color-option" style="background: #1c1c1c;" onclick="selectColorSwatch(this, 'Charcoal Black')"></div>
+                            <div class="color-option" style="background: #5c4033;" onclick="selectColorSwatch(this, 'Dark Walnut')"></div>
+                            <div class="color-option" style="background: #8b5a2b;" onclick="selectColorSwatch(this, 'Cognac Amber')"></div>
+                        </div>
+
+                        <!-- STEP 4: Protected Price Reveal State Block -->
+                        <span class="config-label">Step 4: Certified Price Matrix</span>
+                        <div class="price-reveal-box" id="priceRevealBox">
+                            <div class="revealed-price" id="prodPriceDisplay">₹0</div>
+                        </div>
+                        <button class="btn-primary" id="revealPriceBtn" style="margin-bottom: 32px;" onclick="handlePriceRevealRequest()">Reveal Custom Price</button>
+
+                        <!-- STEP 5 & 6: Action Call Stack -->
+                        <span class="config-label">Step 5 & 6: Dispatch Order Routines</span>
+                        <div class="action-button-stack">
+                            <button class="btn-primary" onclick="executeAddToCartRoutine()">Add to Cart</button>
+                            <button class="btn-whatsapp" onclick="executeWhatsAppCheckoutRoutine()">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.488 1.449 5.412 1.451 5.428 0 9.845-4.394 9.848-9.793.002-2.618-1.002-5.08-2.83-6.913-1.827-1.83-4.258-2.836-6.878-2.837-5.43 0-9.85 4.394-9.853 9.793-.001 1.956.513 3.868 1.49 5.572l-.995 3.633 3.737-.978zm11.365-4.435c-.29-.145-1.716-.845-1.98-.94-.265-.096-.457-.145-.65.145-.19.29-.738.94-.904 1.13-.166.19-.332.215-.622.07-1.256-.63-2.15-1.1-3.003-2.56-.226-.388.226-.36.646-1.196.07-.145.035-.27-.018-.38-.053-.108-.456-1.1-.626-1.51-.165-.4-.365-.343-.5-.35-.13-.006-.28-.006-.43-.006-.15 0-.395.056-.6.28-.206.224-.785.767-.785 1.87s.8 2.17.91 2.32c.11.147 1.575 2.404 3.816 3.37.533.23 1.01.37 1.357.48.536.17 1.02.146 1.405.088.428-.063 1.32-.54 1.505-1.06.183-.52.183-.965.13-1.06-.055-.094-.2-.146-.49-.29z"/></svg>
+                                WhatsApp Express
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. COMPREHENSIVE LUXURY CART SECTION -->
     <section id="sec-cart" class="page-section">
-        <h2 class="section-title">Your Active Manifest</h2>
+        <h2 class="section-title" style="text-align: left; margin-bottom: 24px;">Your Selected Manifest</h2>
         <div class="cart-layout">
-            <div>
-                <table class="cart-table">
+            <div class="cart-table-wrapper">
+                <table class="cart-items-table">
                     <thead>
                         <tr>
-                            <th>Item Parameters</th>
-                            <th>Color Matrix</th>
-                            <th>Value</th>
+                            <th>Product Information</th>
+                            <th>Unit Value</th>
+                            <th>Quantity</th>
+                            <th>Calculated Total</th>
                         </tr>
                     </thead>
-                    <tbody id="cartItemsContainer"></tbody>
+                    <tbody id="cartTableBody">
+                        <!-- Rendered via JavaScript Module -->
+                    </tbody>
                 </table>
             </div>
-            <div class="summary-box">
-                <h3 style="margin-bottom:15px; font-family:Georgia, serif;">Aggregation</h3>
-                <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
-                    <span>Valuation Subtotal</span>
-                    <span id="cartTotalSum" style="font-weight:700;">₹0</span>
+
+            <!-- Total Valuation Sticky Panel -->
+            <div class="summary-card">
+                <h3 class="summary-title">Order Allocation Summary</h3>
+                <div class="summary-row">
+                    <span>Subtotal Manifest</span>
+                    <span id="cartSubtotal">₹0</span>
                 </div>
-                <button class="btn" onclick="initiateCheckoutFlow()">Proceed To Checkout Steps</button>
+                <div class="summary-row">
+                    <span>Insured Premium Shipping</span>
+                    <span style="color:#25d366; font-weight:600;">FREE</span>
+                </div>
+                <div class="summary-total-row">
+                    <span>Total Amount</span>
+                    <span id="cartGrandTotal" style="color: var(--accent-gold);">₹0</span>
+                </div>
+                <button class="checkout-btn" style="width: 100%;" onclick="executeFinalCheckoutGate()">Proceed to Payment Portal</button>
             </div>
         </div>
     </section>
 
-    <!-- FLOW INDEX 5, 6 & 7: SHIPPING DETAILS ADDRESS FORM & IDENTITY LAYER GATEWAY -->
-    <section id="sec-checkout" class="page-section">
-        <div class="checkout-flow-container">
-            <h2 class="section-title" style="font-size:22px;">Shipping Logistics & Identity</h2>
+    <!-- MANDATORY AUTHENTICATION WALL POPUP -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="login-card">
+            <button class="close-modal" onclick="toggleLoginModal()">&times;</button>
+            <h2 style="font-family: serif; letter-spacing: 4px; margin-bottom: 12px;">GATEWAY VERIFICATION</h2>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px;">To access prices, allocations, and concierge channels, you must verify your profile using a Gmail identity.</p>
             
-            <!-- Address Entry Collection Fields -->
-            <div class="form-group">
-                <label>Consignee Full Legal Name</label>
-                <input type="text" id="shipName" class="form-control" placeholder="John Doe">
-            </div>
-            <div class="form-group">
-                <label>Primary Destinational Address</label>
-                <input type="text" id="shipStreet" class="form-control" placeholder="Suite, Appt, Street Line Profile">
-            </div>
-            <div class="form-group">
-                <label>City & Pin Code Matrix</label>
-                <input type="text" id="shipCityPin" class="form-control" placeholder="Bengaluru - 560001">
-            </div>
-            <div class="form-group">
-                <label>Contact Direct Mobile Line (For WhatsApp Delivery Despatches)</label>
-                <input type="text" id="shipPhone" class="form-control" placeholder="+91 98765 43210">
-            </div>
-
-            <!-- Mandatory Authentication Check Wall Layer -->
-            <div class="auth-panel">
-                <p id="authStatusText" style="font-size:13px; color:var(--text-muted); margin-bottom:15px;">
-                    Authentication Gateway Pending: Please authorize utilizing your authentic Google profile account.
-                </p>
-                <div id="loginFormContainer">
-                    <input type="email" id="userGmailField" class="form-control" placeholder="Enter Gmail Address Account (name@gmail.com)" style="margin-bottom:10px;">
-                    <button class="btn" onclick="authorizeProfileGoogle()">Authorize Profile Connection</button>
-                </div>
-                <button id="razorpayTriggerBtn" class="btn btn-success" style="display:none;" onclick="triggerRazorpayTransactionalEngine()">
-                    Authorize & Launch Razorpay Gateway Gateway
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- FLOW INDEX 9 & 10: GENERATED INVOICE LAYOUT SCREEN + WHATSAPP ENGINE DISPATCH -->
-    <section id="sec-invoice" class="page-section">
-        <div class="invoice-box" id="printTargetInvoiceArea">
-            <div class="invoice-header">
-                <div>
-                    <h1 style="font-family:Georgia, serif; font-size:24px;">VELLORINS INC.</h1>
-                    <p style="font-size:12px; color:var(--text-muted);">Handcrafted Timelines Division</p>
-                </div>
-                <div style="text-align:right;">
-                    <h2 style="font-size:16px; color:var(--success-green);">TRANSACTION COMPLIANT</h2>
-                    <p style="font-size:12px;" id="invRefNum">Ref: --</p>
-                </div>
-            </div>
+            <input type="email" class="gmail-input-field" id="gmailInput" placeholder="Enter your Google Account email (e.g., name@gmail.com)">
             
-            <div style="margin-bottom:20px; display:grid; grid-template-columns: 1fr 1fr; gap:20px; font-size:13px;">
-                <div>
-                    <strong>Customer Account Profile:</strong>
-                    <p id="invCustomerEmail">--</p>
-                </div>
-                <div>
-                    <strong>Consignee Logistics Allocation:</strong>
-                    <p id="invShippingBlock">--</p>
-                </div>
-            </div>
-
-            <table class="cart-table" style="margin-bottom:20px;">
-                <thead>
-                    <tr><th>Description Matrix</th><th>Color Attribute</th><th>Value</th></tr>
-                </thead>
-                <tbody id="invoiceItemsTableContainer"></tbody>
-            </table>
-
-            <div style="text-align:right; font-size:18px; margin-bottom:30px;">
-                <strong>Grand Settlement Liquidated: <span id="invoiceGrandTotalText" style="color:var(--accent-gold);">₹0</span></strong>
-            </div>
-
-            <div id="whatsappActionBannerContainer"></div>
+            <button class="google-auth-btn" onclick="processGmailLogin()">
+                <svg viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                <span>Authorize with Google Identity</span>
+            </button>
         </div>
-    </section>
+    </div>
 
-    <!-- PERSISTENT ORDER HISTORY LOG SHEET -->
-    <section id="sec-history" class="page-section">
-        <h2 class="section-title">Your Order History Registry</h2>
-        <div id="orderHistoryLogsWrapper"></div>
-    </section>
+    <div class="toast-notification" id="toast">Item Added Successfully</div>
 
-    <div class="toast-notification" id="toastBox">Action Registered.</div>
+    <footer>
+        <p>© 2026 VELLORINS ARCHITECTURAL TIMELINES. HANDCRAFTED HIDES DIVISION. PROPRIETARY BRANDING RIGHTS RESERVED.</p>
+    </footer>
 
-    <!-- MAIN CONTROL MECHANICS SYSTEM SCRIPT -->
+    <!-- COMPLETE SYSTEM BUSINESS LOGIC SCRIPT -->
     <script>
-        // Micro Mock Database Core Matrix
-        const productsMasterDataset = [
-            { id: "shoes", name: "Hand-Sculpted Dress Oxford Footwear", price: 2500, colors: ["#3d2314", "#1c1c1c", "#5c4033"], colorNames: ["Obsidian Tan", "Charcoal Black", "Dark Walnut"], image: "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20image.png" },
-            { id: "wallets", name: "Artisan Bi-Fold Minimalist Case", price: 1200, colors: ["#1c1c1c", "#8b5a2b"], colorNames: ["Charcoal Black", "Cognac Amber"], image: "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg" },
-            { id: "belts", name: "Full-Grain Solid Hide Utility Belt", price: 950, colors: ["#3d2314", "#5c4033"], colorNames: ["Obsidian Tan", "Dark Walnut"], image: "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/belts.jpeg" }
-        ];
+        // Database Matrix Mock representing your inventory layers
+        const catalogDatabase = {
+            shoes: {
+                title: "Hand-Sculpted Dress Oxford Footwear",
+                tag: "VELLORIN FOOTWEAR",
+                desc: "Anatomically cushioned dress outlines. Organic oil hand-burnished deep patina structure built straight into custom high-tensile outsoles.",
+                price: 2500,
+                images: [
+                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20image.png",
+                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20image.png",
+                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20image.png"
+                ]
+            },
+            wallets: {
+                title: "Artisan Bi-Fold Minimalist Case",
+                tag: "VELLORIN SMALL GOODS",
+                desc: "Ultra-slim pocket silhouettes crafted to age beautifully. Features hand-burnished edge sealing cream finishes and RFID shielding protection cores.",
+                price: 1200,
+                images: [
+                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg",
+                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg",
+                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg"
+                ]
+            },
+            belts: {
+                title: "Full-Grain Solid Hide Utility Belt",
+                tag: "VELLORIN HARDWARE",
+                desc: "Carved seamlessly out of single continuous solid hides to prevent edge splitting or folding. Complemented by custom polished alloy buckles.",
+                price: 950,
+                images: [
+                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/belts.jpeg",
+                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/belts.jpeg",
+                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/belts.jpeg"
+                ]
+            },
+            bags: {
+                title: "Premium Cabin Duffle Briefcase",
+                tag: "VELLORIN TRAVEL",
+                desc: "Meticulously handcrafted using high-tensile full-grain hides. Tailored gracefully with anti-tarnish metal alloy zippers for the refined traveller.",
+                price: 3800,
+                images: [
+                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/Bag%20image.png",
+                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/Bag%20image.png",
+                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/Bag%20image.png"
+                ]
+            }
+        };
 
-        // Core App Runtime Variables
-        let clientBasketState = [];
-        let verifiedUserSessionEmail = localStorage.getItem('vellorin_authenticated_user') || null;
-        let selectedConfiguredColors = {}; // Tracks active choice per item id
+        // Reactive Application State Properties
+        let cartState = [];
+        let authenticatedUser = localStorage.getItem('VELLORIN_user') || null;
+        let selectedProductKey = null;
+        let selectedColorVariant = "Obsidian Tan";
 
-        // Initialize Storefront Catalog
-        function buildStorefrontCatalog() {
-            const container = document.getElementById('catalogDisplayGrid');
-            container.innerHTML = '';
+        // Navigation Engine
+        function switchTab(tabKey) {
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active-section'));
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
             
-            productsMasterDataset.forEach(product => {
-                // Pre-configure initial default colorway selection
-                if (!selectedConfiguredColors[product.id]) {
-                    selectedConfiguredColors[product.id] = product.colorNames[0];
-                }
+            document.getElementById(`sec-${tabKey}`).classList.add('active-section');
+            const navLink = document.getElementById(`nav-${tabKey}`);
+            if(navLink) navLink.classList.add('active');
 
-                let colorDotsHTML = '';
-                product.colors.forEach((hex, idx) => {
-                    const isSelected = selectedConfiguredColors[product.id] === product.colorNames[idx] ? 'selected' : '';
-                    colorDotsHTML += `<div class="color-dot ${isSelected}" style="background:${hex}" onclick="updateProductColorState('${product.id}', ${idx}, this)"></div>`;
-                });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
 
-                container.innerHTML += `
-                    <div class="product-card">
-                        <img src="${product.image}" class="product-img" alt="Artifact Frame">
-                        <div class="product-name">${product.name}</div>
-                        <div class="product-price">₹${product.price.toLocaleString('en-IN')}</div>
-                        <div class="color-selector">
-                            <span class="color-label">Choose Color:</span>
-                            <div class="color-options">${colorDotsHTML}</div>
-                        </div>
-                        <button class="btn" onclick="appendItemToCartRoutine('${product.id}')">Add To Cart</button>
+            if(tabKey === 'cart') renderCartSystem();
+        }
+
+        function toggleLoginModal() {
+            document.getElementById('loginModal').classList.toggle('open');
+        }
+
+        // Stepper Engine Logic
+        function startDiscovery(productKey) {
+            selectedProductKey = productKey;
+            const data = catalogDatabase[productKey];
+
+            document.getElementById('prodTitle').textContent = data.title;
+            document.getElementById('prodTag').textContent = data.tag;
+            document.getElementById('prodDesc').textContent = data.desc;
+            document.getElementById('prodPriceDisplay').textContent = "₹" + data.price.toLocaleString('en-IN');
+            
+            const mainImg = document.getElementById('mainGalleryImage');
+            mainImg.src = data.images[0];
+
+            const strip = document.getElementById('galleryThumbStrip');
+            strip.innerHTML = '';
+            data.images.forEach((imgUrl, idx) => {
+                strip.innerHTML += `
+                    <div class="thumb-box ${idx === 0 ? 'active-thumb' : ''}" onclick="changeDisplayPhoto(this, '${imgUrl}')">
+                        <img src="${imgUrl}" alt="Variant View">
                     </div>
                 `;
             });
-        }
 
-        // Handle Real-Time Dynamic Color Mapping Upstream
-        function updateProductColorState(productId, colorIndex, element) {
-            const targetProduct = productsMasterDataset.find(p => p.id === productId);
-            selectedConfiguredColors[productId] = targetProduct.colorNames[colorIndex];
-            
-            // Re-render display configuration dots wrapper instantly
-            const parent = element.parentElement;
-            parent.querySelectorAll('.color-dot').forEach(d => d.classList.remove('selected'));
-            element.classList.add('selected');
-        }
+            document.getElementById('priceRevealBox').style.display = "none";
+            document.getElementById('revealPriceBtn').style.display = "block";
 
-        // Section View Management Switching Architecture
-        function switchSection(targetSectionId) {
-            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active-section'));
-            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-            
-            document.getElementById(`sec-${targetSectionId}`).classList.add('active-section');
-            const targetNav = document.getElementById(`nav-${targetSectionId}`);
-            if(targetNav) targetNav.classList.add('active');
+            document.getElementById('shop-step1').style.display = "none";
+            document.getElementById('shop-discovery-view').style.display = "block";
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            if(targetSectionId === 'cart') renderCartWorkspace();
-            if(targetSectionId === 'history') renderOrderHistoryWorkspace();
         }
 
-        // Append Selections directly into Basket Object Array
-        function appendItemToCartRoutine(productId) {
-            const targetProduct = productsMasterDataset.find(p => p.id === productId);
-            const selectedColor = selectedConfiguredColors[productId];
+        function changeDisplayPhoto(element, targetUrl) {
+            document.querySelectorAll('.thumb-box').forEach(box => box.classList.remove('active-thumb'));
+            element.classList.add('active-thumb');
+            document.getElementById('mainGalleryImage').src = targetUrl;
+        }
 
-            clientBasketState.push({
-                id: targetProduct.id,
-                name: targetProduct.name,
-                price: targetProduct.price,
-                chosenColor: selectedColor
+        function selectColorSwatch(element, colorString) {
+            document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('selected-color'));
+            element.classList.add('selected-color');
+            selectedColorVariant = colorString;
+        }
+
+        function resetShopView() {
+            document.getElementById('shop-discovery-view').style.display = "none";
+            document.getElementById('shop-step1').style.display = "block";
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Secure Rule Verification Gateway Actions
+        function handlePriceRevealRequest() {
+            if(!authenticatedUser) {
+                alert("Security Gateway Protocol: You must sign in with your Gmail identity to access pricing structures.");
+                toggleLoginModal();
+                return;
+            }
+            document.getElementById('revealPriceBtn').style.display = "none";
+            document.getElementById('priceRevealBox').style.display = "block";
+        }
+
+        function processGmailLogin() {
+            const emailInput = document.getElementById('gmailInput').value;
+            if(!emailInput.toLowerCase().endsWith('@gmail.com')) {
+                alert("Authorization Denied: This storefront strictly mandates authentic login profiles ending with '@gmail.com'.");
+                return;
+            }
+            authenticatedUser = emailInput;
+            localStorage.setItem('VELLORIN_user', emailInput);
+            document.getElementById('userStatusDot').style.background = "#25d366";
+            toggleLoginModal();
+            showToastNotification("Authorized Successfully via Google Connection.");
+            if(selectedProductKey) handlePriceRevealRequest();
+        }
+
+        // Order Routines Execution Module
+        function executeAddToCartRoutine() {
+            if(!authenticatedUser) { return handlePriceRevealRequest(); }
+            const activeItem = catalogDatabase[selectedProductKey];
+            
+            cartState.push({
+                name: activeItem.title,
+                price: activeItem.price,
+                variant: selectedColorVariant,
+                image: activeItem.images[0]
             });
 
-            updateGlobalCartBadge();
-            triggerUINotificationToast("Item successfully aggregated to manifest.");
+            updateGlobalCartMetrics();
+            showToastNotification("Item logged into cart manifest.");
         }
 
-        function updateGlobalCartBadge() {
-            document.getElementById('globalCartCount').textContent = clientBasketState.length;
+        function executeWhatsAppCheckoutRoutine() {
+            if(!authenticatedUser) { return handlePriceRevealRequest(); }
+            const activeItem = catalogDatabase[selectedProductKey];
+            const baseText = `Greetings VELLORIN Concierge, I am verified under profile ${authenticatedUser}. I would like to instantly secure booking lines for the curated [${activeItem.title}] configured in colorway variant [${selectedColorVariant}]. Please confirm stock allocation.`;
+            const encodedUrlString = encodeURIComponent(baseText);
+            window.open(`https://wa.me/917090635884?text=${encodedUrlString}`, '_blank');
         }
 
-        // Generate and Project Interactive Active Cart State Space Tables
-        function renderCartWorkspace() {
-            const container = document.getElementById('cartItemsContainer');
-            container.innerHTML = '';
-            let cumulativeSum = 0;
+        function updateGlobalCartMetrics() {
+            document.getElementById('cartCount').textContent = cartState.length;
+        }
 
-            if(clientBasketState.length === 0) {
-                container.innerHTML = `<tr><td colspan="3" style="text-align:center; padding:40px; color:var(--text-muted);">Active profile selection arrays are currently empty.</td></tr>`;
-                document.getElementById('cartTotalSum').textContent = "₹0";
+        function removeCartItem(idx) {
+            cartState.splice(idx, 1);
+            updateGlobalCartMetrics();
+            renderCartSystem();
+        }
+
+        function renderCartSystem() {
+            const body = document.getElementById('cartTableBody');
+            body.innerHTML = '';
+            let totalAccumulated = 0;
+
+            if(cartState.length === 0) {
+                body.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:60px; color: var(--text-muted);">Your manifest selection array is empty. Link to Shop to allocate products.</td></tr>`;
+                document.getElementById('cartSubtotal').textContent = "₹0";
+                document.getElementById('cartGrandTotal').textContent = "₹0";
                 return;
             }
 
-            clientBasketState.forEach((item, index) => {
-                cumulativeSum += item.price;
-                container.innerHTML += `
+            cartState.forEach((item, index) => {
+                totalAccumulated += item.price;
+                body.innerHTML += `
                     <tr>
-                        <td><strong>${item.name}</strong><br><small style="color:red; cursor:pointer;" onclick="purgeItemFromCart(${index})">Purge Unit</small></td>
-                        <td><span style="font-size:13px; font-weight:600;">${item.chosenColor}</span></td>
+                        <td>
+                            <div class="cart-item-meta">
+                                <img src="${item.image}" class="cart-item-img" alt="Thumbnail">
+                                <div>
+                                    <div class="cart-item-title">${item.name}</div>
+                                    <div class="cart-item-variant">Dye Variant: ${item.variant}</div>
+                                    <button class="remove-cart-item" onclick="removeCartItem(${index})">De-allocate</button>
+                                </div>
+                            </div>
+                        </td>
                         <td>₹${item.price.toLocaleString('en-IN')}</td>
+                        <td>1</td>
+                        <td><strong>₹${item.price.toLocaleString('en-IN')}</strong></td>
                     </tr>
                 `;
             });
-            document.getElementById('cartTotalSum').textContent = "₹" + cumulativeSum.toLocaleString('en-IN');
+
+            document.getElementById('cartSubtotal').textContent = "₹" + totalAccumulated.toLocaleString('en-IN');
+            document.getElementById('cartGrandTotal').textContent = "₹" + totalAccumulated.toLocaleString('en-IN');
         }
 
-        function purgeItemFromCart(index) {
-            clientBasketState.splice(index, 1);
-            updateGlobalCartBadge();
-            renderCartWorkspace();
-        }
-
-        function initiateCheckoutFlow() {
-            if(clientBasketState.length === 0) {
-                alert("Operation Aborted: Cart contains no product payloads.");
-                return;
-            }
-            switchSection('checkout');
-            verifyAuthStateInterfacingElements();
-        }
-
-        // Verify Identity Authorization Checks (Simulated Google Profiles Module)
-        function authorizeProfileGoogle() {
-            const inputVal = document.getElementById('userGmailField').value.trim();
-            if(!inputVal.toLowerCase().endsWith('@gmail.com')) {
-                alert("Security Authorization Rejection: Accounts must strictly terminate with '@gmail.com'.");
-                return;
-            }
-            verifiedUserSessionEmail = inputVal;
-            localStorage.setItem('vellorin_authenticated_user', inputVal);
-            verifyAuthStateInterfacingElements();
-            triggerUINotificationToast("Google Identity Connected.");
-        }
-
-        function verifyAuthStateInterfacingElements() {
-            if(verifiedUserSessionEmail) {
-                document.getElementById('authStatusText').innerHTML = `Identity Verified Authenticated Profile Secure: <strong style="color:var(--success-green);">${verifiedUserSessionEmail}</strong>`;
-                document.getElementById('loginFormContainer').style.display = 'none';
-                document.getElementById('razorpayTriggerBtn').style.display = 'block';
-            } else {
-                document.getElementById('authStatusText').textContent = "Authentication Gateway Pending: Please authorize utilizing your authentic Google profile account.";
-                document.getElementById('loginFormContainer').style.display = 'block';
-                document.getElementById('razorpayTriggerBtn').style.display = 'none';
-            }
-        }
-
-        // Execute Transactional Frame Routines Interfacing directly via Razorpay Core Checkout Standard
-        function triggerRazorpayTransactionalEngine() {
-            // Validation Constraints Checks
-            const name = document.getElementById('shipName').value.trim();
-            const street = document.getElementById('shipStreet').value.trim();
-            const cityPin = document.getElementById('shipCityPin').value.trim();
-            const phone = document.getElementById('shipPhone').value.trim();
-
-            if(!name || !street || !cityPin || !phone) {
-                alert("Logistics Warning: Please provide full logistical destination values prior to charging lines.");
+        // INTEGRATED RAZORPAY STANDARD FRONTEND GATEWAY METHOD
+        function executeFinalCheckoutGate() {
+            if(!authenticatedUser) {
+                alert("Authorization Required: Please complete Gmail verification steps before interacting with checkout payment routing points.");
+                toggleLoginModal();
                 return;
             }
 
-            let computedTotalValue = 0;
-            clientBasketState.forEach(i => computedTotalValue += i.price);
+            if(cartState.length === 0) {
+                alert("Your checkout manifest is empty.");
+                return;
+            }
 
-            const rzpOptions = {
-                "key": "rzp_live_TEft2IA1fFS4W4,YCstf4roXNTQrTgQQzPP2DB8", // Insert Live or Sandbox Public Token Keys here
-                "amount": (computedTotalValue * 100).toString(), // Absolute Value converted directly to sub-units (Paise)
+            // Calculate overall total price in sub-units (Paise) for Indian Rupees
+            let grossTotalAmount = 0;
+            cartState.forEach(item => grossTotalAmount += item.price);
+            const amountInPaise = grossTotalAmount * 100;
+
+            // Compile descriptive manifest checklist text
+            const orderManifestSummary = cartState.map(i => `${i.name} (${i.variant})`).join(', ');
+
+            // Razorpay Unified Configuration Layer
+            const checkoutOptions = {
+                "key": "rzp_test_replaceWithYourActualKey", // Place your real Razorpay public Key ID here
+                "amount": amountInPaise.toString(),
                 "currency": "INR",
-                "name": "VELLORINS CONCIERGE",
-                "description": `System Allocation Execution for ${clientBasketState.length} Hides`,
+                "name": "VELLORIN CO.",
+                "description": orderManifestSummary.substring(0, 255),
                 "image": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg",
-                "handler": function (transactionPayloadResponse) {
-                    processOrderCompletionAndInvoicingRoutine(transactionPayloadResponse.razorpay_payment_id, {
-                        name, street, cityPin, phone
-                    }, computedTotalValue);
+                "handler": function (transactionResponse){
+                    // Triggered instantly upon successful authorization captures
+                    alert("Payment Authorized Successfully!\nRazorpay Reference: " + transactionResponse.razorpay_payment_id);
+                    
+                    // Clear app cart parameters state upon capture
+                    cartState = [];
+                    updateGlobalCartMetrics();
+                    switchTab('home');
+                    showToastNotification("Order secured successfully!");
                 },
                 "prefill": {
-                    "name": name,
-                    "email": verifiedUserSessionEmail,
-                    "contact": phone
+                    "name": "Patron Name",
+                    "email": authenticatedUser
                 },
-                "theme": { "color": "#bfa175" }
+                "theme": {
+                    "color": "#bfa175" // Matching your luxury gold theme coloring accent rules
+                }
             };
 
-            const paymentGatewayPortalInstance = new Razorpay(rzpOptions);
-            paymentGatewayPortalInstance.open();
-        }
-
-        // Formulate Finalized Order, Invoice Recordation Logging & Route out to WhatsApp Channels
-        function processOrderCompletionAndInvoicingRoutine(paymentId, shippingObject, orderTotalValue) {
-            const generatedInvoiceId = "VEL-" + Math.floor(100000 + Math.random() * 900000);
-            
-            const invoiceRecordPayload = {
-                invoiceId: generatedInvoiceId,
-                paymentReference: paymentId,
-                buyerEmail: verifiedUserSessionEmail,
-                shippingDetails: shippingObject,
-                itemsSnapshot: [...clientBasketState],
-                grandTotalValuation: orderTotalValue,
-                timestamp: new Date().toLocaleDateString('en-IN')
-            };
-
-            // Commit record straight into historical local state spaces matrix
-            let localizedHistoryDataset = JSON.parse(localStorage.getItem('vellorin_order_history') || '[]');
-            localizedHistoryDataset.push(invoiceRecordPayload);
-            localStorage.setItem('vellorin_order_history', JSON.stringify(localizedHistoryDataset));
-
-            // Render invoice display outputs directly on page layout sheets
-            renderVisualInvoiceSheet(invoiceRecordPayload);
-            
-            // Clean active basket parameters setup completely
-            clientBasketState = [];
-            updateGlobalCartBadge();
-
-            // Transition to target workspace viewport terminal window area
-            switchSection('invoice');
-        }
-
-        function renderVisualInvoiceSheet(invoiceObject) {
-            document.getElementById('invRefNum').textContent = `Invoice Ref: ${invoiceObject.invoiceId} / PayRef: ${invoiceObject.paymentReference}`;
-            document.getElementById('invCustomerEmail').textContent = invoiceObject.buyerEmail;
-            document.getElementById('invShippingBlock').innerHTML = `${invoiceObject.shippingDetails.name}<br>${invoiceObject.shippingDetails.street}<br>${invoiceObject.shippingDetails.cityPin}<br>Contact: ${invoiceObject.shippingDetails.phone}`;
-
-            const itemContainer = document.getElementById('invoiceItemsTableContainer');
-            itemContainer.innerHTML = '';
-            invoiceObject.itemsSnapshot.forEach(item => {
-                itemContainer.innerHTML += `<tr><td>${item.name}</td><td>${item.chosenColor}</td><td>₹${item.price.toLocaleString('en-IN')}</td></tr>`;
-            });
-
-            document.getElementById('invoiceGrandTotalText').textContent = "₹" + invoiceObject.grandTotalValuation.toLocaleString('en-IN');
-
-            // Formulate WhatsApp Redirect Command Text Array Parameters Blueprint
-            const textLinePayloadMessage = `Greetings VELLORIN Concierge.\n\nTransaction Confirmed Under Verified Invoice ID: [${invoiceObject.invoiceId}].\n\n- Account Profile: ${invoiceObject.buyerEmail}\n- Total Settlement Paid: ₹${invoiceObject.grandTotalValuation}\n- Shipping Intended Target Destination: ${invoiceObject.shippingDetails.name}, ${invoiceObject.shippingDetails.street}, ${invoiceObject.shippingDetails.cityPin}.\n\nPlease register my custom allocation schedule into the tannery processing matrix immediately.`;
-            const encodedStringUrlParameters = encodeURIComponent(textLinePayloadMessage);
-            const finalWhatsAppDeepLinkURI = `https://wa.me/917090635884?text=${encodedStringUrlParameters}`;
-
-            // Mount call action button directly on layout interface blocks area
-            document.getElementById('whatsappActionBannerContainer').innerHTML = `
-                <div style="background: #f4f4f6; padding:20px; border-left:4px solid var(--success-green); text-align:center;">
-                    <p style="font-size:13px; margin-bottom:12px; font-weight:600;">Your order allocation has been secured. Finalize verification by updating our team concierge desks via WhatsApp channels directly.</p>
-                    <a href="${finalWhatsAppDeepLinkURI}" target="_blank" class="btn btn-success" style="width:auto; padding:12px 30px;">Transmit WhatsApp Confirmation</a>
-                </div>
-            `;
-        }
-
-        // Render Persistent Historical Recordation Workspace Panels Array
-        function renderOrderHistoryWorkspace() {
-            const container = document.getElementById('orderHistoryLogsWrapper');
-            container.innerHTML = '';
-
-            let logs = JSON.parse(localStorage.getItem('vellorin_order_history') || '[]');
-            
-            // Filter strictly matching logs targeting current active authenticated Google profile session entries
-            if(verifiedUserSessionEmail) {
-                logs = logs.filter(l => l.buyerEmail === verifiedUserSessionEmail);
+            try {
+                const razorpayGatewayInstance = new Razorpay(checkoutOptions);
+                razorpayGatewayInstance.open();
+            } catch (error) {
+                console.error("Razorpay instance construction exception error:", error);
+                alert("Failed to initialize Razorpay frame. Please ensure your Key ID is correct.");
             }
-
-            if(logs.length === 0) {
-                container.innerHTML = `<div style="text-align:center; padding:40px; color:var(--text-muted); background:white; border:1px solid var(--border-color);">No historical transaction logs found tracking this user verification profile context.</div>`;
-                return;
-            }
-
-            logs.reverse().forEach(log => {
-                let itemsListText = log.itemsSnapshot.map(i => `${i.name} (${i.chosenColor})`).join(', ');
-                container.innerHTML += `
-                    <div class="history-card">
-                        <div style="display:flex; justify-content:space-between; margin-bottom:10px; border-bottom:1px solid var(--border-color); padding-bottom:8px;">
-                            <strong>Invoice ID: ${log.invoiceId}</strong>
-                            <span style="color:var(--success-green); font-weight:700; font-size:12px;">PAID via Razorpay</span>
-                        </div>
-                        <p style="font-size:14px; margin-bottom:6px;"><strong>Items Allocated:</strong> ${itemsListText}</p>
-                        <p style="font-size:13px; color:var(--text-muted);">Processed Timestamp Date: ${log.timestamp} | PayRef ID: ${log.paymentReference}</p>
-                        <div style="margin-top:12px; text-align:right;">
-                            <button class="btn" style="width:auto; padding:6px 15px; font-size:10px;" onclick='reprojectHistoricalInvoice(${JSON.stringify(log)})'>View Full Invoice Plate</button>
-                        </div>
-                    </div>
-                `;
-            });
         }
 
-        function reprojectHistoricalInvoice(invoiceObject) {
-            renderVisualInvoiceSheet(invoiceObject);
-            switchSection('invoice');
-        }
-
-        function triggerUINotificationToast(msg) {
-            const toast = document.getElementById('toastBox');
-            toast.textContent = msg;
+        function showToastNotification(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
             toast.style.display = 'block';
             setTimeout(() => { toast.style.display = 'none'; }, 3000);
         }
 
-        // Bootstrapping App Launch Sequence Execution Block
-        window.onload = function() {
-            buildStorefrontCatalog();
-            updateGlobalCartBadge();
-        };
+        if(authenticatedUser) {
+            document.getElementById('userStatusDot').style.background = "#25d366";
+        }
     </script>
 </body>
 </html>
