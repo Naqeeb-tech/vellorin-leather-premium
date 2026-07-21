@@ -406,7 +406,7 @@
 
         .thumbnail-strip {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 12px;
         }
 
@@ -420,7 +420,7 @@
 
         .thumb-box.active-thumb {
             border-color: var(--accent-gold);
-            outline: 1px solid var(--accent-gold);
+            outline: 2px solid var(--accent-gold);
         }
 
         .thumb-box img {
@@ -501,7 +501,7 @@
             content: '';
             position: absolute;
             top: -5px; left: -5px; right: -5px; bottom: -5px;
-            border: 1px solid var(--accent-gold);
+            border: 2px solid var(--accent-gold);
             border-radius: 50%;
         }
 
@@ -601,6 +601,7 @@
 
         @media (max-width: 992px) {
             .cart-layout { grid-template-columns: 1fr; }
+            .discovery-view { grid-template-columns: 1fr; }
         }
 
         .cart-table-wrapper {
@@ -971,15 +972,15 @@
                 <h2 class="section-title">Explore Our Collections</h2>
                 <div class="category-grid">
                     <div class="category-card" onclick="startDiscovery('shoes')">
-                        <div class="category-img-box"><img src="https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20image.png" alt="Shoes Cut"></div>
+                        <div class="category-img-box"><img src="https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&w=800&q=80" alt="Shoes Cut"></div>
                         <div class="category-title">Luxury Footwear</div>
                     </div>
                     <div class="category-card" onclick="startDiscovery('wallets')">
-                        <div class="category-img-box"><img src="https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg" alt="Wallets Cut"></div>
+                        <div class="category-img-box"><img src="https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80" alt="Wallets Cut"></div>
                         <div class="category-title">Artisan Wallets</div>
                     </div>
                     <div class="category-card" onclick="startDiscovery('belts')">
-                        <div class="category-img-box"><img src="https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/belts.jpeg" alt="Belts Cut"></div>
+                        <div class="category-img-box"><img src="https://images.unsplash.com/photo-1624222247344-550fb60583dc?auto=format&fit=crop&w=800&q=80" alt="Belts Cut"></div>
                         <div class="category-title">Architectural Belts</div>
                     </div>
                     <div class="category-card" onclick="startDiscovery('bags')">
@@ -1010,14 +1011,15 @@
                         <h1 class="configurator-title" id="prodTitle">Artifact Name</h1>
                         <p class="configurator-desc" id="prodDesc">Artifact baseline structural descriptions.</p>
                         
-                        <!-- STEP 3: Premium Variant Swatch Options -->
+                        <!-- STEP 3: Premium Variant Swatch Options for ALL Products -->
                         <span class="config-label">Step 3: Choose Color Variant</span>
                         <div class="color-swatch-group" id="colorGroup">
-                            <div class="color-option selected-color" style="background: #3d2314;" onclick="selectColorSwatch(this, 'Obsidian Tan')"></div>
-                            <div class="color-option" style="background: #1c1c1c;" onclick="selectColorSwatch(this, 'Charcoal Black')"></div>
-                            <div class="color-option" style="background: #5c4033;" onclick="selectColorSwatch(this, 'Dark Walnut')"></div>
-                            <div class="color-option" style="background: #8b5a2b;" onclick="selectColorSwatch(this, 'Cognac Amber')"></div>
+                            <div class="color-option selected-color" title="Dark Brown" style="background: #3d2314;" onclick="selectColorSwatch(this, 'Dark Brown')"></div>
+                            <div class="color-option" title="Black" style="background: #1c1c1c;" onclick="selectColorSwatch(this, 'Black')"></div>
+                            <div class="color-option" title="Medium Brown" style="background: #6e472a;" onclick="selectColorSwatch(this, 'Medium Brown')"></div>
+                            <div class="color-option" title="Light Brown / Tan" style="background: #b87b41;" onclick="selectColorSwatch(this, 'Light Brown / Tan')"></div>
                         </div>
+                        <div id="selectedColorLabel" style="font-size: 13px; font-weight: 600; margin-top: -20px; margin-bottom: 24px; color: var(--accent-gold);">Selected: Dark Brown</div>
 
                         <!-- STEP 4: Direct Price & Discount Display Matrix -->
                         <span class="config-label animated-offer-label">Step 4: Special Offer Pricing</span>
@@ -1090,7 +1092,7 @@
             <div id="checkout-address-block">
                 <h3 style="font-family: serif; margin-bottom: 15px;">Shipping Details</h3>
                 <input type="text" id="custName" class="form-input" placeholder="Full Legal Recipient Name">
-                <input type="text" id="custStreet" class="form-input" placeholder="Street Address, Appartment, Unit">
+                <input type="text" id="custStreet" class="form-input" placeholder="Street Address, Apartment, Unit">
                 <input type="text" id="custCity" class="form-input" placeholder="City, State & Postal Zip Code">
                 <input type="text" id="custPhone" class="form-input" placeholder="WhatsApp Contact Mobile Number">
                 <button class="btn-primary" style="width:100%;" onclick="submitAddressAndLockStage()">Validate & Save Address Details</button>
@@ -1195,15 +1197,7 @@
 
     <!-- COMPLETE SYSTEM BUSINESS LOGIC SCRIPT -->
     <script>
-        // Color variant mapping for dynamic image swapping
-        const shoeColorMap = {
-            "Obsidian Tan": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20image.png",
-            "Charcoal Black": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20black.png",
-            "Dark Walnut": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20brown.png",
-            "Cognac Amber": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20tan.png"
-        };
-
-        // Database Matrix with Original and 30% OFF Calculated Prices
+        // Database Matrix for ALL Products with Color Variations and High-Quality Image Sets
         const catalogDatabase = {
             shoes: {
                 title: "Hand-Sculpted Dress Oxford Footwear",
@@ -1211,12 +1205,12 @@
                 desc: "Anatomically cushioned dress outlines. Organic oil hand-burnished deep patina structure built straight into custom high-tensile outsoles.",
                 originalPrice: 3571,
                 price: 2500, // 30% OFF
-                images: [
-                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20image.png",
-                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20black.png",
-                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20brown.png",
-                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20tan.png"
-                ]
+                colorVariants: {
+                    "Dark Brown": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20brown.png",
+                    "Black": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20black.png",
+                    "Medium Brown": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20image.png",
+                    "Light Brown / Tan": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20tan.png"
+                }
             },
             wallets: {
                 title: "Artisan Bi-Fold Minimalist Case",
@@ -1224,11 +1218,12 @@
                 desc: "Ultra-slim pocket silhouettes crafted to age beautifully. Features hand-burnished edge sealing cream finishes and RFID shielding protection cores.",
                 originalPrice: 1714,
                 price: 1200, // 30% OFF
-                images: [
-                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg",
-                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg",
-                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg"
-                ]
+                colorVariants: {
+                    "Dark Brown": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg",
+                    "Black": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80",
+                    "Medium Brown": "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80",
+                    "Light Brown / Tan": "https://images.unsplash.com/photo-1606503153255-59d8b8b82176?auto=format&fit=crop&w=800&q=80"
+                }
             },
             belts: {
                 title: "Full-Grain Solid Hide Utility Belt",
@@ -1236,11 +1231,12 @@
                 desc: "Carved seamlessly out of single continuous solid hides to prevent edge splitting or folding. Complemented by custom polished alloy buckles.",
                 originalPrice: 1357,
                 price: 950, // 30% OFF
-                images: [
-                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/belts.jpeg",
-                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/belts.jpeg",
-                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/belts.jpeg"
-                ]
+                colorVariants: {
+                    "Dark Brown": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/belts.jpeg",
+                    "Black": "https://images.unsplash.com/photo-1624222247344-550fb60583dc?auto=format&fit=crop&w=800&q=80",
+                    "Medium Brown": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80",
+                    "Light Brown / Tan": "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&w=800&q=80"
+                }
             },
             bags: {
                 title: "Premium Cabin Duffle Briefcase",
@@ -1248,11 +1244,12 @@
                 desc: "Meticulously handcrafted using high-tensile full-grain hides. Tailored gracefully with anti-tarnish metal alloy zippers for the refined traveller.",
                 originalPrice: 5428,
                 price: 3800, // 30% OFF
-                images: [
-                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/Bag%20image.png",
-                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/Bag%20image.png",
-                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/Bag%20image.png"
-                ]
+                colorVariants: {
+                    "Dark Brown": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/Bag%20image.png",
+                    "Black": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80",
+                    "Medium Brown": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80",
+                    "Light Brown / Tan": "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=800&q=80"
+                }
             }
         };
 
@@ -1260,7 +1257,7 @@
         let cartState = [];
         let authenticatedUser = localStorage.getItem('VELLORIN_user') || null;
         let selectedProductKey = null;
-        let selectedColorVariant = "Obsidian Tan";
+        let selectedColorVariant = "Dark Brown";
         
         // Checkout state variables
         let lockedAddressDetails = null;
@@ -1296,17 +1293,33 @@
             document.getElementById('prodOriginalPriceDisplay').textContent = "₹" + data.originalPrice.toLocaleString('en-IN');
             document.getElementById('prodPriceDisplay').textContent = "₹" + data.price.toLocaleString('en-IN');
             
+            // Set default selected variant
+            selectedColorVariant = "Dark Brown";
+            document.getElementById('selectedColorLabel').textContent = "Selected: Dark Brown";
+            
             const mainImg = document.getElementById('mainGalleryImage');
-            mainImg.src = data.images[0];
+            mainImg.src = data.colorVariants["Dark Brown"];
 
+            // Render Thumbnail strip dynamically with high quality images for all colors
             const strip = document.getElementById('galleryThumbStrip');
             strip.innerHTML = '';
-            data.images.forEach((imgUrl, idx) => {
+            
+            Object.keys(data.colorVariants).forEach((colorName, idx) => {
+                const imgUrl = data.colorVariants[colorName];
                 strip.innerHTML += `
-                    <div class="thumb-box ${idx === 0 ? 'active-thumb' : ''}" onclick="changeDisplayPhoto(this, '${imgUrl}')">
-                        <img src="${imgUrl}" alt="Variant View">
+                    <div class="thumb-box ${idx === 0 ? 'active-thumb' : ''}" onclick="selectColorFromThumb('${colorName}')">
+                        <img src="${imgUrl}" alt="${colorName} View">
                     </div>
                 `;
+            });
+
+            // Reset Swatch Selection UI
+            const swatches = document.querySelectorAll('.color-option');
+            swatches.forEach(swatch => {
+                swatch.classList.remove('selected-color');
+                if (swatch.getAttribute('title') === 'Dark Brown') {
+                    swatch.classList.add('selected-color');
+                }
             });
 
             document.getElementById('shop-step1').style.display = "none";
@@ -1315,32 +1328,39 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function changeDisplayPhoto(element, targetUrl) {
-            document.querySelectorAll('.thumb-box').forEach(box => box.classList.remove('active-thumb'));
-            element.classList.add('active-thumb');
-            document.getElementById('mainGalleryImage').src = targetUrl;
-        }
-
         function selectColorSwatch(element, colorString) {
             document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('selected-color'));
             element.classList.add('selected-color');
             selectedColorVariant = colorString;
+            document.getElementById('selectedColorLabel').textContent = "Selected: " + colorString;
 
-            // Dynamically update shoe image if user is viewing shoes
-            if (selectedProductKey === 'shoes' && shoeColorMap[colorString]) {
-                const targetImg = shoeColorMap[colorString];
-                document.getElementById('mainGalleryImage').src = targetImg;
-                
-                // Highlight corresponding thumb box in gallery
-                const thumbs = document.querySelectorAll('.thumb-box');
-                thumbs.forEach(thumb => {
-                    const img = thumb.querySelector('img');
-                    if (img && img.src === targetImg) {
-                        thumbs.forEach(b => b.classList.remove('active-thumb'));
-                        thumb.classList.add('active-thumb');
-                    }
-                });
+            // Dynamically change image for ALL products (Shoes, Wallets, Belts, Bags)
+            if (selectedProductKey && catalogDatabase[selectedProductKey]) {
+                const variants = catalogDatabase[selectedProductKey].colorVariants;
+                if (variants[colorString]) {
+                    const targetImg = variants[colorString];
+                    document.getElementById('mainGalleryImage').src = targetImg;
+
+                    // Sync thumbnail highlight
+                    const thumbs = document.querySelectorAll('.thumb-box');
+                    thumbs.forEach(thumb => {
+                        const img = thumb.querySelector('img');
+                        if (img && img.src === targetImg) {
+                            thumbs.forEach(b => b.classList.remove('active-thumb'));
+                            thumb.classList.add('active-thumb');
+                        }
+                    });
+                }
             }
+        }
+
+        function selectColorFromThumb(colorString) {
+            const swatches = document.querySelectorAll('.color-option');
+            swatches.forEach(swatch => {
+                if (swatch.getAttribute('title') === colorString) {
+                    selectColorSwatch(swatch, colorString);
+                }
+            });
         }
 
         function resetShopView() {
@@ -1365,12 +1385,7 @@
         // Order Routines Execution Module
         function executeAddToCartRoutine() {
             const activeItem = catalogDatabase[selectedProductKey];
-            
-            // Pick color specific image if product is shoes
-            let itemImage = activeItem.images[0];
-            if (selectedProductKey === 'shoes' && shoeColorMap[selectedColorVariant]) {
-                itemImage = shoeColorMap[selectedColorVariant];
-            }
+            const itemImage = activeItem.colorVariants[selectedColorVariant] || Object.values(activeItem.colorVariants)[0];
 
             cartState.push({
                 name: activeItem.title,
