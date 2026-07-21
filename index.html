@@ -46,7 +46,7 @@
         .header-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 20px;
             height: 80px;
             display: flex;
             align-items: center;
@@ -97,7 +97,7 @@
 
         .header-actions {
             display: flex;
-            gap: 24px;
+            gap: 20px;
             align-items: center;
         }
 
@@ -133,12 +133,127 @@
             font-weight: 700;
         }
 
+        /* HAMBURGER TOGGLE BUTTON FOR MOBILE */
+        .hamburger-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hamburger-btn span {
+            height: 2px;
+            width: 100%;
+            background-color: var(--bg-dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* SEARCH & FILTER BAR STYLING */
+        .filter-controls-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 30px;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--white);
+            padding: 16px 24px;
+            border: 1px solid var(--border-color);
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 16px 10px 38px;
+            border: 1px solid var(--border-color);
+            background: var(--light-bg);
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-gold);
+            background: var(--white);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        .filter-dropdowns {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filter-select {
+            padding: 10px 16px;
+            border: 1px solid var(--border-color);
+            background: var(--light-bg);
+            font-size: 13px;
+            outline: none;
+            cursor: pointer;
+            color: var(--text-main);
+        }
+
+        .filter-select:focus {
+            border-color: var(--accent-gold);
+        }
+
+        /* SIZE SELECTOR STYLING */
+        .size-selector-group {
+            margin-bottom: 24px;
+        }
+
+        .size-pills {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .size-pill {
+            padding: 8px 16px;
+            border: 1px solid var(--border-color);
+            background: var(--white);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .size-pill:hover {
+            border-color: var(--accent-gold);
+        }
+
+        .size-pill.selected-size {
+            background: var(--bg-dark);
+            color: var(--white);
+            border-color: var(--bg-dark);
+        }
+
         /* PAGE MANAGEMENT ARCHITECTURE */
         .page-section {
             display: none;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 40px;
+            padding: 40px 20px;
             animation: fadeIn 0.4s ease-in-out;
         }
 
@@ -161,7 +276,7 @@
             align-items: center;
             color: var(--white);
             text-align: center;
-            padding: 40px;
+            padding: 40px 20px;
             margin-bottom: 60px;
         }
 
@@ -223,7 +338,7 @@
 
         .video-showcase {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
             margin-bottom: 80px;
         }
@@ -270,7 +385,7 @@
 
         .info-block {
             background: var(--white);
-            padding: 50px;
+            padding: 40px;
             border: 1px solid var(--border-color);
         }
 
@@ -304,16 +419,10 @@
             min-height: 60vh;
         }
 
-        /* Step 1 Grid: High level Categories */
         .category-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 24px;
-        }
-
-        @media (max-width: 992px) {
-            .category-grid { grid-template-columns: repeat(2, 1fr); }
-            .info-grid { grid-template-columns: 1fr; gap: 40px; }
         }
 
         .category-card {
@@ -579,10 +688,6 @@
             display: grid;
             grid-template-columns: 1fr 380px;
             gap: 40px;
-        }
-
-        @media (max-width: 992px) {
-            .cart-layout { grid-template-columns: 1fr; }
         }
 
         .cart-table-wrapper {
@@ -852,6 +957,41 @@
             color: var(--text-muted);
             letter-spacing: 1px;
         }
+
+        /* RESPONSIVE MEDIA QUERIES FOR MOBILE STYLING */
+        @media (max-width: 992px) {
+            .category-grid { grid-template-columns: repeat(2, 1fr); }
+            .info-grid { grid-template-columns: 1fr; gap: 40px; }
+            .discovery-view { grid-template-columns: 1fr; gap: 30px; padding: 20px; }
+            .cart-layout { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger-btn { display: flex; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                padding: 20px;
+                border-bottom: 1px solid var(--border-color);
+                gap: 16px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            }
+            .nav-links.mobile-open {
+                display: flex;
+            }
+            .hero-banner h1 { font-size: 2.5rem; letter-spacing: 4px; }
+            .hero-banner p { font-size: 1rem; }
+            .action-button-stack { grid-template-columns: 1fr; }
+            .category-grid { grid-template-columns: 1fr; }
+            .filter-controls-container { flex-direction: column; align-items: stretch; }
+            .invoice-card { padding: 24px; }
+            .invoice-hdr { flex-direction: column; gap: 12px; }
+        }
     </style>
 </head>
 <body>
@@ -859,8 +999,13 @@
     <!-- GLOBAL SITE HEADER NAVIGATION -->
     <header class="main-header">
         <div class="header-container">
+            <button class="hamburger-btn" onclick="toggleMobileNav()" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="logo" onclick="switchTab('home')">VELLORINS</div>
-            <nav class="nav-links">
+            <nav class="nav-links" id="navLinks">
                 <a class="nav-item active" id="nav-home" onclick="switchTab('home')">Home</a>
                 <a class="nav-item" id="nav-shop" onclick="switchTab('shop')">Shop Storefront</a>
                 <a class="nav-item" id="nav-cart" onclick="switchTab('cart')">Cart Selection</a>
@@ -944,27 +1089,51 @@
         </div>
     </section>
 
-    <!-- 2. SHOPPING SECTION WITH THE STEP-BY-STEP STEPPER FUNNEL -->
+    <!-- 2. SHOPPING SECTION WITH SEARCH, FILTER, AND STEP-BY-STEP FUNNEL -->
     <section id="sec-shop" class="page-section">
         <div class="shop-container" id="shopContainer">
             
-            <!-- STEP 1 VIEW: Simple Product Category Blocks -->
+            <!-- STEP 1 VIEW: Category Grid with Integrated Search & Filter Controls -->
             <div id="shop-step1">
                 <h2 class="section-title">Explore Our Collections</h2>
-                <div class="category-grid">
-                    <div class="category-card" onclick="startDiscovery('shoes')">
+
+                <!-- SEARCH & FILTER BAR -->
+                <div class="filter-controls-container">
+                    <div class="search-box">
+                        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" id="searchInput" class="search-input" placeholder="Search catalog (e.g. Oxford, Belt, Wallet)..." oninput="applySearchAndFilters()">
+                    </div>
+                    <div class="filter-dropdowns">
+                        <select id="priceFilter" class="filter-select" onchange="applySearchAndFilters()">
+                            <option value="all">All Prices</option>
+                            <option value="under1500">Under ₹1,500</option>
+                            <option value="1500to3000">₹1,500 - ₹3,000</option>
+                            <option value="above3000">Above ₹3,000</option>
+                        </select>
+                        <select id="colorFilter" class="filter-select" onchange="applySearchAndFilters()">
+                            <option value="all">All Colors</option>
+                            <option value="Obsidian Tan">Obsidian Tan</option>
+                            <option value="Charcoal Black">Charcoal Black</option>
+                            <option value="Dark Walnut">Dark Walnut</option>
+                            <option value="Cognac Amber">Cognac Amber</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="category-grid" id="categoryGrid">
+                    <div class="category-card" data-key="shoes" onclick="startDiscovery('shoes')">
                         <div class="category-img-box"><img src="https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20image.png" alt="Shoes Cut"></div>
                         <div class="category-title">Luxury Footwear</div>
                     </div>
-                    <div class="category-card" onclick="startDiscovery('wallets')">
+                    <div class="category-card" data-key="wallets" onclick="startDiscovery('wallets')">
                         <div class="category-img-box"><img src="https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg" alt="Wallets Cut"></div>
                         <div class="category-title">Artisan Wallets</div>
                     </div>
-                    <div class="category-card" onclick="startDiscovery('belts')">
+                    <div class="category-card" data-key="belts" onclick="startDiscovery('belts')">
                         <div class="category-img-box"><img src="https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/belts.jpeg" alt="Belts Cut"></div>
                         <div class="category-title">Architectural Belts</div>
                     </div>
-                    <div class="category-card" onclick="startDiscovery('bags')">
+                    <div class="category-card" data-key="bags" onclick="startDiscovery('bags')">
                         <div class="category-img-box"><img src="https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/Bag%20image.png" alt="Bags Cut"></div>
                         <div class="category-title">Travel Duffles</div>
                     </div>
@@ -976,7 +1145,7 @@
                 <button class="back-to-categories" onclick="resetShopView()">← Back to Categories</button>
                 <div class="discovery-view">
                     
-                    <!-- LEFT COLUMN: Step 2 Multi-Image Gallery Grid -->
+                    <!-- LEFT COLUMN: Multi-Image Gallery Grid -->
                     <div class="gallery-container">
                         <div class="main-gallery-display">
                             <img id="mainGalleryImage" src="" alt="Primary Focus Aspect">
@@ -999,6 +1168,14 @@
                             <div class="color-option" style="background: #1c1c1c;" onclick="selectColorSwatch(this, 'Charcoal Black')"></div>
                             <div class="color-option" style="background: #5c4033;" onclick="selectColorSwatch(this, 'Dark Walnut')"></div>
                             <div class="color-option" style="background: #8b5a2b;" onclick="selectColorSwatch(this, 'Cognac Amber')"></div>
+                        </div>
+
+                        <!-- DYNAMIC SIZE SELECTOR BLOCK (SHOES & BELTS) -->
+                        <div id="sizeSelectorContainer" class="size-selector-group" style="display: none;">
+                            <span class="config-label">Choose Size</span>
+                            <div class="size-pills" id="sizePillGroup">
+                                <!-- Populated dynamically based on product type -->
+                            </div>
                         </div>
 
                         <!-- STEP 4: Direct Price & Discount Display Matrix -->
@@ -1083,7 +1260,7 @@
                 <h3 style="font-family: serif; margin-bottom: 12px;">Google Verification Mandatory</h3>
                 <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Please authenticate your profile via standard Google credentials to enable secure billing access channels.</p>
                 <button class="google-auth-btn" style="margin: 0 auto;" onclick="processCheckoutGoogleLogin()">
-                    <svg viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                    <svg viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                     <span>Log In via Google Identity</span>
                 </button>
             </div>
@@ -1130,7 +1307,7 @@
                 <thead>
                     <tr>
                         <th>Asset Allocation Specification</th>
-                        <th>Colorway Variant</th>
+                        <th>Variant / Size</th>
                         <th style="text-align: right;">Value Metric</th>
                     </tr>
                 </thead>
@@ -1163,7 +1340,7 @@
             <input type="email" class="gmail-input-field" id="gmailInput" placeholder="Enter your Google Account email (e.g., name@gmail.com)">
             
             <button class="google-auth-btn" onclick="processGmailLogin()">
-                <svg viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                 <span>Authorize with Google Identity</span>
             </button>
         </div>
@@ -1185,6 +1362,8 @@
                 desc: "Anatomically cushioned dress outlines. Organic oil hand-burnished deep patina structure built straight into custom high-tensile outsoles.",
                 originalPrice: 3571,
                 price: 2500, // 30% OFF
+                hasSize: true,
+                sizes: ["UK 6", "UK 7", "UK 8", "UK 9", "UK 10", "UK 11"],
                 images: [
                     "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20image.png",
                     "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20image.png",
@@ -1197,6 +1376,7 @@
                 desc: "Ultra-slim pocket silhouettes crafted to age beautifully. Features hand-burnished edge sealing cream finishes and RFID shielding protection cores.",
                 originalPrice: 1714,
                 price: 1200, // 30% OFF
+                hasSize: false,
                 images: [
                     "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg",
                     "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg",
@@ -1209,6 +1389,8 @@
                 desc: "Carved seamlessly out of single continuous solid hides to prevent edge splitting or folding. Complemented by custom polished alloy buckles.",
                 originalPrice: 1357,
                 price: 950, // 30% OFF
+                hasSize: true,
+                sizes: ["30\"", "32\"", "34\"", "36\"", "38\"", "40\""],
                 images: [
                     "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/belts.jpeg",
                     "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/belts.jpeg",
@@ -1221,6 +1403,7 @@
                 desc: "Meticulously handcrafted using high-tensile full-grain hides. Tailored gracefully with anti-tarnish metal alloy zippers for the refined traveller.",
                 originalPrice: 5428,
                 price: 3800, // 30% OFF
+                hasSize: false,
                 images: [
                     "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/Bag%20image.png",
                     "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/Bag%20image.png",
@@ -1234,6 +1417,7 @@
         let authenticatedUser = localStorage.getItem('VELLORIN_user') || null;
         let selectedProductKey = null;
         let selectedColorVariant = "Obsidian Tan";
+        let selectedSizeVariant = null;
         
         // Checkout state variables
         let lockedAddressDetails = null;
@@ -1249,13 +1433,53 @@
             const navLink = document.getElementById(`nav-${tabKey}`);
             if(navLink) navLink.classList.add('active');
 
+            // Close mobile menu if open
+            document.getElementById('navLinks').classList.remove('mobile-open');
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
             if(tabKey === 'cart') renderCartSystem();
         }
 
+        function toggleMobileNav() {
+            document.getElementById('navLinks').classList.toggle('mobile-open');
+        }
+
         function toggleLoginModal() {
             document.getElementById('loginModal').classList.toggle('open');
+        }
+
+        // Search & Filter Logic
+        function applySearchAndFilters() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const priceVal = document.getElementById('priceFilter').value;
+            const colorVal = document.getElementById('colorFilter').value;
+
+            const cards = document.querySelectorAll('.category-card');
+
+            cards.forEach(card => {
+                const key = card.getAttribute('data-key');
+                const item = catalogDatabase[key];
+                
+                let matchesSearch = item.title.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query) || key.toLowerCase().includes(query);
+                
+                let matchesPrice = true;
+                if(priceVal === 'under1500') matchesPrice = item.price < 1500;
+                else if(priceVal === '1500to3000') matchesPrice = item.price >= 1500 && item.price <= 3000;
+                else if(priceVal === 'above3000') matchesPrice = item.price > 3000;
+
+                let matchesColor = true;
+                // Currently all products support standard swatches
+                if(colorVal !== 'all' && selectedColorVariant && colorVal !== selectedColorVariant) {
+                    matchesColor = true; // Retain availability across base catalog
+                }
+
+                if(matchesSearch && matchesPrice && matchesColor) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         }
 
         // Stepper Engine Logic
@@ -1282,6 +1506,24 @@
                 `;
             });
 
+            // Size Selector Setup
+            const sizeContainer = document.getElementById('sizeSelectorContainer');
+            const sizeGroup = document.getElementById('sizePillGroup');
+            sizeGroup.innerHTML = '';
+            
+            if (data.hasSize && data.sizes) {
+                selectedSizeVariant = data.sizes[0]; // Default to first available size
+                data.sizes.forEach((sz, idx) => {
+                    sizeGroup.innerHTML += `
+                        <div class="size-pill ${idx === 0 ? 'selected-size' : ''}" onclick="selectSizePill(this, '${sz}')">${sz}</div>
+                    `;
+                });
+                sizeContainer.style.display = 'block';
+            } else {
+                selectedSizeVariant = null;
+                sizeContainer.style.display = 'none';
+            }
+
             document.getElementById('shop-step1').style.display = "none";
             document.getElementById('shop-discovery-view').style.display = "block";
             
@@ -1298,6 +1540,12 @@
             document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('selected-color'));
             element.classList.add('selected-color');
             selectedColorVariant = colorString;
+        }
+
+        function selectSizePill(element, sizeString) {
+            document.querySelectorAll('.size-pill').forEach(pill => pill.classList.remove('selected-size'));
+            element.classList.add('selected-size');
+            selectedSizeVariant = sizeString;
         }
 
         function resetShopView() {
@@ -1323,10 +1571,15 @@
         function executeAddToCartRoutine() {
             const activeItem = catalogDatabase[selectedProductKey];
             
+            let variantDisplay = selectedColorVariant;
+            if (activeItem.hasSize && selectedSizeVariant) {
+                variantDisplay += ` / Size: ${selectedSizeVariant}`;
+            }
+
             cartState.push({
                 name: activeItem.title,
                 price: activeItem.price,
-                variant: selectedColorVariant,
+                variant: variantDisplay,
                 image: activeItem.images[0]
             });
 
@@ -1371,7 +1624,7 @@
                                 <img src="${item.image}" class="cart-item-img" alt="Thumbnail">
                                 <div>
                                     <div class="cart-item-title">${item.name}</div>
-                                    <div class="cart-item-variant">Color Choice: ${item.variant}</div>
+                                    <div class="cart-item-variant">Selection: ${item.variant}</div>
                                     <button class="remove-cart-item" onclick="removeCartItem(${index})">De-allocate</button>
                                 </div>
                             </div>
@@ -1418,7 +1671,7 @@
             
             // Calculate grand total 
             let grossAmount = cartState.reduce((sum, item) => sum + item.price, 0);
-            let itemsString = cartState.map(i => `• ${i.name} [Color: ${i.variant}]`).join('\n');
+            let itemsString = cartState.map(i => `• ${i.name} [${i.variant}]`).join('\n');
 
             // Dispatch payload to owner lines once proceed action is initialized
             const addressNoticeText = `⚠️ [INCOMING ADDRESS SUBMISSION]\nCustomer has provided delivery information and is moving forward with the checkout process.\n\nLOGISTICAL ADDRESS:\nName: ${name}\nStreet: ${street}\nCity/Zip: ${city}\nPhone/WhatsApp: ${phone}\n\nPICKED ARTIFACTS:\n${itemsString}\n\nSubtotal Matrix: ₹${grossAmount.toLocaleString('en-IN')}`;
@@ -1576,7 +1829,7 @@
         function dispatchWhatsAppConfirmationManifest() {
             if(!activeInvoiceData) return;
 
-            let itemsChecklistLines = activeInvoiceData.items.map(i => `• ${i.name} [Variant Color: ${i.variant}]`).join('\n');
+            let itemsChecklistLines = activeInvoiceData.items.map(i => `• ${i.name} [Selection: ${i.variant}]`).join('\n');
             
             const businessConfirmationManifest = `✅ [SUCCESSFUL TRANSACTION RECEIVED]\n\nInvoice ID Trace: ${activeInvoiceData.invoiceNumber}\nRazorpay Payment ID: ${activeInvoiceData.paymentId}\nPatron Profile: ${activeInvoiceData.buyerEmail}\n\n📦 MANDATORY DISPATCH DESTINATION LOCATION:\nRecipient Name: ${activeInvoiceData.address.name}\nStreet Route Details: ${activeInvoiceData.address.street}\nCity Vector Coordinates: ${activeInvoiceData.address.city}\nRegistered Phone Index: ${activeInvoiceData.address.phone}\n\nALLOCATED PREMIUM STOCK:\n${itemsChecklistLines}\n\nTotal Paid Capture Matrix Value: ₹${activeInvoiceData.total.toLocaleString('en-IN')}\n\nAuthorization verified successfully. Proceed with inventory allocation and package tracking configurations.`;
 
