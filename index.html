@@ -406,7 +406,7 @@
 
         .thumbnail-strip {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 12px;
         }
 
@@ -877,7 +877,7 @@
     <!-- GLOBAL SITE HEADER NAVIGATION -->
     <header class="main-header">
         <div class="header-container">
-            <div class="logo" onclick="switchTab('home')">VELLORINS</div>
+            <div class="logo" onclick="switchTab('home')">VELLORIN</div>
             <nav class="nav-links">
                 <a class="nav-item active" id="nav-home" onclick="switchTab('home')">Home</a>
                 <a class="nav-item" id="nav-shop" onclick="switchTab('shop')">Shop Storefront</a>
@@ -947,7 +947,7 @@
         <div class="info-grid">
             <div class="info-block">
                 <h2>Our Journey & Lineage</h2>
-                <p>VELLORINS was born out of a rebellion against fast fashion synthetic alternatives. Our lineage is tethered directly to generational tanneries, operating with the foundational understanding that leather should not break down—it should acquire a personal storytelling patina.</p>
+                <p>VELLORIN was born out of a rebellion against fast fashion synthetic alternatives. Our lineage is tethered directly to generational tanneries, operating with the foundational understanding that leather should not break down—it should acquire a personal storytelling patina.</p>
                 <p>By shifting standard raw processing pipelines entirely in-house, we secure custom full-grain cuts, completely devoid of correction sprays or surface masking fillers. Every wallet, bag, and shoe cut tells the raw, unfiltered story of the hide it was pulled from.</p>
             </div>
             <div class="info-block">
@@ -1013,10 +1013,10 @@
                         <!-- STEP 3: Premium Variant Swatch Options -->
                         <span class="config-label">Step 3: Choose Color Variant</span>
                         <div class="color-swatch-group" id="colorGroup">
-                            <div class="color-option selected-color" style="background: #3d2314;" onclick="selectColorSwatch(this, 'Obsidian Tan')"></div>
-                            <div class="color-option" style="background: #1c1c1c;" onclick="selectColorSwatch(this, 'Charcoal Black')"></div>
-                            <div class="color-option" style="background: #5c4033;" onclick="selectColorSwatch(this, 'Dark Walnut')"></div>
-                            <div class="color-option" style="background: #8b5a2b;" onclick="selectColorSwatch(this, 'Cognac Amber')"></div>
+                            <div class="color-option selected-color" style="background: #3d2314;" title="Dark Brown" onclick="selectColorSwatch(this, 'Dark Walnut')"></div>
+                            <div class="color-option" style="background: #1c1c1c;" title="Black" onclick="selectColorSwatch(this, 'Charcoal Black')"></div>
+                            <div class="color-option" style="background: #5c4033;" title="Medium Brown" onclick="selectColorSwatch(this, 'Medium Brown')"></div>
+                            <div class="color-option" style="background: #8b5a2b;" title="Light Brown / Tan" onclick="selectColorSwatch(this, 'Cognac Amber')"></div>
                         </div>
 
                         <!-- STEP 4: Direct Price & Discount Display Matrix -->
@@ -1121,7 +1121,7 @@
         <div class="invoice-card">
             <div class="invoice-hdr">
                 <div>
-                    <h2 style="font-family: serif; letter-spacing: 3px;">VELLORINS INC.</h2>
+                    <h2 style="font-family: serif; letter-spacing: 3px;">VELLORIN INC.</h2>
                     <p style="font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px;">Bespoke Luxury Design Manifest</p>
                 </div>
                 <div style="text-align: right;">
@@ -1195,15 +1195,35 @@
 
     <!-- COMPLETE SYSTEM BUSINESS LOGIC SCRIPT -->
     <script>
-        // Color variant mapping for dynamic image swapping
-        const shoeColorMap = {
-            "Obsidian Tan": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20image.png",
-            "Charcoal Black": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20black.png",
-            "Dark Walnut": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20brown.png",
-            "Cognac Amber": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20tan.png"
+        // Dedicated Product Color Mapping Matrices (Dark Brown, Black, Medium Brown, Light Brown/Tan)
+        const categoryColorMap = {
+            shoes: {
+                "Dark Walnut": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20image.png",
+                "Charcoal Black": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20black.png",
+                "Medium Brown": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20brown.png",
+                "Cognac Amber": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20tan.png"
+            },
+            wallets: {
+                "Dark Walnut": "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80",
+                "Charcoal Black": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80",
+                "Medium Brown": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg",
+                "Cognac Amber": "https://images.unsplash.com/photo-1606503830019-7389885e3532?auto=format&fit=crop&w=800&q=80"
+            },
+            belts: {
+                "Dark Walnut": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/belts.jpeg",
+                "Charcoal Black": "https://images.unsplash.com/photo-1624222247344-550fb60583dc?auto=format&fit=crop&w=800&q=80",
+                "Medium Brown": "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&w=800&q=80",
+                "Cognac Amber": "https://images.unsplash.com/photo-1585832770485-e68a5fcfad52?auto=format&fit=crop&w=800&q=80"
+            },
+            bags: {
+                "Dark Walnut": "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/Bag%20image.png",
+                "Charcoal Black": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80",
+                "Medium Brown": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80",
+                "Cognac Amber": "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=800&q=80"
+            }
         };
 
-        // Database Matrix with Original and 30% OFF Calculated Prices
+        // Main Catalog Database Matrix (Retaining original primary images and linking color options)
         const catalogDatabase = {
             shoes: {
                 title: "Hand-Sculpted Dress Oxford Footwear",
@@ -1226,8 +1246,9 @@
                 price: 1200, // 30% OFF
                 images: [
                     "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg",
-                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg",
-                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg"
+                    "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1606503830019-7389885e3532?auto=format&fit=crop&w=800&q=80"
                 ]
             },
             belts: {
@@ -1238,8 +1259,9 @@
                 price: 950, // 30% OFF
                 images: [
                     "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/belts.jpeg",
-                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/belts.jpeg",
-                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/belts.jpeg"
+                    "https://images.unsplash.com/photo-1624222247344-550fb60583dc?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1585832770485-e68a5fcfad52?auto=format&fit=crop&w=800&q=80"
                 ]
             },
             bags: {
@@ -1250,8 +1272,9 @@
                 price: 3800, // 30% OFF
                 images: [
                     "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/Bag%20image.png",
-                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/Bag%20image.png",
-                    "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/Bag%20image.png"
+                    "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=800&q=80"
                 ]
             }
         };
@@ -1260,7 +1283,7 @@
         let cartState = [];
         let authenticatedUser = localStorage.getItem('VELLORIN_user') || null;
         let selectedProductKey = null;
-        let selectedColorVariant = "Obsidian Tan";
+        let selectedColorVariant = "Dark Walnut";
         
         // Checkout state variables
         let lockedAddressDetails = null;
@@ -1288,6 +1311,7 @@
         // Stepper Engine Logic
         function startDiscovery(productKey) {
             selectedProductKey = productKey;
+            selectedColorVariant = "Dark Walnut"; // Reset to default color on view launch
             const data = catalogDatabase[productKey];
 
             document.getElementById('prodTitle').textContent = data.title;
@@ -1296,9 +1320,11 @@
             document.getElementById('prodOriginalPriceDisplay').textContent = "₹" + data.originalPrice.toLocaleString('en-IN');
             document.getElementById('prodPriceDisplay').textContent = "₹" + data.price.toLocaleString('en-IN');
             
+            // Set initial primary image
             const mainImg = document.getElementById('mainGalleryImage');
             mainImg.src = data.images[0];
 
+            // Render thumbnails dynamically without missing placeholder links
             const strip = document.getElementById('galleryThumbStrip');
             strip.innerHTML = '';
             data.images.forEach((imgUrl, idx) => {
@@ -1308,6 +1334,11 @@
                     </div>
                 `;
             });
+
+            // Reset active color swatch UI back to Dark Walnut
+            const swatches = document.querySelectorAll('.color-option');
+            swatches.forEach(swatch => swatch.classList.remove('selected-color'));
+            if(swatches[0]) swatches[0].classList.add('selected-color');
 
             document.getElementById('shop-step1').style.display = "none";
             document.getElementById('shop-discovery-view').style.display = "block";
@@ -1326,12 +1357,12 @@
             element.classList.add('selected-color');
             selectedColorVariant = colorString;
 
-            // Dynamically update shoe image if user is viewing shoes
-            if (selectedProductKey === 'shoes' && shoeColorMap[colorString]) {
-                const targetImg = shoeColorMap[colorString];
+            // Dynamically update product gallery image for ALL categories (shoes, wallets, belts, bags)
+            if (selectedProductKey && categoryColorMap[selectedProductKey] && categoryColorMap[selectedProductKey][colorString]) {
+                const targetImg = categoryColorMap[selectedProductKey][colorString];
                 document.getElementById('mainGalleryImage').src = targetImg;
                 
-                // Highlight corresponding thumb box in gallery
+                // Highlight corresponding thumbnail box in gallery
                 const thumbs = document.querySelectorAll('.thumb-box');
                 thumbs.forEach(thumb => {
                     const img = thumb.querySelector('img');
@@ -1366,10 +1397,10 @@
         function executeAddToCartRoutine() {
             const activeItem = catalogDatabase[selectedProductKey];
             
-            // Pick color specific image if product is shoes
+            // Pick color specific image dynamically for any product selection
             let itemImage = activeItem.images[0];
-            if (selectedProductKey === 'shoes' && shoeColorMap[selectedColorVariant]) {
-                itemImage = shoeColorMap[selectedColorVariant];
+            if (selectedProductKey && categoryColorMap[selectedProductKey] && categoryColorMap[selectedProductKey][selectedColorVariant]) {
+                itemImage = categoryColorMap[selectedProductKey][selectedColorVariant];
             }
 
             cartState.push({
