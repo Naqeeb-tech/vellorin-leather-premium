@@ -469,7 +469,7 @@
         .color-swatch-group {
             display: flex;
             gap: 16px;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
 
         .color-option {
@@ -494,25 +494,48 @@
             border-radius: 50%;
         }
 
-        /* Step 4 Price State Reveal styling */
+        /* Price Matrix Display Box */
         .price-reveal-box {
             margin-bottom: 32px;
             padding: 20px;
             background: var(--light-bg);
             border-left: 3px solid var(--accent-gold);
-            display: none;
+            display: block;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .original-price-strike {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 18px;
         }
 
         .revealed-price {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
             color: var(--bg-dark);
         }
 
-        /* Step 5 & 6 Trigger Actions */
+        .discount-badge {
+            background: var(--success-green);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 3px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Action Call Stack */
         .action-button-stack {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 16px;
         }
 
@@ -531,6 +554,24 @@
 
         .btn-primary:hover {
             background: #232329;
+        }
+
+        .btn-buy-now {
+            background: var(--accent-gold);
+            color: var(--bg-dark);
+            border: none;
+            padding: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-buy-now:hover {
+            background: var(--accent-gold-hover);
+            color: var(--white);
         }
 
         /* COMPREHENSIVE LUXURY CART SECTION */
@@ -945,13 +986,13 @@
                         </div>
                     </div>
 
-                    <!-- RIGHT COLUMN: Configuration Mechanics & Price Reveals -->
+                    <!-- RIGHT COLUMN: Configuration Mechanics & Direct Pricing -->
                     <div class="configurator-details">
                         <div class="product-header-tag" id="prodTag">VELLORIN LABS</div>
                         <h1 class="configurator-title" id="prodTitle">Artifact Name</h1>
                         <p class="configurator-desc" id="prodDesc">Artifact baseline structural descriptions.</p>
                         
-                        <!-- STEP 3: 4 Premium Variant Swatch Options -->
+                        <!-- STEP 3: Premium Variant Swatch Options -->
                         <span class="config-label">Step 3: Choose Color Variant</span>
                         <div class="color-swatch-group" id="colorGroup">
                             <div class="color-option selected-color" style="background: #3d2314;" onclick="selectColorSwatch(this, 'Obsidian Tan')"></div>
@@ -960,17 +1001,21 @@
                             <div class="color-option" style="background: #8b5a2b;" onclick="selectColorSwatch(this, 'Cognac Amber')"></div>
                         </div>
 
-                        <!-- STEP 4: Protected Price Reveal State Block -->
-                        <span class="config-label">Step 4: Certified Price Matrix</span>
+                        <!-- STEP 4: Direct Price & Discount Display Matrix -->
+                        <span class="config-label">Step 4: Special Offer Pricing</span>
                         <div class="price-reveal-box" id="priceRevealBox">
-                            <div class="revealed-price" id="prodPriceDisplay">₹0</div>
+                            <div class="price-row">
+                                <span class="original-price-strike" id="prodOriginalPriceDisplay">₹0</span>
+                                <span class="revealed-price" id="prodPriceDisplay">₹0</span>
+                                <span class="discount-badge">30% OFF</span>
+                            </div>
                         </div>
-                        <button class="btn-primary" id="revealPriceBtn" style="margin-bottom: 32px;" onclick="handlePriceRevealRequest()">Reveal Custom Price</button>
 
-                        <!-- STEP 5 & 6: Action Call Stack -->
-                        <span class="config-label">Step 5 & 6: Add to Basket Mapping</span>
+                        <!-- STEP 5 & 6: Action Call Stack (Add To Cart & Direct Buy Now) -->
+                        <span class="config-label">Step 5: Checkout Mapping</span>
                         <div class="action-button-stack">
                             <button class="btn-primary" onclick="executeAddToCartRoutine()">Add to Cart</button>
+                            <button class="btn-buy-now" onclick="executeBuyNowRoutine()">Buy Now</button>
                         </div>
                     </div>
                 </div>
@@ -1113,7 +1158,7 @@
         <div class="login-card">
             <button class="close-modal" onclick="toggleLoginModal()">&times;</button>
             <h2 style="font-family: serif; letter-spacing: 4px; margin-bottom: 12px;">GATEWAY VERIFICATION</h2>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px;">To access prices, allocations, and concierge channels, you must verify your profile using a Gmail identity.</p>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px;">To access allocations and concierge channels, you must verify your profile using a Gmail identity.</p>
             
             <input type="email" class="gmail-input-field" id="gmailInput" placeholder="Enter your Google Account email (e.g., name@gmail.com)">
             
@@ -1132,13 +1177,14 @@
 
     <!-- COMPLETE SYSTEM BUSINESS LOGIC SCRIPT -->
     <script>
-        // Database Matrix Mock representing your inventory layers
+        // Database Matrix with Original and 30% OFF Calculated Prices
         const catalogDatabase = {
             shoes: {
                 title: "Hand-Sculpted Dress Oxford Footwear",
                 tag: "VELLORIN FOOTWEAR",
                 desc: "Anatomically cushioned dress outlines. Organic oil hand-burnished deep patina structure built straight into custom high-tensile outsoles.",
-                price: 2500,
+                originalPrice: 3571,
+                price: 2500, // 30% OFF
                 images: [
                     "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20image.png",
                     "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20image.png",
@@ -1149,7 +1195,8 @@
                 title: "Artisan Bi-Fold Minimalist Case",
                 tag: "VELLORIN SMALL GOODS",
                 desc: "Ultra-slim pocket silhouettes crafted to age beautifully. Features hand-burnished edge sealing cream finishes and RFID shielding protection cores.",
-                price: 1200,
+                originalPrice: 1714,
+                price: 1200, // 30% OFF
                 images: [
                     "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg",
                     "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/DSC07918.jpg",
@@ -1160,7 +1207,8 @@
                 title: "Full-Grain Solid Hide Utility Belt",
                 tag: "VELLORIN HARDWARE",
                 desc: "Carved seamlessly out of single continuous solid hides to prevent edge splitting or folding. Complemented by custom polished alloy buckles.",
-                price: 950,
+                originalPrice: 1357,
+                price: 950, // 30% OFF
                 images: [
                     "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/belts.jpeg",
                     "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/belts.jpeg",
@@ -1171,7 +1219,8 @@
                 title: "Premium Cabin Duffle Briefcase",
                 tag: "VELLORIN TRAVEL",
                 desc: "Meticulously handcrafted using high-tensile full-grain hides. Tailored gracefully with anti-tarnish metal alloy zippers for the refined traveller.",
-                price: 3800,
+                originalPrice: 5428,
+                price: 3800, // 30% OFF
                 images: [
                     "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/Bag%20image.png",
                     "https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/Bag%20image.png",
@@ -1217,6 +1266,7 @@
             document.getElementById('prodTitle').textContent = data.title;
             document.getElementById('prodTag').textContent = data.tag;
             document.getElementById('prodDesc').textContent = data.desc;
+            document.getElementById('prodOriginalPriceDisplay').textContent = "₹" + data.originalPrice.toLocaleString('en-IN');
             document.getElementById('prodPriceDisplay').textContent = "₹" + data.price.toLocaleString('en-IN');
             
             const mainImg = document.getElementById('mainGalleryImage');
@@ -1231,9 +1281,6 @@
                     </div>
                 `;
             });
-
-            document.getElementById('priceRevealBox').style.display = "none";
-            document.getElementById('revealPriceBtn').style.display = "block";
 
             document.getElementById('shop-step1').style.display = "none";
             document.getElementById('shop-discovery-view').style.display = "block";
@@ -1259,17 +1306,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Secure Rule Verification Gateway Actions
-        function handlePriceRevealRequest() {
-            if(!authenticatedUser) {
-                alert("Security Gateway Protocol: You must sign in with your Gmail identity to access pricing structures.");
-                toggleLoginModal();
-                return;
-            }
-            document.getElementById('revealPriceBtn').style.display = "none";
-            document.getElementById('priceRevealBox').style.display = "block";
-        }
-
         function processGmailLogin() {
             const emailInput = document.getElementById('gmailInput').value;
             if(!emailInput.toLowerCase().endsWith('@gmail.com')) {
@@ -1281,12 +1317,10 @@
             document.getElementById('userStatusDot').style.background = "#25d366";
             toggleLoginModal();
             showToastNotification("Authorized Successfully via Google Connection.");
-            if(selectedProductKey) handlePriceRevealRequest();
         }
 
         // Order Routines Execution Module
         function executeAddToCartRoutine() {
-            if(!authenticatedUser) { return handlePriceRevealRequest(); }
             const activeItem = catalogDatabase[selectedProductKey];
             
             cartState.push({
@@ -1298,6 +1332,12 @@
 
             updateGlobalCartMetrics();
             showToastNotification("Item logged into cart manifest.");
+        }
+
+        // BUY NOW Logic (Applies only on storefront product view)
+        function executeBuyNowRoutine() {
+            executeAddToCartRoutine();
+            startCheckoutTunnel();
         }
 
         function updateGlobalCartMetrics() {
@@ -1353,7 +1393,6 @@
                 alert("Your cart allocation array is empty.");
                 return;
             }
-            switchTab('shop'); // Keep layout view isolated inside storefront boundaries
             document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active-section'));
             document.getElementById('sec-checkout').classList.add('active-section');
             
@@ -1361,6 +1400,7 @@
             document.getElementById('checkout-address-block').style.display = "block";
             document.getElementById('checkout-login-block').style.display = "none";
             document.getElementById('checkout-pay-block').style.display = "none";
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function submitAddressAndLockStage() {
@@ -1380,13 +1420,12 @@
             let grossAmount = cartState.reduce((sum, item) => sum + item.price, 0);
             let itemsString = cartState.map(i => `• ${i.name} [Color: ${i.variant}]`).join('\n');
 
-            // FEATURE LOG: Immediate dispatch payload to owner lines once proceed action is initialized
+            // Dispatch payload to owner lines once proceed action is initialized
             const addressNoticeText = `⚠️ [INCOMING ADDRESS SUBMISSION]\nCustomer has provided delivery information and is moving forward with the checkout process.\n\nLOGISTICAL ADDRESS:\nName: ${name}\nStreet: ${street}\nCity/Zip: ${city}\nPhone/WhatsApp: ${phone}\n\nPICKED ARTIFACTS:\n${itemsString}\n\nSubtotal Matrix: ₹${grossAmount.toLocaleString('en-IN')}`;
             
-            // Fire off a background redirection context tab out to WhatsApp channel hook
+            // Background redirection context tab out to WhatsApp channel hook
             window.open(`https://wa.me/${TARGET_WORKSHOP_WHATSAPP}?text=${encodeURIComponent(addressNoticeText)}`, '_blank');
 
-            // Evaluate if Google login profile configuration mapping requirements are already configured
             document.getElementById('checkout-address-block').style.display = "none";
             if(!authenticatedUser) {
                 document.getElementById('checkout-login-block').style.display = "block";
@@ -1396,9 +1435,7 @@
         }
 
         function processCheckoutGoogleLogin() {
-            // Re-uses global application input matrix checkpoints
             toggleLoginModal();
-            // Attach state change listener override loop specifically to detect modal auth changes during payment actions
             const validationCheckTimer = setInterval(() => {
                 if(authenticatedUser) {
                     clearInterval(validationCheckTimer);
@@ -1413,9 +1450,9 @@
             const amountInPaise = totalSumValue * 100;
             const descriptiveSummary = cartState.map(i => `${i.name} (${i.variant})`).join(', ');
 
-            // 1. Structural Configuration Options to force Direct PhonePe/UPI intents
+            // Configuration Options to force Direct PhonePe/UPI intents
             const razorpayOptions = {
-                "key": "rzp_live_TEft2IA1fFS4W4", // IMPORTANT: Swap this out for your actual Razorpay Key
+                "key": "rzp_live_TEft2IA1fFS4W4,YCstf4roXNTQrTgQQzPP2DB8", 
                 "amount": amountInPaise.toString(),
                 "currency": "INR",
                 "name": "VELLORIN LEATHER CO.",
@@ -1426,9 +1463,9 @@
                 },
                 "prefill": {
                     "name": lockedAddressDetails.name,
-                    "email": authenticatedUser || "guest@vellorin.com", // Auto-fallback skips the profile lookup login wall entirely
+                    "email": authenticatedUser || "guest@vellorin.com",
                     "contact": lockedAddressDetails.phone,
-                    "method": "upi" // Directly defaults the interface pipeline to UPI instantly
+                    "method": "upi"
                 },
                 "config": {
                     "display": {
@@ -1438,15 +1475,15 @@
                                 "instruments": [
                                     {
                                         "method": "upi",
-                                        "apps": ["phonepe"], // Automatically prioritizes PhonePe intent hooks on mobile devices
-                                        "flows": ["intent", "qr", "collect"] // Exposes Apps, Scan-Code, and Manual UPI ID fields
+                                        "apps": ["phonepe"],
+                                        "flows": ["intent", "qr", "collect"]
                                     }
                                 ]
                             }
                         },
                         "sequence": ["block.upi"],
                         "preferences": {
-                            "show_default_blocks": false // Completely hides standard credit cards or separate login/OTP screens
+                            "show_default_blocks": false
                         }
                     }
                 },
@@ -1455,10 +1492,9 @@
                 }
             };
 
-            // 2. Custom Secondary Fallback Interface (Manual Scanner, UPI ID, and Merchant ID display)
+            // Custom Fallback Scanner Block Injection
             const checkoutPayBlock = document.getElementById('checkout-pay-block');
             
-            // Clear any old dynamically appended fallback blocks before rendering a new one
             const oldFallback = document.getElementById('manual-payment-fallback');
             if (oldFallback) oldFallback.remove();
 
@@ -1542,7 +1578,6 @@
 
             let itemsChecklistLines = activeInvoiceData.items.map(i => `• ${i.name} [Variant Color: ${i.variant}]`).join('\n');
             
-            // FEATURE: Direct physical customer destination location coordinates are streamed seamlessly on payment validation
             const businessConfirmationManifest = `✅ [SUCCESSFUL TRANSACTION RECEIVED]\n\nInvoice ID Trace: ${activeInvoiceData.invoiceNumber}\nRazorpay Payment ID: ${activeInvoiceData.paymentId}\nPatron Profile: ${activeInvoiceData.buyerEmail}\n\n📦 MANDATORY DISPATCH DESTINATION LOCATION:\nRecipient Name: ${activeInvoiceData.address.name}\nStreet Route Details: ${activeInvoiceData.address.street}\nCity Vector Coordinates: ${activeInvoiceData.address.city}\nRegistered Phone Index: ${activeInvoiceData.address.phone}\n\nALLOCATED PREMIUM STOCK:\n${itemsChecklistLines}\n\nTotal Paid Capture Matrix Value: ₹${activeInvoiceData.total.toLocaleString('en-IN')}\n\nAuthorization verified successfully. Proceed with inventory allocation and package tracking configurations.`;
 
             window.open(`https://wa.me/${TARGET_WORKSHOP_WHATSAPP}?text=${encodeURIComponent(businessConfirmationManifest)}`, '_blank');
