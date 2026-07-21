@@ -882,7 +882,7 @@
     <section id="sec-home" class="page-section active-section">
         <div class="hero-banner">
             <h1>CRAFTED FOR ETERNITY</h1>
-            <p>Full-Grain Architectural Leather Artifacts</p>
+            <p>Handcrafted Full-Grain Leather Goods</p>
             <button class="cta-btn" onclick="switchTab('shop')">Enter Storefront</button>
         </div>
 
@@ -933,10 +933,10 @@
                 <p>By shifting standard raw processing pipelines entirely in-house, we secure custom full-grain cuts, completely devoid of correction sprays or surface masking fillers. Every wallet, bag, and shoe cut tells the raw, unfiltered story of the hide it was pulled from.</p>
             </div>
             <div class="info-block">
-                <h2>Rules & Brand Regulations</h2>
+                <h2>Our Guarantees & Terms</h2>
                 <p>To ensure fairness across all custom allocations, all patrons must adhere to the following house terms:</p>
                 <ul>
-                    <li><strong>Mandatory Verification:</strong> You must authenticate using an authorized identity profile (Gmail) to unlock the pricing index or invoke order completion routines.</li>
+                    <li><strong>Mandatory Verification:</strong> You must authenticate using an authorized identity profile (Gmail) to unlock the pricing index or Complete Purchase.</li>
                     <li><strong>Allocation Caps:</strong> Due to limited small-batch tannery processing scales, users are capped at a maximum configuration of 5 units per item type.</li>
                     <li><strong>Bespoke Customization Rules:</strong> Adjusting items inside the step-funnel changes dispatch schedules. Custom-dyed color profiles require a production queue clearance window of 7 to 10 processing days.</li>
                 </ul>
@@ -950,7 +950,7 @@
             
             <!-- STEP 1 VIEW: Simple Product Category Blocks -->
             <div id="shop-step1">
-                <h2 class="section-title">Select A Category Matrix</h2>
+                <h2 class="section-title">Explore Our Collections</h2>
                 <div class="category-grid">
                     <div class="category-card" onclick="startDiscovery('shoes')">
                         <div class="category-img-box"><img src="https://raw.githubusercontent.com/Naqeeb-tech/VELLORIN-leather-premium/main/shoe%20image.png" alt="Shoes Cut"></div>
@@ -1025,7 +1025,7 @@
 
     <!-- 3. COMPREHENSIVE LUXURY CART SECTION -->
     <section id="sec-cart" class="page-section">
-        <h2 class="section-title" style="text-align: left; margin-bottom: 24px;">Your Selected Manifest</h2>
+        <h2 class="section-title" style="text-align: left; margin-bottom: 24px;">Your Shopping Bag</h2>
         <div class="cart-layout">
             <div class="cart-table-wrapper">
                 <table class="cart-items-table">
@@ -1047,7 +1047,7 @@
             <div class="summary-card">
                 <h3 class="summary-title">Order Allocation Summary</h3>
                 <div class="summary-row">
-                    <span>Subtotal Manifest</span>
+                    <span>Subtotal</span>
                     <span id="cartSubtotal">₹0</span>
                 </div>
                 <div class="summary-row">
@@ -1070,7 +1070,7 @@
             
             <!-- SUB-STEP A: Address Entry Block Form -->
             <div id="checkout-address-block">
-                <h3 style="font-family: serif; margin-bottom: 15px;">Shipping Address Parameters</h3>
+                <h3 style="font-family: serif; margin-bottom: 15px;">Shipping Details</h3>
                 <input type="text" id="custName" class="form-input" placeholder="Full Legal Recipient Name">
                 <input type="text" id="custStreet" class="form-input" placeholder="Street Address, Appartment, Unit">
                 <input type="text" id="custCity" class="form-input" placeholder="City, State & Postal Zip Code">
@@ -1091,7 +1091,7 @@
             <!-- SUB-STEP C: Launch Razorpay Trigger Interface -->
             <div id="checkout-pay-block" style="display: none; text-align: center;">
                 <h3 style="font-family: serif; margin-bottom: 12px;">Logistics Verified & Locked</h3>
-                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Your order routing path is secured. Click the button down below to initialize the Razorpay Secure Interface frame overlay.</p>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Your order routing path is secured. Click the button down below to Pay Securely with Razorpay frame overlay.</p>
                 <button class="btn-primary" style="width: 100%; background: var(--accent-gold);" onclick="triggerRazorpayTransaction()">Open Razorpay Secure Gateway</button>
             </div>
 
@@ -1157,8 +1157,8 @@
     <div class="modal-overlay" id="loginModal">
         <div class="login-card">
             <button class="close-modal" onclick="toggleLoginModal()">&times;</button>
-            <h2 style="font-family: serif; letter-spacing: 4px; margin-bottom: 12px;">GATEWAY VERIFICATION</h2>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px;">To access allocations and concierge channels, you must verify your profile using a Gmail identity.</p>
+            <h2 style="font-family: serif; letter-spacing: 4px; margin-bottom: 12px;">Sign in with Google to complete your purchase</h2>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px;">To Sign in with Google to complete your purchase and concierge channels, you must verify your profile using a Gmail identity.</p>
             
             <input type="email" class="gmail-input-field" id="gmailInput" placeholder="Enter your Google Account email (e.g., name@gmail.com)">
             
@@ -1172,7 +1172,7 @@
     <div class="toast-notification" id="toast">Item Added Successfully</div>
 
     <footer>
-        <p>© 2026 VELLORINS ARCHITECTURAL TIMELINES. HANDCRAFTED HIDES DIVISION. PROPRIETARY BRANDING RIGHTS RESERVED.</p>
+        <p>© 2026 VELLORIN Leather. All rights reserved. Handcrafted in India.</p>
     </footer>
 
     <!-- COMPLETE SYSTEM BUSINESS LOGIC SCRIPT -->
@@ -1516,7 +1516,7 @@
                 const gatewayWindowInstance = new Razorpay(razorpayOptions);
                 gatewayWindowInstance.open();
             } catch (err) {
-                alert("Failed to initialize Razorpay overlay element window frame.");
+                alert("Failed to Pay Securely with Razorpay.");
             }
         }
 
